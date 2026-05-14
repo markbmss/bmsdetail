@@ -98,9 +98,11 @@ export default function App() {
 
   async function handleSaveClient(form) {
     if (editingClient) {
-      await supabase.from('clients').update(form).eq('id', editingClient.id)
+      const { error } = await supabase.from('clients').update(form).eq('id', editingClient.id)
+      if (error) { alert('שגיאה בעדכון לקוח:\n' + error.message); return }
     } else {
-      const { data } = await supabase.from('clients').insert(form).select().single()
+      const { data, error } = await supabase.from('clients').insert(form).select().single()
+      if (error) { alert('שגיאה בשמירת לקוח:\n' + error.message); return }
       if (data) setActiveId(data.id)
     }
     setShowModal(false)
