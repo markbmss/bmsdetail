@@ -1,7 +1,8 @@
+# Client portal — separate Netlify site (clients.bmsdetail.com)
+# Deploy this site with base directory set to "client-files-app" in Netlify dashboard
 [build]
-  base    = "client-files-app"
   command = "npm run build"
-  publish = "client-files-app/build"
+  publish = "build"
 
 [[redirects]]
   from = "/*"
