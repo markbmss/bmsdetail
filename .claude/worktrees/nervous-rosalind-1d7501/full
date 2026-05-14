@@ -1,0 +1,700 @@
+# קלין קאר – Full Website Code Backup
+_Generated: 2026-04-21_
+
+---
+
+## pages/Home.jsx
+
+```jsx
+import React, { useEffect, useState } from "react";
+import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
+import ValueProps from "@/components/ValueProps";
+import PackagesSection from "@/components/PackagesSection";
+import HowItWorks from "@/components/HowItWorks";
+import CtaSection from "@/components/CtaSection";
+import Testimonials from "@/components/Testimonials";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
+
+const WHATSAPP_NUMBER = "972538998195";
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-obsidian font-heebo" dir="rtl">
+      <Header whatsappNumber={WHATSAPP_NUMBER} />
+      <HeroSection whatsappNumber={WHATSAPP_NUMBER} />
+      <ValueProps />
+      <PackagesSection whatsappNumber={WHATSAPP_NUMBER} />
+      <HowItWorks />
+      <Testimonials />
+      <CtaSection whatsappNumber={WHATSAPP_NUMBER} />
+      <WhatsAppFloat whatsappNumber={WHATSAPP_NUMBER} />
+    </div>
+  );
+}
+```
+
+---
+
+## components/Header.jsx
+
+```jsx
+import React, { useEffect, useState } from "react";
+
+export default function Header({ whatsappNumber }) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("שלום, אני רוצה לקבוע טיפול לרכב שלי")}`;
+
+  return (
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-black/85 backdrop-blur-xl border-b border-[#C9A84C]/20 shadow-2xl"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center gap-3">
+          <img
+            src="https://media.base44.com/images/public/69e7a8cf5324940bf49ace5f/3e993f222_Gemini_Generated_Image_ekc4nvekc4nvekc42.PNG"
+            alt="קלין קאר לוגו"
+            className="w-10 h-10 rounded-full object-cover"
+          />
+          <span className="font-assistant font-bold text-xl text-[#F5F5F5] tracking-tight">
+            קלין <span className="text-[#C9A84C]">קאר</span>
+          </span>
+        </div>
+
+        {/* CTA */}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#C9A84C] text-[#C9A84C] font-assistant font-600 text-sm hover:bg-[#C9A84C] hover:text-black transition-all duration-300 min-h-[44px]"
+        >
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          הזמן טיפול
+        </a>
+      </div>
+    </header>
+  );
+}
+```
+
+---
+
+## components/HeroSection.jsx
+
+```jsx
+import React from "react";
+
+export default function HeroSection({ whatsappNumber }) {
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("שלום, אני רוצה לקבוע טיפול לרכב שלי")}`;
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=90&auto=format&fit=crop')`,
+        }}
+      />
+
+      {/* Multi-layer dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#050505]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
+
+      {/* Gold accent line at bottom */}
+      <div className="absolute bottom-0 inset-x-0 h-px gold-line" />
+
+      {/* Content */}
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-24">
+        {/* Pre-headline badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C9A84C]/40 bg-[#C9A84C]/10 mb-8 fade-in">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] animate-pulse" />
+          <span className="text-[#C9A84C] text-sm font-heebo font-medium tracking-wide">
+            זמין 24/7 — מגיעים אליך
+          </span>
+        </div>
+
+        {/* Main headline */}
+        <h1 className="font-assistant font-extrabold text-6xl md:text-8xl lg:text-9xl leading-[1.05] mb-6 fade-in-up">
+          <span className="text-[#F5F5F5]">ניקוי רכבים</span>
+          <br />
+          <span className="animate-shimmer">עד הבית</span>
+        </h1>
+
+        {/* Sub-headline */}
+        <p className="text-[#F5F5F5]/70 text-xl md:text-2xl font-heebo font-light mt-6 mb-10 max-w-2xl mx-auto leading-relaxed fade-in-up">
+          שירות פרימיום לרכב שלך – מגיעים אליך{" "}
+          <span className="text-[#C9A84C] font-medium">24/7</span>, ישירות לבית
+        </p>
+
+        {/* CTA Button */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 fade-in-up">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#C9A84C] text-black font-assistant font-bold text-lg hover:bg-[#E2C47A] transition-all duration-300 shadow-[0_0_40px_rgba(201,168,76,0.3)] hover:shadow-[0_0_60px_rgba(201,168,76,0.5)] pulse-gold min-h-[56px]"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            שלח הודעה בוואטסאפ
+          </a>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+          <div className="w-px h-12 bg-gradient-to-b from-transparent to-[#C9A84C]" />
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## components/ValueProps.jsx
+
+```jsx
+import React from "react";
+
+const values = [
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+    ),
+    title: "מגיעים עד אליך",
+    desc: "בלי לצאת מהבית – אנחנו מגיעים לכל מקום שנוח לך",
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "זמינות מלאה 24/7",
+    desc: "שירות ללא הפסקה – בוקר, ערב ולילה, בכל יום בשבוע",
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+      </svg>
+    ),
+    title: "תוצאות ברמה גבוהה",
+    desc: "חומרים מקצועיים ואיכותיים לגימור מושלם בכל פעם",
+  },
+  {
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+    title: "שירות מקצועי ואמין",
+    desc: "צוות מנוסה ומוסמך שמכבד את הרכב שלך ואת הזמן שלך",
+  },
+];
+
+export default function ValueProps() {
+  return (
+    <section className="py-24 px-6 bg-[#0A0A0A] relative overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px gold-line opacity-60" />
+      <div className="absolute bottom-0 inset-x-0 h-px gold-line opacity-60" />
+
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="text-[#C9A84C] text-sm font-heebo tracking-widest uppercase">
+            למה לבחור בנו
+          </span>
+          <h2 className="font-assistant font-extrabold text-4xl md:text-5xl text-[#F5F5F5] mt-3">
+            פרימיום בכל פרט
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map((v, i) => (
+            <div key={i} className="glass-card rounded-2xl p-8 card-hover group cursor-default">
+              <div className="w-14 h-14 rounded-xl bg-[#C9A84C]/10 border border-[#C9A84C]/20 flex items-center justify-center text-[#C9A84C] mb-6 group-hover:bg-[#C9A84C]/20 transition-colors duration-300">
+                {v.icon}
+              </div>
+              <h3 className="font-assistant font-bold text-xl text-[#F5F5F5] mb-3">{v.title}</h3>
+              <p className="text-[#F5F5F5]/55 font-heebo text-base leading-relaxed">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## components/PackagesSection.jsx
+
+```jsx
+import React from "react";
+
+const packages = [
+  {
+    tier: "Basic",
+    tierHe: "בייסיק",
+    label: "ניקוי חיצוני",
+    emoji: "🥉",
+    featured: false,
+    features: [
+      "ניקוי חיצוני יסודי לרכב",
+      "הסרת לכלוך ואבק",
+      "שטיפה מקצועית עם חומרים איכותיים",
+      "מתאים לתחזוקה שוטפת",
+    ],
+    message: "שלום, אני מעוניין בחבילת Basic - ניקוי חיצוני לרכב שלי",
+  },
+  {
+    tier: "Standard",
+    tierHe: "סטנדרט",
+    label: "ניקוי פנימי וחיצוני",
+    emoji: "🥈",
+    featured: true,
+    features: [
+      "ניקוי חיצוני מלא",
+      "שאיבה פנימית יסודית",
+      "ניקוי פלסטיקה ודשבורד",
+      "ניקוי חלונות מבפנים ומבחוץ",
+    ],
+    message: "שלום, אני מעוניין בחבילת Standard - ניקוי פנימי וחיצוני לרכב שלי",
+  },
+  {
+    tier: "Premium",
+    tierHe: "פרימיום",
+    label: "דיטיילינג מלא",
+    emoji: "🥇",
+    featured: false,
+    features: [
+      "ניקוי עמוק מבפנים ומבחוץ",
+      "ניקוי ריפודים יסודי",
+      "טיפול מקצועי לכל חלקי הרכב",
+      "גימור מושלם וברק ברמה גבוהה",
+    ],
+    message: "שלום, אני מעוניין בחבילת Premium - דיטיילינג מלא לרכב שלי",
+  },
+];
+
+export default function PackagesSection({ whatsappNumber }) {
+  return (
+    <section className="py-28 px-6 bg-[#050505] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-5" style={{
+        backgroundImage: `radial-gradient(circle at 50% 50%, #C9A84C 1px, transparent 1px)`,
+        backgroundSize: '48px 48px'
+      }} />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <span className="text-[#C9A84C] text-sm font-heebo tracking-widest uppercase">בחר את החבילה שלך</span>
+          <h2 className="font-assistant font-extrabold text-4xl md:text-6xl text-[#F5F5F5] mt-3 mb-4">חבילות השירות</h2>
+          <p className="text-[#F5F5F5]/50 font-heebo text-lg max-w-xl mx-auto">כל חבילה כוללת שירות עד הבית, ללא תוספות הפתעה</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {packages.map((pkg, i) => (
+            <div
+              key={i}
+              className={`relative rounded-2xl p-8 card-hover flex flex-col ${
+                pkg.featured
+                  ? "border border-[#C9A84C] bg-[#C9A84C]/5 shadow-[0_0_60px_rgba(201,168,76,0.12)]"
+                  : "glass-card"
+              }`}
+            >
+              {pkg.featured && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1 rounded-full bg-[#C9A84C] text-black text-sm font-assistant font-bold">
+                  הכי פופולרי
+                </div>
+              )}
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <span className="text-3xl mb-2 block">{pkg.emoji}</span>
+                  <h3 className="font-assistant font-bold text-2xl text-[#F5F5F5]">{pkg.tierHe}</h3>
+                  <p className="text-[#C9A84C] font-heebo text-sm mt-1">{pkg.label}</p>
+                </div>
+              </div>
+              <div className="h-px bg-[#C9A84C]/20 mb-6" />
+              <ul className="space-y-3 mb-8 flex-1">
+                {pkg.features.map((f, j) => (
+                  <li key={j} className="flex items-start gap-3">
+                    <span className="mt-1 flex-shrink-0 w-4 h-4 rounded-full border border-[#C9A84C]/60 flex items-center justify-center">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C]" />
+                    </span>
+                    <span className="text-[#F5F5F5]/70 font-heebo text-base leading-relaxed">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(pkg.message)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full text-center py-4 rounded-xl font-assistant font-bold text-base transition-all duration-300 min-h-[48px] flex items-center justify-center gap-2 ${
+                  pkg.featured
+                    ? "bg-[#C9A84C] text-black hover:bg-[#E2C47A] shadow-[0_0_30px_rgba(201,168,76,0.3)]"
+                    : "border border-[#C9A84C]/40 text-[#C9A84C] hover:bg-[#C9A84C]/10"
+                }`}
+              >
+                בחר חבילה זו
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## components/HowItWorks.jsx
+
+```jsx
+import React from "react";
+
+const steps = [
+  {
+    num: "01",
+    title: "יוצרים קשר בוואטסאפ",
+    desc: "שולחים הודעה קצרה ומספרים לנו היכן נמצא הרכב ומתי נוח לכם",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 3H3a2 2 0 00-2 2v12a2 2 0 002 2h5l3 3 3-3h5a2 2 0 002-2V5a2 2 0 00-2-2z" />
+      </svg>
+    ),
+  },
+  {
+    num: "02",
+    title: "קובעים זמן שנוח לכם",
+    desc: "בוחרים יחד מועד שמתאים לכם — בוקר, צהריים, ערב או לילה",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+  },
+  {
+    num: "03",
+    title: "אנחנו מגיעים ומנקים",
+    desc: "הצוות שלנו מגיע אליכם ומחזיר לרכב את הברק שלו — ואתם לא זזתם מהבית",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+];
+
+export default function HowItWorks() {
+  return (
+    <section className="py-28 px-6 bg-[#0D0D0D] relative overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-px gold-line opacity-40" />
+      <div className="absolute bottom-0 inset-x-0 h-px gold-line opacity-40" />
+
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <span className="text-[#C9A84C] text-sm font-heebo tracking-widest uppercase">פשוט ומהיר</span>
+          <h2 className="font-assistant font-extrabold text-4xl md:text-6xl text-[#F5F5F5] mt-3">איך זה עובד?</h2>
+        </div>
+
+        <div className="relative">
+          <div className="hidden md:block absolute top-16 inset-x-0 h-0.5 timeline-line z-0" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 relative z-10">
+            {steps.map((step, i) => (
+              <div key={i} className="flex flex-col items-center text-center group">
+                <div className="relative mb-8">
+                  <div className="absolute inset-0 rounded-full bg-[#C9A84C]/20 scale-125 group-hover:scale-150 transition-transform duration-500" />
+                  <div className="relative w-16 h-16 rounded-full border-2 border-[#C9A84C] bg-[#050505] flex items-center justify-center text-[#C9A84C] group-hover:bg-[#C9A84C]/10 transition-colors duration-300">
+                    {step.icon}
+                  </div>
+                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#C9A84C] text-black text-xs font-assistant font-bold flex items-center justify-center">
+                    {i + 1}
+                  </span>
+                </div>
+                <h3 className="font-assistant font-bold text-xl text-[#F5F5F5] mb-4">{step.title}</h3>
+                <p className="text-[#F5F5F5]/50 font-heebo text-base leading-relaxed max-w-xs">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## components/Testimonials.jsx
+
+```jsx
+import React, { useState } from "react";
+
+const testimonials = [
+  {
+    name: "יוסי כהן",
+    location: "תל אביב",
+    initials: "יכ",
+    text: "פשוט מדהים. הזמנתי ב-11 בלילה, הגיעו תוך שעה. הרכב יצא כמו מהשואורום. לא האמנתי שאפשר לעשות ניקוי כזה עד הבית.",
+    stars: 5,
+  },
+  {
+    name: "מיכל לוי",
+    location: "רמת גן",
+    initials: "מל",
+    text: "שירות על הגבול של פרפקציה. הגיעו בדיוק בזמן, עבדו בשקט ובמקצועיות, ואת הרכב החזירו לי בברק שלא ראיתי מאז שקניתי אותו.",
+    stars: 5,
+  },
+  {
+    name: "דניאל אברהם",
+    location: "הרצליה",
+    initials: "דא",
+    text: "הזמנתי חבילת פרימיום ולא התאכזבתי. כל פינה של הרכב — מבפנים ומבחוץ — מושלמת. בהחלט ממליץ לכל מי שמחפש איכות אמיתית.",
+    stars: 5,
+  },
+  {
+    name: "שירה נחום",
+    location: "פתח תקווה",
+    initials: "שנ",
+    text: "ניסיתי המון שירותי ניקוי רכב, אבל קלין קאר הם ברמה אחרת לגמרי. הנוחות של שירות עד הבית בשילוב התוצאות — אין על זה.",
+    stars: 5,
+  },
+];
+
+export default function Testimonials() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <section className="py-28 px-6 bg-[#080808] relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#C9A84C]/4 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-px gold-line opacity-50" />
+      <div className="absolute bottom-0 inset-x-0 h-px gold-line opacity-50" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-16">
+          <span className="text-[#C9A84C] text-sm font-heebo tracking-widest uppercase">לקוחות מרוצים</span>
+          <h2 className="font-assistant font-extrabold text-4xl md:text-6xl text-[#F5F5F5] mt-3 mb-4">מה אומרים עלינו</h2>
+          <p className="text-[#F5F5F5]/40 font-heebo text-lg max-w-lg mx-auto">מאות לקוחות כבר נהנו מהשירות — הנה מה שיש להם לספר</p>
+        </div>
+
+        <div className="glass-card rounded-3xl p-8 md:p-14 mb-8 relative overflow-hidden">
+          <div className="absolute top-6 left-8 text-[#C9A84C]/10 font-assistant font-extrabold text-[140px] leading-none select-none pointer-events-none">"</div>
+          <div className="flex gap-1 mb-6 justify-center">
+            {Array(testimonials[active].stars).fill(0).map((_, i) => (
+              <svg key={i} className="w-5 h-5 text-[#C9A84C]" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <blockquote className="text-[#F5F5F5]/85 font-heebo text-xl md:text-2xl leading-relaxed text-center max-w-3xl mx-auto mb-10 relative z-10">
+            "{testimonials[active].text}"
+          </blockquote>
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-12 rounded-full border-2 border-[#C9A84C] bg-[#C9A84C]/10 flex items-center justify-center">
+              <span className="text-[#C9A84C] font-assistant font-bold text-sm">{testimonials[active].initials}</span>
+            </div>
+            <div className="text-right">
+              <p className="font-assistant font-bold text-[#F5F5F5] text-base">{testimonials[active].name}</p>
+              <p className="text-[#C9A84C]/70 font-heebo text-sm">{testimonials[active].location}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {testimonials.map((t, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              className={`text-right p-4 rounded-2xl border transition-all duration-300 cursor-pointer min-h-[48px] ${
+                i === active
+                  ? "border-[#C9A84C] bg-[#C9A84C]/10 shadow-[0_0_20px_rgba(201,168,76,0.15)]"
+                  : "border-white/8 bg-white/3 hover:border-[#C9A84C]/40 hover:bg-[#C9A84C]/5"
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <div className={`w-7 h-7 rounded-full border flex items-center justify-center flex-shrink-0 ${i === active ? "border-[#C9A84C] bg-[#C9A84C]/20" : "border-white/20 bg-white/5"}`}>
+                  <span className={`text-[10px] font-assistant font-bold ${i === active ? "text-[#C9A84C]" : "text-white/50"}`}>{t.initials}</span>
+                </div>
+                <div>
+                  <p className={`font-assistant font-bold text-xs ${i === active ? "text-[#F5F5F5]" : "text-[#F5F5F5]/50"}`}>{t.name}</p>
+                  <p className={`text-[10px] font-heebo ${i === active ? "text-[#C9A84C]/80" : "text-[#F5F5F5]/30"}`}>{t.location}</p>
+                </div>
+              </div>
+              <div className="flex gap-0.5">
+                {Array(t.stars).fill(0).map((_, j) => (
+                  <svg key={j} className={`w-2.5 h-2.5 ${i === active ? "text-[#C9A84C]" : "text-[#C9A84C]/30"}`} fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-3 gap-4 mt-12 pt-10 border-t border-white/8">
+          {[
+            { num: "500+", label: "לקוחות מרוצים" },
+            { num: "4.9★", label: "דירוג ממוצע" },
+            { num: "100%", label: "ממליצים לחברים" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <p className="font-assistant font-extrabold text-3xl md:text-4xl text-[#C9A84C]">{stat.num}</p>
+              <p className="text-[#F5F5F5]/45 font-heebo text-sm mt-1">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## components/CtaSection.jsx
+
+```jsx
+import React from "react";
+
+export default function CtaSection({ whatsappNumber }) {
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("שלום, אני רוצה לקבוע טיפול לרכב שלי")}`;
+
+  return (
+    <section className="relative py-32 px-6 overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=85&auto=format&fit=crop')`,
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/92 via-black/80 to-[#050505]/90" />
+      <div className="absolute top-12 right-12 w-2 h-2 rounded-full bg-[#C9A84C]/30" />
+      <div className="absolute bottom-16 left-16 w-1 h-1 rounded-full bg-[#C9A84C]/50" />
+      <div className="absolute top-1/2 right-1/4 w-1.5 h-1.5 rounded-full bg-[#C9A84C]/20" />
+      <div className="absolute top-0 inset-x-0 h-px gold-line" />
+      <div className="absolute bottom-0 inset-x-0 h-px gold-line" />
+
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#C9A84C]/30 bg-[#C9A84C]/8 mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C9A84C] animate-pulse" />
+          <span className="text-[#C9A84C] text-sm font-heebo">זמין עכשיו · 24/7</span>
+        </div>
+
+        <h2 className="font-assistant font-extrabold text-5xl md:text-7xl text-[#F5F5F5] leading-tight mb-6">
+          לא צריך לצאת <br />
+          <span className="text-[#C9A84C]">מהבית</span>
+        </h2>
+
+        <p className="text-[#F5F5F5]/60 font-heebo text-xl mb-12 max-w-xl mx-auto leading-relaxed">
+          אנחנו מגיעים אליך – ישירות לבית, למשרד, לכל מקום שתבחר
+        </p>
+
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-3 px-12 py-5 rounded-full bg-[#C9A84C] text-black font-assistant font-bold text-xl hover:bg-[#E2C47A] transition-all duration-300 shadow-[0_0_50px_rgba(201,168,76,0.35)] hover:shadow-[0_0_80px_rgba(201,168,76,0.55)] hover:scale-105 min-h-[64px]"
+        >
+          שלח הודעה עכשיו
+        </a>
+
+        <p className="mt-8 text-[#F5F5F5]/30 font-heebo text-sm">
+          ✓ ניקוי מקצועי  ·  ✓ עד הבית  ·  ✓ 24/7  ·  ✓ ללא התחייבות
+        </p>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## components/WhatsAppFloat.jsx
+
+```jsx
+import React from "react";
+
+export default function WhatsAppFloat({ whatsappNumber }) {
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("שלום, אני רוצה לקבוע טיפול לרכב שלי")}`;
+
+  return (
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="פתח וואטסאפ"
+      className="fixed bottom-6 left-6 z-50 group"
+    >
+      <span className="absolute inset-0 rounded-full bg-[#C9A84C]/25 radar-ring" style={{ animationDelay: "0s" }} />
+      <span className="absolute inset-0 rounded-full bg-[#C9A84C]/15 radar-ring" style={{ animationDelay: "0.7s" }} />
+
+      <div className="relative w-16 h-16 rounded-full bg-[#C9A84C] flex items-center justify-center shadow-[0_4px_30px_rgba(201,168,76,0.4)] group-hover:bg-[#E2C47A] group-hover:scale-110 transition-all duration-300 pulse-gold">
+        <svg className="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 rounded-lg bg-[#1A1A1A] border border-[#C9A84C]/20 text-[#F5F5F5] text-xs font-heebo whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        דברו איתנו עכשיו
+      </div>
+    </a>
+  );
+}
+```
+
+---
+
+## index.css (key additions)
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@300;400;500;600&display=swap');
+
+/* Brand tokens */
+--obsidian: #050505;
+--carbon: #1A1A1A;
+--gold: #C9A84C;
+--gold-light: #E2C47A;
+--alabaster: #F5F5F5;
+
+/* Key animations: shimmer, pulse-gold, radar, fadeInUp */
+/* Key utility classes: glass-card, gold-line, card-hover, timeline-line, animate-shimmer, pulse-gold, radar-ring */
+```
+
+---
+
+## index.html (key meta tags)
+
+```html
+<link rel="icon" type="image/png" href="https://media.base44.com/images/public/69e7a8cf5324940bf49ace5f/3e993f222_Gemini_Generated_Image_ekc4nvekc4nvekc42.PNG" />
+<meta property="og:image" content="https://media.base44.com/images/public/69e7a8cf5324940bf49ace5f/3e993f222_Gemini_Generated_Image_ekc4nvekc4nvekc42.PNG" />
+<meta property="og:title" content="קלין קאר – ניקוי רכבים עד הבית" />
+<meta property="og:description" content="שירות פרימיום לניקוי רכבים – מגיעים אליך 24/7" />
+<meta name="description" content="קלין קאר – שירות ניקוי רכבים פרימיום עד הבית, זמין 24/7." />
+<title>קלין קאר – ניקוי רכבים עד הבית 24/7</title>
+```
+
+---
+
+_WhatsApp number: 972538998195_
+_Logo URL: https://media.base44.com/images/public/69e7a8cf5324940bf49ace5f/3e993f222_Gemini_Generated_Image_ekc4nvekc4nvekc42.PNG_

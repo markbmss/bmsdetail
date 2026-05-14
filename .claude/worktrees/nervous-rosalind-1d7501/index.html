@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" id="html-root">
+<html lang="en" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main-website/styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -24,6 +24,7 @@
         <a href="#jets" class="nav-link nav-coming" data-en="Jets" data-he="מטוסים">Jets <span class="coming-pill">Soon</span></a>
         <a href="#shop" class="nav-link nav-coming" data-en="Shop" data-he="חנות">Shop <span class="coming-pill">Soon</span></a>
         <a href="#about" class="nav-link" data-en="About" data-he="אודות">About</a>
+        <a href="#gallery" class="nav-link" data-en="Gallery" data-he="גלריה">Gallery</a>
         <a href="#contact" class="nav-link" data-en="Contact" data-he="צור קשר">Contact</a>
       </nav>
       <div class="header-right">
@@ -40,7 +41,6 @@
 
   <section class="hero" id="hero">
     <canvas id="hero-canvas" aria-hidden="true"></canvas>
-    <div class="hero-dot-grid" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="hero-eyebrow" data-en="Premium Detailing" data-he="דיטיילינג פרימיום">Premium Detailing</p>
@@ -56,58 +56,6 @@
       </div>
     </div>
     <div class="hero-scroll-hint" aria-hidden="true"><div class="scroll-line"></div></div>
-  </section>
-
-  <div class="stats-strip">
-    <div class="container">
-      <div class="stats-strip-inner">
-        <div class="strip-stat">
-          <span class="strip-num">500+</span>
-          <span class="strip-label" data-en="Happy Clients" data-he="לקוחות מרוצים">Happy Clients</span>
-        </div>
-        <div class="strip-divider" aria-hidden="true"></div>
-        <div class="strip-stat">
-          <span class="strip-num">4.9★</span>
-          <span class="strip-label" data-en="Average Rating" data-he="דירוג ממוצע">Average Rating</span>
-        </div>
-        <div class="strip-divider" aria-hidden="true"></div>
-        <div class="strip-stat">
-          <span class="strip-num">24/7</span>
-          <span class="strip-label" data-en="Available" data-he="זמין">Available</span>
-        </div>
-        <div class="strip-divider" aria-hidden="true"></div>
-        <div class="strip-stat">
-          <span class="strip-num">100%</span>
-          <span class="strip-label" data-en="Mobile Service" data-he="שירות נייד">Mobile Service</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section class="section section-process" id="process">
-    <div class="container">
-      <div class="section-head center">
-        <span class="section-tag" data-en="Process" data-he="תהליך">Process</span>
-        <h2 class="section-title" data-en="How It Works" data-he="איך זה עובד">How It Works</h2>
-      </div>
-      <div class="process-grid">
-        <div class="process-step reveal">
-          <div class="process-num">01</div>
-          <h3 class="process-title" data-en="Book in Seconds" data-he="הזמן תוך שניות">Book in Seconds</h3>
-          <p class="process-desc" data-en="Fill out the form or tap WhatsApp. Tell us what you need — we'll handle the rest." data-he="מלא את הטופס או לחץ על WhatsApp. ספר לנו מה צריך — אנחנו נטפל בשאר.">Fill out the form or tap WhatsApp. Tell us what you need — we'll handle the rest.</p>
-        </div>
-        <div class="process-step reveal">
-          <div class="process-num">02</div>
-          <h3 class="process-title" data-en="We Come to You" data-he="אנחנו מגיעים אליך">We Come to You</h3>
-          <p class="process-desc" data-en="Our team arrives at your location — home, marina, office, or anywhere you choose." data-he="הצוות שלנו מגיע לכל מקום — בית, מרינה, משרד, או כל מקום שתבחר.">Our team arrives at your location — home, marina, office, or anywhere you choose.</p>
-        </div>
-        <div class="process-step reveal">
-          <div class="process-num">03</div>
-          <h3 class="process-title" data-en="Showroom Finish" data-he="גימור שואורום">Showroom Finish</h3>
-          <p class="process-desc" data-en="Every detail treated with precision. You get back a vehicle that looks better than the day you bought it." data-he="כל פרט מטופל בדיוק. אתה מקבל חזרה כלי רכב שנראה טוב יותר מהיום שרכשת אותו.">Every detail treated with precision. You get back a vehicle that looks better than the day you bought it.</p>
-        </div>
-      </div>
-    </div>
   </section>
 
   <section class="section section-cars" id="cars">
@@ -367,7 +315,6 @@
     </div>
   </section>
 
-  <!-- Gallery section commented out — real photos pending
   <section class="section section-gallery" id="gallery">
     <div class="container">
       <div class="section-head center">
@@ -394,7 +341,6 @@
       <p class="gallery-note" data-en="More photos coming soon — follow us on Instagram" data-he="תמונות נוספות בקרוב — עקבו אחרינו באינסטגרם">More photos coming soon — follow us on Instagram</p>
     </div>
   </section>
-  -->
 
   <section class="section section-contact" id="contact">
     <div class="container">
@@ -458,6 +404,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="main-website/app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

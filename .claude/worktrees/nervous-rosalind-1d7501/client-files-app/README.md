@@ -1,6 +1,4 @@
-# Client Portal App — Setup Guide
-
-This folder is separate from the public website. Use it only for the internal client portal.
+# Client Files App — Setup Guide
 
 ## What you'll need (all free)
 - Supabase account → supabase.com

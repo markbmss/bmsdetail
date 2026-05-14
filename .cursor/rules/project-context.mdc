@@ -1,0 +1,15 @@
+---
+description: Core project context for BMS Detail
+alwaysApply: true
+---
+
+# BMS Detail Project Context
+
+- This repository contains two separate products:
+  - `main-website/` plus root `index.html` for the public website
+  - `client-files-app/` for the internal client portal
+- Prefer working only in the area requested for the current task.
+- Do not change unrelated files.
+- The client portal uses React and Supabase.
+- When working on Supabase flows, surface real errors instead of failing silently.
+- Keep edits minimal, safe, and easy to review.

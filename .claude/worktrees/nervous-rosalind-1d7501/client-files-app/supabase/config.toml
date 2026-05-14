@@ -1,0 +1,6 @@
+# Supabase CLI: https://supabase.com/docs/guides/cli
+# Link: supabase link --project-ref <ref>
+# Deploy function: supabase functions deploy google-calendar-sync
+
+[functions.google-calendar-sync]
+verify_jwt = false
