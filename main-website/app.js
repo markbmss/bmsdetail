@@ -18,24 +18,12 @@
   }
 
   /* ── Language toggle ── */
-  var translations = {
-    en: {
-      "nav-cars": "Cars", "nav-yacht": "Yacht", "nav-jets": "Jets",
-      "nav-shop": "Shop", "nav-about": "About", "nav-gallery": "Gallery",
-      "nav-contact": "Contact", "btn-book": "Book Now",
-    },
-    he: {
-      "nav-cars": "רכבים", "nav-yacht": "יאכטות", "nav-jets": "מטוסים",
-      "nav-shop": "חנות", "nav-about": "אודות", "nav-gallery": "גלריה",
-      "nav-contact": "צור קשר", "btn-book": "הזמן עכשיו",
-    }
-  };
-
   function applyLang(l) {
     lang = l;
     document.getElementById("lang-label").textContent = l === "en" ? "HE" : "EN";
     document.body.lang = l;
     document.documentElement.lang = l;
+    document.documentElement.dir = l === "he" ? "rtl" : "ltr";
 
     document.querySelectorAll("[data-" + l + "]").forEach(function (el) {
       var val = el.getAttribute("data-" + l);
@@ -76,7 +64,7 @@
     a.addEventListener("click", function () { nav.classList.remove("open"); });
   });
 
-  /* ── Three.js sparkle hero ── */
+  /* ── Three.js hero — constellation ── */
   function initHero() {
     var canvas = document.getElementById("hero-canvas");
     if (!canvas || typeof THREE === "undefined") return;
@@ -87,60 +75,115 @@
 
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-    camera.position.z = 6;
+    camera.position.z = 7;
 
-    var count = 180;
-    var positions = new Float32Array(count * 3);
-    var speeds = new Float32Array(count);
+    var group = new THREE.Group();
+    scene.add(group);
 
-    for (var i = 0; i < count; i++) {
-      positions[i * 3]     = (Math.random() - 0.5) * 22;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 14;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
-      speeds[i] = 0.0003 + Math.random() * 0.0005;
+    /* ── Particles with vertex colours ── */
+    var COUNT = window.innerWidth < 768 ? 160 : 300;
+    var positions = new Float32Array(COUNT * 3);
+    var colours   = new Float32Array(COUNT * 3);
+
+    /* colour palette for cream bg: dark navy · warm brown · dark gold · warm charcoal */
+    var pal = [
+      [0.10, 0.15, 0.28],
+      [0.20, 0.15, 0.09],
+      [0.55, 0.40, 0.18],
+      [0.14, 0.12, 0.08],
+    ];
+
+    for (var i = 0; i < COUNT; i++) {
+      positions[i*3]   = (Math.random() - 0.5) * 28;
+      positions[i*3+1] = (Math.random() - 0.5) * 17;
+      positions[i*3+2] = (Math.random() - 0.5) * 11;
+      var r = Math.random();
+      var c = r < 0.12 ? pal[2] : (r < 0.46 ? pal[1] : (r < 0.72 ? pal[0] : pal[3]));
+      colours[i*3] = c[0]; colours[i*3+1] = c[1]; colours[i*3+2] = c[2];
     }
 
-    var geo = new THREE.BufferGeometry();
-    geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    var pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    pGeo.setAttribute("color",    new THREE.BufferAttribute(colours, 3));
+    group.add(new THREE.Points(pGeo, new THREE.PointsMaterial({
+      vertexColors: true, size: 0.065,
+      transparent: true, opacity: 0.65, sizeAttenuation: true,
+    })));
 
-    var mat = new THREE.PointsMaterial({
-      size: 0.055,
-      color: 0xffffff,
+    /* ── Constellation lines ── */
+    var lineVerts = [];
+    var maxD2 = 4.0 * 4.0;
+    for (var a = 0; a < COUNT; a++) {
+      for (var b = a + 1; b < COUNT; b++) {
+        var dx = positions[a*3]   - positions[b*3];
+        var dy = positions[a*3+1] - positions[b*3+1];
+        var dz = positions[a*3+2] - positions[b*3+2];
+        if (dx*dx + dy*dy + dz*dz < maxD2) {
+          lineVerts.push(
+            positions[a*3], positions[a*3+1], positions[a*3+2],
+            positions[b*3], positions[b*3+1], positions[b*3+2]
+          );
+        }
+      }
+    }
+    var lGeo = new THREE.BufferGeometry();
+    lGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(lineVerts), 3));
+    group.add(new THREE.LineSegments(lGeo, new THREE.LineBasicMaterial({
+      color: 0x1a2845, transparent: true, opacity: 0.10,
+    })));
+
+    /* ── Central glow bloom (canvas sprite) ── */
+    var gs = 256;
+    var gc = document.createElement("canvas");
+    gc.width = gc.height = gs;
+    var gx = gc.getContext("2d");
+    var grd = gx.createRadialGradient(gs/2, gs/2, 0, gs/2, gs/2, gs/2);
+    grd.addColorStop(0,    "rgba(160,100,30,0.18)");
+    grd.addColorStop(0.30, "rgba(120,75,20,0.08)");
+    grd.addColorStop(0.65, "rgba(80,50,10,0.03)");
+    grd.addColorStop(1,    "rgba(0,0,0,0)");
+    gx.fillStyle = grd;
+    gx.fillRect(0, 0, gs, gs);
+
+    var gSprite = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: new THREE.CanvasTexture(gc),
       transparent: true,
-      opacity: 0.55,
-      sizeAttenuation: true,
-    });
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    }));
+    gSprite.scale.set(18, 11, 1);
+    scene.add(gSprite);
 
-    var particles = new THREE.Points(geo, mat);
-    scene.add(particles);
-
-    var mouseX = 0, mouseY = 0;
-    var targetX = 0, targetY = 0;
-
-    document.addEventListener("mousemove", function (e) {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 0.6;
-      mouseY = -(e.clientY / window.innerHeight - 0.5) * 0.4;
+    /* ── Mouse parallax ── */
+    var mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+    document.addEventListener("mousemove", function(e) {
+      mouseX = (e.clientX / window.innerWidth  - 0.5) * 1.5;
+      mouseY = -(e.clientY / window.innerHeight - 0.5) * 1.0;
     }, { passive: true });
 
     var clock = new THREE.Clock();
-
     function animate() {
       requestAnimationFrame(animate);
       var t = clock.getElapsedTime();
 
-      particles.rotation.y = t * 0.04;
-      particles.rotation.x = t * 0.015;
+      group.rotation.y = t * 0.05;
+      group.rotation.x = t * 0.018;
 
-      targetX += (mouseX - targetX) * 0.04;
-      targetY += (mouseY - targetY) * 0.04;
-      particles.rotation.y += targetX * 0.3;
-      particles.rotation.x += targetY * 0.2;
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+      group.rotation.y += targetX * 0.40;
+      group.rotation.x += targetY * 0.28;
+
+      camera.position.x += (targetX * 0.35 - camera.position.x) * 0.04;
+      camera.position.y += (targetY * 0.22 - camera.position.y) * 0.04;
+
+      gSprite.material.opacity = 0.88 + Math.sin(t * 0.55) * 0.12;
 
       renderer.render(scene, camera);
     }
     animate();
 
-    window.addEventListener("resize", function () {
+    window.addEventListener("resize", function() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -233,6 +276,31 @@
     });
   }
 
+  /* ── Count-up animation ── */
+  function initCounters() {
+    document.querySelectorAll("[data-count]").forEach(function (el) {
+      var target = parseInt(el.getAttribute("data-count"), 10);
+      if (isNaN(target)) return;
+      el.textContent = "0";
+      var done = false;
+      var observer = new IntersectionObserver(function (entries) {
+        if (done || !entries[0].isIntersecting) return;
+        done = true;
+        observer.disconnect();
+        var start = performance.now();
+        var duration = 1800;
+        function tick(now) {
+          var p = Math.min((now - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target);
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }, { threshold: 0.4 });
+      observer.observe(el);
+    });
+  }
+
   /* ── Init ── */
   document.addEventListener("DOMContentLoaded", function () {
     initHero();
@@ -240,6 +308,7 @@
     initTilt();
     initForm();
     bindWaLinks();
+    initCounters();
     applyLang("he");
   });
 })();
