@@ -1,379 +1,409 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="קלין קאר – שירות ניקוי רכבים פרימיום עד הבית, זמין 24/7.">
-  <meta property="og:title" content="קלין קאר – ניקוי רכבים עד הבית">
-  <meta property="og:description" content="שירות פרימיום לניקוי רכבים – מגיעים אליך 24/7">
-  <meta property="og:image" content="https://cleancar4u.com/images/logo.png">
+  <meta name="description" content="BMS Detail — Premium detailing for Cars, Yachts & Jets">
   <link rel="icon" type="image/png" href="images/logo.png">
-  <title>קלין קאר – ניקוי רכבים עד הבית 24/7</title>
+  <title>BMS Detail — Premium Detailing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://images.unsplash.com">
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">דלג לתוכן</a>
 
   <header class="site-header" id="site-header">
     <div class="header-inner">
-      <div class="header-brand">
-        <img
-          src="images/logo.png"
-          alt="קלין קאר · B.M.S לוגו"
-          width="120"
-          height="40"
-          class="header-logo"
-          decoding="async">
-        <span class="header-title">קלין <span class="text-gold">קאר</span></span>
-      </div>
-      <div class="header-actions">
-        <a class="btn btn-header-outline" data-wa>
-        <svg class="icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        הזמן טיפול
+      <a href="#" class="header-logo-link">
+        <img src="images/logo.png" alt="BMS Detail" class="header-logo">
       </a>
+      <nav class="header-nav" id="header-nav">
+        <a href="#cars" class="nav-link" data-en="Cars" data-he="רכבים">Cars</a>
+        <a href="#yacht" class="nav-link" data-en="Yacht" data-he="יאכטות">Yacht</a>
+        <a href="#jets" class="nav-link nav-coming" data-en="Jets" data-he="מטוסים">Jets <span class="coming-pill">Soon</span></a>
+        <a href="#shop" class="nav-link nav-coming" data-en="Shop" data-he="חנות">Shop <span class="coming-pill">Soon</span></a>
+        <a href="#about" class="nav-link" data-en="About" data-he="אודות">About</a>
+        <a href="#gallery" class="nav-link" data-en="Gallery" data-he="גלריה">Gallery</a>
+        <a href="#contact" class="nav-link" data-en="Contact" data-he="צור קשר">Contact</a>
+      </nav>
+      <div class="header-right">
+        <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+          <span id="lang-label">HE</span>
+        </button>
+        <a href="#contact" class="btn-book" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+        <button class="nav-burger" id="nav-burger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero" aria-label="פתיח">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-grad hero-grad-v" aria-hidden="true"></div>
-      <div class="hero-grad hero-grad-h" aria-hidden="true"></div>
-      <div class="gold-line gold-line-hero-bottom" aria-hidden="true"></div>
-
-      <div class="hero-content">
-        <div class="hero-badge fade-in-up">
-          <span class="hero-badge-dot" aria-hidden="true"></span>
-          <span class="font-heebo">זמין 24/7 — מגיעים אליך</span>
-        </div>
-        <h1 class="hero-headline fade-in-up">
-          <span class="text-alabaster">ניקוי רכבים</span><br>
-          <span class="animate-shimmer">עד הבית</span>
-        </h1>
-        <p class="hero-sub fade-in-up font-heebo">
-          שירות פרימיום לרכב שלך – מגיעים אליך
-          <span class="text-gold font-medium">24/7</span>, ישירות לבית
-        </p>
-        <div class="hero-cta fade-in-up">
-          <a class="btn btn-hero pulse-gold" data-wa>
-            <svg class="icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            שלח הודעה בוואטסאפ
-          </a>
-        </div>
-        <div class="hero-scroll-hint" aria-hidden="true">
-          <div class="hero-scroll-line"></div>
-        </div>
+  <section class="hero" id="hero">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow" data-en="Premium Detailing" data-he="דיטיילינג פרימיום">Premium Detailing</p>
+      <h1 class="hero-title">
+        <span class="hero-word" data-en="We Detail" data-he="אנחנו מטפלים">We Detail</span>
+        <span class="hero-word hero-word-accent" data-en="Everything" data-he="בכל">Everything</span>
+        <span class="hero-word" data-en="That Moves." data-he="שנע.">That Moves.</span>
+      </h1>
+      <p class="hero-sub" data-en="Cars · Yachts · Jets" data-he="רכבים · יאכטות · מטוסים">Cars · Yachts · Jets</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+        <a href="#cars" class="btn-ghost" data-en="Explore Services" data-he="גלה שירותים">Explore Services</a>
       </div>
-    </section>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true"><div class="scroll-line"></div></div>
+  </section>
 
-    <section class="section values" aria-labelledby="values-heading">
-      <div class="gold-line gold-line-section opacity-60" aria-hidden="true"></div>
-      <div class="container-wide">
-        <header class="section-head center">
-          <p class="eyebrow font-heebo">למה לבחור בנו</p>
-          <h2 id="values-heading" class="section-title">פרימיום בכל פרט</h2>
-        </header>
-        <div class="value-grid">
-          <article class="glass-card card-hover value-card">
-            <div class="value-icon-wrap" aria-hidden="true">
-              <svg class="value-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-            </div>
-            <h3 class="value-title">מגיעים עד אליך</h3>
-            <p class="value-desc font-heebo">בלי לצאת מהבית – אנחנו מגיעים לכל מקום שנוח לך</p>
-          </article>
-          <article class="glass-card card-hover value-card">
-            <div class="value-icon-wrap" aria-hidden="true">
-              <svg class="value-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <h3 class="value-title">זמינות מלאה 24/7</h3>
-            <p class="value-desc font-heebo">שירות ללא הפסקה – בוקר, ערב ולילה, בכל יום בשבוע</p>
-          </article>
-          <article class="glass-card card-hover value-card">
-            <div class="value-icon-wrap" aria-hidden="true">
-              <svg class="value-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-            </div>
-            <h3 class="value-title">תוצאות ברמה גבוהה</h3>
-            <p class="value-desc font-heebo">חומרים מקצועיים ואיכותיים לגימור מושלם בכל פעם</p>
-          </article>
-          <article class="glass-card card-hover value-card">
-            <div class="value-icon-wrap" aria-hidden="true">
-              <svg class="value-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </div>
-            <h3 class="value-title">שירות מקצועי ואמין</h3>
-            <p class="value-desc font-heebo">צוות מנוסה ומוסמך שמכבד את הרכב שלך ואת הזמן שלך</p>
-          </article>
-        </div>
+  <section class="section section-cars" id="cars">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag" data-en="Cars" data-he="רכבים">Cars</span>
+        <h2 class="section-title" data-en="Car Detailing" data-he="דיטיילינג לרכב">Car Detailing</h2>
+        <p class="section-sub" data-en="Professional detailing that brings your car back to life." data-he="דיטיילינג מקצועי שמחזיר את הרכב שלך לחיים.">Professional detailing that brings your car back to life.</p>
       </div>
-      <div class="gold-line gold-line-section-bottom opacity-60" aria-hidden="true"></div>
-    </section>
+      <div class="packages-grid">
 
-    <section class="section packages" aria-labelledby="packages-heading">
-      <div class="packages-pattern" aria-hidden="true"></div>
-      <div class="container-wide relative-z">
-        <header class="section-head center packages-head">
-          <p class="eyebrow font-heebo">בחר את החבילה שלך</p>
-          <h2 id="packages-heading" class="section-title section-title-lg">חבילות השירות</h2>
-          <p class="section-lead font-heebo">כל חבילה כוללת שירות עד הבית, ללא תוספות הפתעה</p>
-        </header>
-        <div class="package-grid">
-          <article class="glass-card card-hover package-card">
-            <div class="package-top">
-              <span class="package-emoji" aria-hidden="true">🥉</span>
-              <h3 class="package-tier">בייסיק</h3>
-              <p class="package-label font-heebo">ניקוי חיצוני</p>
+        <div class="package-card" data-tilt>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Basic" data-he="בייסיק">Basic</h3>
+              <p class="pkg-desc" data-en="Essential exterior wash and clean — the perfect regular maintenance treatment." data-he="שטיפה חיצונית בסיסית — טיפול תחזוקה שוטף מושלם.">Essential exterior wash and clean — the perfect regular maintenance treatment.</p>
             </div>
-            <div class="package-rule"></div>
-            <ul class="package-features font-heebo">
-              <li><span class="bullet-dot" aria-hidden="true"></span>ניקוי חיצוני יסודי לרכב</li>
-              <li><span class="bullet-dot" aria-hidden="true"></span>הסרת לכלוך ואבק</li>
-              <li><span class="bullet-dot" aria-hidden="true"></span>שטיפה מקצועית עם חומרים איכותיים</li>
-              <li><span class="bullet-dot" aria-hidden="true"></span>מתאים לתחזוקה שוטפת</li>
+            <ul class="pkg-features">
+              <li data-en="Full exterior wash" data-he="שטיפה חיצונית מלאה">Full exterior wash</li>
+              <li data-en="Wheel & tire clean" data-he="ניקוי גלגלים וצמיגים">Wheel & tire clean</li>
+              <li data-en="Window cleaning" data-he="ניקוי חלונות">Window cleaning</li>
+              <li data-en="Exterior dry & shine" data-he="ייבוש וברק חיצוני">Exterior dry & shine</li>
             </ul>
-            <a class="btn btn-package-outline" data-wa data-wa-msg="שלום, אני מעוניין בחבילת Basic - ניקוי חיצוני לרכב שלי">בחר חבילה זו</a>
-          </article>
+            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Basic Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
 
-          <article class="package-card package-featured card-hover">
-            <div class="popular-pill">הכי פופולרי</div>
-            <div class="package-top">
-              <span class="package-emoji" aria-hidden="true">🥈</span>
-              <h3 class="package-tier">סטנדרט</h3>
-              <p class="package-label font-heebo">ניקוי פנימי וחיצוני</p>
+        <div class="package-card pkg-featured" data-tilt>
+          <div class="pkg-badge" data-en="Most Popular" data-he="הכי פופולרי">Most Popular</div>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Standard" data-he="סטנדרט">Standard</h3>
+              <p class="pkg-desc" data-en="Full interior & exterior treatment for a complete refresh inside and out." data-he="טיפול מלא פנימי וחיצוני לרענון מוחלט.">Full interior & exterior treatment for a complete refresh inside and out.</p>
             </div>
-            <div class="package-rule"></div>
-            <ul class="package-features font-heebo">
-              <li><span class="bullet-dot" aria-hidden="true"></span>ניקוי חיצוני מלא</li>
-              <li><span class="bullet-dot" aria-hidden="true"></span>שאיבה פנימית יסודית</li>
-              <li><span class="bullet-dot" aria-hidden="true"></span>ניקוי פלסטיקה ודשבורד</li>
-              <li><span class="bullet-dot" aria-hidden="true"></span>ניקוי חלונות מבפנים ומבחוץ</li>
+            <ul class="pkg-features">
+              <li data-en="Full exterior wash" data-he="שטיפה חיצונית מלאה">Full exterior wash</li>
+              <li data-en="Deep interior vacuum" data-he="שאיבה פנימית עמוקה">Deep interior vacuum</li>
+              <li data-en="Dashboard & plastics clean" data-he="ניקוי דשבורד ופלסטיקים">Dashboard & plastics clean</li>
+              <li data-en="Interior & exterior windows" data-he="חלונות פנים וחוץ">Interior & exterior windows</li>
             </ul>
-            <a class="btn btn-package-gold" data-wa data-wa-msg="שלום, אני מעוניין בחבילת Standard - ניקוי פנימי וחיצוני לרכב שלי">בחר חבילה זו</a>
-          </article>
+            <a href="#" class="btn-pkg btn-pkg-featured" data-wa data-wa-msg="Hi, I'm interested in the Standard Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
 
-          <article class="glass-card card-hover package-card">
-            <div class="package-top">
-              <span class="package-emoji" aria-hidden="true">🥇</span>
-              <h3 class="package-tier">פרימיום</h3>
-              <p class="package-label font-heebo">דיטיילינג מלא</p>
+        <div class="package-card" data-tilt>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Premium" data-he="פרימיום">Premium</h3>
+              <p class="pkg-desc" data-en="Deep full detailing — every surface treated with professional-grade products." data-he="דיטיילינג עמוק מלא — כל משטח עם מוצרים מקצועיים.">Deep full detailing — every surface treated with professional-grade products.</p>
             </div>
-            <div class="package-rule"></div>
-            <ul class="package-features font-heebo">
-              <li><span class="bullet-dot" aria-hidden="true"></span>ניקוי עמוק מבפנים ומבחוץ</li>
-              <li><span class="bullet-dot" aria-hidden="true"></span>ניקוי ריפודים יסודי</li>
-              <li><span class="bullet-dot" aria-hidden="true"></span>טיפול מקצועי לכל חלקי הרכב</li>
-              <li><span class="bullet-dot" aria-hidden="true"></span>גימור מושלם וברק ברמה גבוהה</li>
+            <ul class="pkg-features">
+              <li data-en="Deep exterior detailing" data-he="דיטיילינג חיצוני עמוק">Deep exterior detailing</li>
+              <li data-en="Full interior deep clean" data-he="ניקוי פנים עמוק מלא">Full interior deep clean</li>
+              <li data-en="Upholstery treatment" data-he="טיפול ריפודים">Upholstery treatment</li>
+              <li data-en="Paint protection & shine" data-he="הגנת צבע וברק">Paint protection & shine</li>
             </ul>
-            <a class="btn btn-package-outline" data-wa data-wa-msg="שלום, אני מעוניין בחבילת Premium - דיטיילינג מלא לרכב שלי">בחר חבילה זו</a>
-          </article>
+            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Premium Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card" data-tilt>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Before Selling" data-he="לפני מכירה">Before Selling</h3>
+              <p class="pkg-desc" data-en="Maximize your car's resale value — everything done to make it look showroom-ready." data-he="מקסם את ערך המכירה — הכל כדי שייראה כמו חדש.">Maximize your car's resale value — everything done to make it look showroom-ready.</p>
+            </div>
+            <ul class="pkg-features">
+              <li data-en="Full exterior restoration" data-he="שחזור חיצוני מלא">Full exterior restoration</li>
+              <li data-en="Complete interior detail" data-he="דיטיילינג פנים מלא">Complete interior detail</li>
+              <li data-en="Odor elimination" data-he="סילוק ריחות">Odor elimination</li>
+              <li data-en="Showroom finish" data-he="גימור שואורום">Showroom finish</li>
+            </ul>
+            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Before Selling Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card pkg-museum" data-tilt>
+          <div class="pkg-badge pkg-badge-gold" data-en="Ultimate" data-he="אולטימייט">Ultimate</div>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Museum" data-he="מוזיאון">Museum</h3>
+              <p class="pkg-desc" data-en="Concours-level perfection — every surface restored and preserved to museum exhibition standards." data-he="שלמות ברמת תחרות — כל משטח משוחזר ומשומר לסטנדרטים של תצוגת מוזיאון.">Concours-level perfection — every surface restored and preserved to museum exhibition standards.</p>
+            </div>
+            <ul class="pkg-features">
+              <li data-en="Paint correction & polish" data-he="תיקון וליטוש צבע">Paint correction & polish</li>
+              <li data-en="Ceramic coating" data-he="ציפוי קרמי">Ceramic coating</li>
+              <li data-en="Full leather restoration" data-he="שחזור עור מלא">Full leather restoration</li>
+              <li data-en="Engine bay detailing" data-he="דיטיילינג תא מנוע">Engine bay detailing</li>
+              <li data-en="Museum-grade preservation" data-he="שימור ברמת מוזיאון">Museum-grade preservation</li>
+            </ul>
+            <a href="#" class="btn-pkg btn-pkg-gold" data-wa data-wa-msg="Hi, I'm interested in the Museum Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-yacht" id="yacht">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag" data-en="Yacht" data-he="יאכטות">Yacht</span>
+        <h2 class="section-title" data-en="Yacht Detailing" data-he="דיטיילינג ליאכטה">Yacht Detailing</h2>
+        <p class="section-sub" data-en="Premium marine detailing — protecting your vessel against the elements." data-he="דיטיילינג ימי פרימיום — הגנה על כלי השיט שלך מפני הסביבה.">Premium marine detailing — protecting your vessel against the elements.</p>
+      </div>
+      <div class="packages-grid">
+
+        <div class="package-card" data-tilt>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Basic" data-he="בייסיק">Basic</h3>
+              <p class="pkg-desc" data-en="Exterior hull wash and basic surface clean — essential marine maintenance." data-he="שטיפת גוף חיצונית וניקוי בסיסי — תחזוקה ימית חיונית.">Exterior hull wash and basic surface clean — essential marine maintenance.</p>
+            </div>
+            <ul class="pkg-features">
+              <li data-en="Hull exterior wash" data-he="שטיפת גוף חיצוני">Hull exterior wash</li>
+              <li data-en="Deck rinse & clean" data-he="שטיפה וניקוי סיפון">Deck rinse & clean</li>
+              <li data-en="Window & glass clean" data-he="ניקוי חלונות וזכוכית">Window & glass clean</li>
+              <li data-en="Surface dry & protect" data-he="ייבוש והגנה על משטחים">Surface dry & protect</li>
+            </ul>
+            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Basic Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card pkg-featured" data-tilt>
+          <div class="pkg-badge" data-en="Most Popular" data-he="הכי פופולרי">Most Popular</div>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Standard" data-he="סטנדרט">Standard</h3>
+              <p class="pkg-desc" data-en="Full interior & exterior marine detailing for a complete vessel refresh." data-he="דיטיילינג ימי מלא פנימי וחיצוני לרענון מוחלט.">Full interior & exterior marine detailing for a complete vessel refresh.</p>
+            </div>
+            <ul class="pkg-features">
+              <li data-en="Full hull exterior clean" data-he="ניקוי גוף חיצוני מלא">Full hull exterior clean</li>
+              <li data-en="Interior cabin detail" data-he="דיטיילינג תא פנים">Interior cabin detail</li>
+              <li data-en="Teak & wood treatment" data-he="טיפול טיק ועץ">Teak & wood treatment</li>
+              <li data-en="Stainless steel polish" data-he="ליטוש נירוסטה">Stainless steel polish</li>
+            </ul>
+            <a href="#" class="btn-pkg btn-pkg-featured" data-wa data-wa-msg="Hi, I'm interested in the Standard Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card" data-tilt>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Premium" data-he="פרימיום">Premium</h3>
+              <p class="pkg-desc" data-en="Deep full marine detailing — every surface treated to withstand the sea." data-he="דיטיילינג ימי עמוק — כל משטח מוכן לעמוד בפני הים.">Deep full marine detailing — every surface treated to withstand the sea.</p>
+            </div>
+            <ul class="pkg-features">
+              <li data-en="Full exterior compound & polish" data-he="קומפאונד וליטוש חיצוני מלא">Full exterior compound & polish</li>
+              <li data-en="Full interior deep clean" data-he="ניקוי פנים עמוק מלא">Full interior deep clean</li>
+              <li data-en="Upholstery treatment" data-he="טיפול ריפודים">Upholstery treatment</li>
+              <li data-en="Anti-salt protection" data-he="הגנה אנטי-מלח">Anti-salt protection</li>
+            </ul>
+            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Premium Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card" data-tilt>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Before Selling" data-he="לפני מכירה">Before Selling</h3>
+              <p class="pkg-desc" data-en="Maximize your vessel's resale value — showroom-ready presentation for buyers." data-he="מקסם את ערך המכירה — מצגת מושלמת לקונים.">Maximize your vessel's resale value — showroom-ready presentation for buyers.</p>
+            </div>
+            <ul class="pkg-features">
+              <li data-en="Full hull restoration" data-he="שחזור גוף מלא">Full hull restoration</li>
+              <li data-en="Complete interior detail" data-he="דיטיילינג פנים מלא">Complete interior detail</li>
+              <li data-en="Odor & mold treatment" data-he="טיפול ריחות ועובש">Odor & mold treatment</li>
+              <li data-en="Showroom presentation" data-he="גימור מצגת שואורום">Showroom presentation</li>
+            </ul>
+            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Before Selling Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
+
+        <div class="package-card pkg-museum" data-tilt>
+          <div class="pkg-badge pkg-badge-gold" data-en="Ultimate" data-he="אולטימייט">Ultimate</div>
+          <div class="pkg-inner">
+            <div class="pkg-top">
+              <h3 class="pkg-name" data-en="Museum" data-he="מוזיאון">Museum</h3>
+              <p class="pkg-desc" data-en="Concours-level marine perfection — every inch treated to the highest exhibition standard." data-he="שלמות ימית ברמת תחרות — כל סנטימטר לפי הסטנדרט הגבוה ביותר.">Concours-level marine perfection — every inch treated to the highest exhibition standard.</p>
+            </div>
+            <ul class="pkg-features">
+              <li data-en="Gelcoat restoration & polish" data-he="שחזור ג'לקוט וליטוש">Gelcoat restoration & polish</li>
+              <li data-en="Ceramic hull coating" data-he="ציפוי קרמי לגוף">Ceramic hull coating</li>
+              <li data-en="Full teak restoration" data-he="שחזור טיק מלא">Full teak restoration</li>
+              <li data-en="Luxury interior restoration" data-he="שחזור פנים יוקרתי">Luxury interior restoration</li>
+              <li data-en="Museum-grade preservation" data-he="שימור ברמת מוזיאון">Museum-grade preservation</li>
+            </ul>
+            <a href="#" class="btn-pkg btn-pkg-gold" data-wa data-wa-msg="Hi, I'm interested in the Museum Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-coming" id="jets">
+    <div class="coming-inner">
+      <span class="section-tag" data-en="Jets" data-he="מטוסים">Jets</span>
+      <h2 class="section-title" data-en="Jet Detailing" data-he="דיטיילינג למטוסים">Jet Detailing</h2>
+      <div class="coming-badge-large" data-en="Coming Soon" data-he="בקרוב">Coming Soon</div>
+      <p class="coming-desc" data-en="We're bringing our premium detailing expertise to private jets. Stay tuned." data-he="אנחנו מביאים את המומחיות שלנו למטוסים פרטיים. עמדו לרשותנו.">We're bringing our premium detailing expertise to private jets. Stay tuned.</p>
+    </div>
+  </section>
+
+  <section class="section section-coming section-shop" id="shop">
+    <div class="coming-inner">
+      <span class="section-tag" data-en="Shop" data-he="חנות">Shop</span>
+      <h2 class="section-title" data-en="BMS Shop" data-he="חנות BMS">BMS Shop</h2>
+      <div class="coming-badge-large" data-en="Coming Soon" data-he="בקרוב">Coming Soon</div>
+      <p class="coming-desc" data-en="Professional detailing products — available soon for direct purchase." data-he="מוצרי דיטיילינג מקצועיים — בקרוב לרכישה ישירה.">Professional detailing products — available soon for direct purchase.</p>
+    </div>
+  </section>
+
+  <section class="section section-about" id="about">
+    <div class="container about-grid">
+      <div class="about-text reveal">
+        <span class="section-tag" data-en="About" data-he="אודות">About</span>
+        <h2 class="section-title" data-en="Why BMS Detail" data-he="למה BMS Detail">Why BMS Detail</h2>
+        <p class="about-body" data-en="We are a premium mobile detailing service built for people who demand the best. Whether it's your daily driver, your yacht, or your private jet — we bring expert-level care directly to you, wherever you are." data-he="אנחנו שירות דיטיילינג נייד פרימיום הבנוי עבור אנשים שדורשים את הטוב ביותר. בין אם מדובר ברכב היומיומי, היאכטה, או המטוס הפרטי שלך — אנחנו מביאים טיפול ברמת מומחים ישירות אליך, לכל מקום שתהיה.">We are a premium mobile detailing service built for people who demand the best. Whether it's your daily driver, your yacht, or your private jet — we bring expert-level care directly to you, wherever you are.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-num" data-count="500">0</span><span class="stat-num">+</span>
+            <span class="stat-label" data-en="Happy Clients" data-he="לקוחות מרוצים">Happy Clients</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">4.9★</span>
+            <span class="stat-label" data-en="Average Rating" data-he="דירוג ממוצע">Average Rating</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">24/7</span>
+            <span class="stat-label" data-en="Available" data-he="זמין">Available</span>
+          </div>
         </div>
       </div>
-    </section>
-
-    <section class="section how" aria-labelledby="how-heading">
-      <div class="gold-line gold-line-section opacity-40" aria-hidden="true"></div>
-      <div class="container-wide">
-        <header class="section-head center">
-          <p class="eyebrow font-heebo">פשוט ומהיר</p>
-          <h2 id="how-heading" class="section-title section-title-lg">איך זה עובד?</h2>
-        </header>
-        <div class="how-wrap">
-          <div class="timeline-line" aria-hidden="true"></div>
-          <div class="steps-grid">
-            <div class="step-card">
-              <div class="step-icon-wrap">
-                <div class="step-glow" aria-hidden="true"></div>
-                <div class="step-icon-ring">
-                  <svg class="step-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 3H3a2 2 0 00-2 2v12a2 2 0 002 2h5l3 3 3-3h5a2 2 0 002-2V5a2 2 0 00-2-2z"/></svg>
-                </div>
-                <span class="step-badge">1</span>
-              </div>
-              <h3 class="step-title">יוצרים קשר בוואטסאפ</h3>
-              <p class="step-desc font-heebo">שולחים הודעה קצרה ומספרים לנו היכן נמצא הרכב ומתי נוח לכם</p>
-            </div>
-            <div class="step-card">
-              <div class="step-icon-wrap">
-                <div class="step-glow" aria-hidden="true"></div>
-                <div class="step-icon-ring">
-                  <svg class="step-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                </div>
-                <span class="step-badge">2</span>
-              </div>
-              <h3 class="step-title">קובעים זמן שנוח לכם</h3>
-              <p class="step-desc font-heebo">בוחרים יחד מועד שמתאים לכם — בוקר, צהריים, ערב או לילה</p>
-            </div>
-            <div class="step-card">
-              <div class="step-icon-wrap">
-                <div class="step-glow" aria-hidden="true"></div>
-                <div class="step-icon-ring">
-                  <svg class="step-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                </div>
-                <span class="step-badge">3</span>
-              </div>
-              <h3 class="step-title">אנחנו מגיעים ומנקים</h3>
-              <p class="step-desc font-heebo">הצוות שלנו מגיע אליכם ומחזיר לרכב את הברק שלו — ואתם לא זזתם מהבית</p>
-            </div>
+      <div class="about-values reveal">
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <div>
+            <h3 data-en="We Come To You" data-he="אנחנו מגיעים אליך">We Come To You</h3>
+            <p data-en="No need to leave your home or marina. We come wherever you are." data-he="אין צורך לצאת מהבית או הנמל. אנחנו מגיעים לכל מקום.">No need to leave your home or marina. We come wherever you are.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <div>
+            <h3 data-en="Professional Grade" data-he="ציוד מקצועי">Professional Grade</h3>
+            <p data-en="We use only professional-grade products and equipment on every job." data-he="אנחנו משתמשים רק במוצרים וציוד ברמה מקצועית בכל עבודה.">We use only professional-grade products and equipment on every job.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <div class="value-dot"></div>
+          <div>
+            <h3 data-en="Results That Last" data-he="תוצאות שנשארות">Results That Last</h3>
+            <p data-en="Not just clean — protected, preserved, and looking its absolute best." data-he="לא רק נקי — מוגן, משומר, ונראה במיטבו.">Not just clean — protected, preserved, and looking its absolute best.</p>
           </div>
         </div>
       </div>
-      <div class="gold-line gold-line-section-bottom opacity-40" aria-hidden="true"></div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section testimonials" aria-labelledby="testimonials-heading">
-      <div class="testimonials-glow" aria-hidden="true"></div>
-      <div class="gold-line gold-line-section opacity-50" aria-hidden="true"></div>
-      <div class="container-narrow relative-z">
-        <header class="section-head center">
-          <p class="eyebrow font-heebo">לקוחות מרוצים</p>
-          <h2 id="testimonials-heading" class="section-title section-title-lg">מה אומרים עלינו</h2>
-          <p class="section-lead muted font-heebo">מאות לקוחות כבר נהנו מהשירות — הנה מה שיש להם לספר</p>
-        </header>
-
-        <div class="testimonial-panels">
-          <div class="glass-card testimonial-main card-rounded" data-testimonial-panel>
-            <span class="quote-deco" aria-hidden="true">"</span>
-            <div class="stars-row" aria-hidden="true">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-            </div>
-            <blockquote class="testimonial-quote font-heebo">"פשוט מדהים. הזמנתי ב-11 בלילה, הגיעו תוך שעה. הרכב יצא כמו מהשואורום. לא האמנתי שאפשר לעשות ניקוי כזה עד הבית."</blockquote>
-            <div class="testimonial-author">
-              <div class="author-avatar"><span class="author-initials">יכ</span></div>
-              <div class="author-text">
-                <p class="author-name">יוסי כהן</p>
-                <p class="author-loc font-heebo">תל אביב</p>
-              </div>
-            </div>
-          </div>
-          <div class="glass-card testimonial-main card-rounded" data-testimonial-panel hidden>
-            <span class="quote-deco" aria-hidden="true">"</span>
-            <div class="stars-row" aria-hidden="true">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-            </div>
-            <blockquote class="testimonial-quote font-heebo">"שירות על הגבול של פרפקציה. הגיעו בדיוק בזמן, עבדו בשקט ובמקצועיות, ואת הרכב החזירו לי בברק שלא ראיתי מאז שקניתי אותו."</blockquote>
-            <div class="testimonial-author">
-              <div class="author-avatar"><span class="author-initials">מל</span></div>
-              <div class="author-text">
-                <p class="author-name">מיכל לוי</p>
-                <p class="author-loc font-heebo">רמת גן</p>
-              </div>
-            </div>
-          </div>
-          <div class="glass-card testimonial-main card-rounded" data-testimonial-panel hidden>
-            <span class="quote-deco" aria-hidden="true">"</span>
-            <div class="stars-row" aria-hidden="true">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-            </div>
-            <blockquote class="testimonial-quote font-heebo">"הזמנתי חבילת פרימיום ולא התאכזבתי. כל פינה של הרכב — מבפנים ומבחוץ — מושלמת. בהחלט ממליץ לכל מי שמחפש איכות אמיתית."</blockquote>
-            <div class="testimonial-author">
-              <div class="author-avatar"><span class="author-initials">דא</span></div>
-              <div class="author-text">
-                <p class="author-name">דניאל אברהם</p>
-                <p class="author-loc font-heebo">הרצליה</p>
-              </div>
-            </div>
-          </div>
-          <div class="glass-card testimonial-main card-rounded" data-testimonial-panel hidden>
-            <span class="quote-deco" aria-hidden="true">"</span>
-            <div class="stars-row" aria-hidden="true">
-              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-            </div>
-            <blockquote class="testimonial-quote font-heebo">"ניסיתי המון שירותי ניקוי רכב, אבל קלין קאר הם ברמה אחרת לגמרי. הנוחות של שירות עד הבית בשילוב התוצאות — אין על זה."</blockquote>
-            <div class="testimonial-author">
-              <div class="author-avatar"><span class="author-initials">שנ</span></div>
-              <div class="author-text">
-                <p class="author-name">שירה נחום</p>
-                <p class="author-loc font-heebo">פתח תקווה</p>
-              </div>
-            </div>
-          </div>
+  <section class="section section-gallery" id="gallery">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-tag" data-en="Gallery" data-he="גלריה">Gallery</span>
+        <h2 class="section-title" data-en="Our Work" data-he="העבודות שלנו">Our Work</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item gallery-lg reveal">
+          <div class="gallery-ph"><span data-en="Car Detailing" data-he="דיטיילינג רכב">Car Detailing</span></div>
         </div>
-
-        <div class="testimonial-tabs" role="tablist" aria-label="בחירת המלצה">
-          <button type="button" class="testimonial-tab" data-testimonial-tab aria-selected="true">
-            <div class="tab-row">
-              <div class="tab-avatar"><span>יכ</span></div>
-              <div>
-                <p class="tab-name">יוסי כהן</p>
-                <p class="tab-loc font-heebo">תל אביב</p>
-              </div>
-            </div>
-            <div class="tab-stars" aria-hidden="true">★★★★★</div>
-          </button>
-          <button type="button" class="testimonial-tab" data-testimonial-tab aria-selected="false">
-            <div class="tab-row">
-              <div class="tab-avatar"><span>מל</span></div>
-              <div>
-                <p class="tab-name">מיכל לוי</p>
-                <p class="tab-loc font-heebo">רמת גן</p>
-              </div>
-            </div>
-            <div class="tab-stars" aria-hidden="true">★★★★★</div>
-          </button>
-          <button type="button" class="testimonial-tab" data-testimonial-tab aria-selected="false">
-            <div class="tab-row">
-              <div class="tab-avatar"><span>דא</span></div>
-              <div>
-                <p class="tab-name">דניאל אברהם</p>
-                <p class="tab-loc font-heebo">הרצליה</p>
-              </div>
-            </div>
-            <div class="tab-stars" aria-hidden="true">★★★★★</div>
-          </button>
-          <button type="button" class="testimonial-tab" data-testimonial-tab aria-selected="false">
-            <div class="tab-row">
-              <div class="tab-avatar"><span>שנ</span></div>
-              <div>
-                <p class="tab-name">שירה נחום</p>
-                <p class="tab-loc font-heebo">פתח תקווה</p>
-              </div>
-            </div>
-            <div class="tab-stars" aria-hidden="true">★★★★★</div>
-          </button>
+        <div class="gallery-item reveal">
+          <div class="gallery-ph"><span data-en="Interior" data-he="פנים">Interior</span></div>
         </div>
-
-        <div class="stats-row">
-          <div class="stat"><p class="stat-num">500+</p><p class="stat-label font-heebo">לקוחות מרוצים</p></div>
-          <div class="stat"><p class="stat-num">4.9★</p><p class="stat-label font-heebo">דירוג ממוצע</p></div>
-          <div class="stat"><p class="stat-num">100%</p><p class="stat-label font-heebo">ממליצים לחברים</p></div>
+        <div class="gallery-item reveal">
+          <div class="gallery-ph"><span data-en="Yacht" data-he="יאכטה">Yacht</span></div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-ph"><span data-en="Paint Correction" data-he="תיקון צבע">Paint Correction</span></div>
+        </div>
+        <div class="gallery-item gallery-lg reveal">
+          <div class="gallery-ph"><span data-en="Museum Level" data-he="רמת מוזיאון">Museum Level</span></div>
         </div>
       </div>
-      <div class="gold-line gold-line-section-bottom opacity-50" aria-hidden="true"></div>
-    </section>
+      <p class="gallery-note" data-en="More photos coming soon — follow us on Instagram" data-he="תמונות נוספות בקרוב — עקבו אחרינו באינסטגרם">More photos coming soon — follow us on Instagram</p>
+    </div>
+  </section>
 
-    <section class="section cta-final" aria-labelledby="cta-heading">
-      <div class="cta-bg" aria-hidden="true"></div>
-      <div class="cta-overlay" aria-hidden="true"></div>
-      <div class="cta-decor" aria-hidden="true"></div>
-      <div class="gold-line gold-line-cta-top" aria-hidden="true"></div>
-      <div class="gold-line gold-line-cta-bottom" aria-hidden="true"></div>
-      <div class="container-narrow cta-content relative-z">
-        <div class="hero-badge cta-badge">
-          <span class="hero-badge-dot pulse-dot" aria-hidden="true"></span>
-          <span class="font-heebo">זמין עכשיו · 24/7</span>
-        </div>
-        <h2 id="cta-heading" class="cta-title">
-          לא צריך לצאת <br>
-          <span class="text-gold">מהבית</span>
-        </h2>
-        <p class="cta-lead font-heebo">אנחנו מגיעים אליך – ישירות לבית, למשרד, לכל מקום שתבחר</p>
-        <a class="btn btn-cta pulse-gold" data-wa>שלח הודעה עכשיו</a>
-        <p class="cta-foot font-heebo">✓ ניקוי מקצועי · ✓ עד הבית · ✓ 24/7 · ✓ ללא התחייבות</p>
+  <section class="section section-contact" id="contact">
+    <div class="container">
+      <div class="section-head center">
+        <span class="section-tag" data-en="Contact" data-he="צור קשר">Contact</span>
+        <h2 class="section-title" data-en="Book Your Treatment" data-he="הזמן את הטיפול שלך">Book Your Treatment</h2>
+        <p class="section-sub" data-en="Fill in the details and we'll reach out on WhatsApp right away." data-he="מלא את הפרטים ונחזור אליך מיד בוואטסאפ.">Fill in the details and we'll reach out on WhatsApp right away.</p>
       </div>
-    </section>
-  </main>
+      <div class="form-wrap reveal">
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-row">
+            <input type="text" class="form-input" id="form-name" data-en-ph="Your Name" data-he-ph="שמך" placeholder="Your Name" required>
+            <input type="tel" class="form-input" id="form-phone" data-en-ph="Phone Number" data-he-ph="מספר טלפון" placeholder="Phone Number" required>
+          </div>
+          <select class="form-input form-select" id="form-service">
+            <option value="" data-en="Select Service" data-he="בחר שירות">Select Service</option>
+            <option value="Cars — Basic" data-en="Cars — Basic" data-he="רכבים — בייסיק">Cars — Basic</option>
+            <option value="Cars — Standard" data-en="Cars — Standard" data-he="רכבים — סטנדרט">Cars — Standard</option>
+            <option value="Cars — Premium" data-en="Cars — Premium" data-he="רכבים — פרימיום">Cars — Premium</option>
+            <option value="Cars — Before Selling" data-en="Cars — Before Selling" data-he="רכבים — לפני מכירה">Cars — Before Selling</option>
+            <option value="Cars — Museum" data-en="Cars — Museum" data-he="רכבים — מוזיאון">Cars — Museum</option>
+            <option value="Yacht — Basic" data-en="Yacht — Basic" data-he="יאכטה — בייסיק">Yacht — Basic</option>
+            <option value="Yacht — Standard" data-en="Yacht — Standard" data-he="יאכטה — סטנדרט">Yacht — Standard</option>
+            <option value="Yacht — Premium" data-en="Yacht — Premium" data-he="יאכטה — פרימיום">Yacht — Premium</option>
+            <option value="Yacht — Before Selling" data-en="Yacht — Before Selling" data-he="יאכטה — לפני מכירה">Yacht — Before Selling</option>
+            <option value="Yacht — Museum" data-en="Yacht — Museum" data-he="יאכטה — מוזיאון">Yacht — Museum</option>
+          </select>
+          <textarea class="form-input form-textarea" id="form-msg" data-en-ph="Tell us about your vehicle / any special requests" data-he-ph="ספר לנו על כלי הרכב שלך / בקשות מיוחדות" placeholder="Tell us about your vehicle / any special requests" rows="4"></textarea>
+          <button type="submit" class="btn-primary btn-full">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span data-en="Send via WhatsApp" data-he="שלח בוואטסאפ">Send via WhatsApp</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-  <a class="wa-float" data-wa aria-label="פתח וואטסאפ">
-    <span class="radar-ring r1" aria-hidden="true"></span>
-    <span class="radar-ring r2" aria-hidden="true"></span>
-    <span class="wa-float-inner pulse-gold">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </span>
-    <span class="wa-tooltip font-heebo">דברו איתנו עכשיו</span>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="images/logo.png" alt="BMS Detail" class="footer-logo">
+        <p data-en="Premium detailing for everything that moves." data-he="דיטיילינג פרימיום לכל מה שנע.">Premium detailing for everything that moves.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="#cars" data-en="Cars" data-he="רכבים">Cars</a>
+        <a href="#yacht" data-en="Yacht" data-he="יאכטות">Yacht</a>
+        <a href="#about" data-en="About" data-he="אודות">About</a>
+        <a href="#gallery" data-en="Gallery" data-he="גלריה">Gallery</a>
+        <a href="#contact" data-en="Contact" data-he="צור קשר">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 BMS Detail. <span data-en="All rights reserved." data-he="כל הזכויות שמורות.">All rights reserved.</span></p>
+    </div>
+  </footer>
+
+  <a href="#" class="wa-float" id="wa-float" data-wa aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
-  <script src="app.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

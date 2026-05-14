@@ -1,3 +1,8 @@
+[build]
+  base    = "client-files-app"
+  command = "npm run build"
+  publish = "client-files-app/build"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
