@@ -13,6 +13,7 @@
 node_modules/
 client-files-app/node_modules/
 client-files-app/build/
+.venv-logo/
 
 # Logs
 npm-debug.log*
