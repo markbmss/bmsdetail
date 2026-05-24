@@ -301,6 +301,51 @@
     });
   }
 
+  /* ── Cars add-on builder ── */
+  function initAddons() {
+    var BASE = 199;
+    var bar = document.getElementById("booking-bar");
+    var totalEl = document.getElementById("booking-total");
+    var waBtn = document.getElementById("booking-wa-btn");
+    if (!bar || !totalEl) return;
+
+    function updateBar() {
+      var total = BASE;
+      var names = [];
+      document.querySelectorAll(".addon-check:checked").forEach(function (cb) {
+        var card = cb.closest(".addon-card");
+        if (!card) return;
+        total += parseInt(card.getAttribute("data-price"), 10) || 0;
+        var nameEl = card.querySelector(".addon-name");
+        if (nameEl) names.push(nameEl.textContent.trim());
+      });
+      totalEl.textContent = total;
+      if (waBtn) {
+        var msg = "Hi, I'd like to book car detailing.\nBase: The BMS Clean - ₪199";
+        if (names.length) msg += "\nAdd-ons: " + names.join(", ");
+        msg += "\nTotal: ₪" + total;
+        waBtn.href = waUrl(msg);
+      }
+    }
+
+    document.querySelectorAll(".addon-check").forEach(function (cb) {
+      cb.addEventListener("change", function () {
+        var card = cb.closest(".addon-card");
+        if (card) card.classList.toggle("selected", cb.checked);
+        updateBar();
+      });
+    });
+
+    window.addEventListener("scroll", function () {
+      var carsEl = document.getElementById("cars");
+      if (!carsEl) return;
+      var top = carsEl.getBoundingClientRect().top;
+      bar.classList.toggle("visible", top < 0);
+    }, { passive: true });
+
+    updateBar();
+  }
+
   /* ── Init ── */
   document.addEventListener("DOMContentLoaded", function () {
     initHero();
@@ -309,6 +354,7 @@
     initForm();
     bindWaLinks();
     initCounters();
+    initAddons();
     applyLang("he");
   });
 })();
