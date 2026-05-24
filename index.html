@@ -20,7 +20,7 @@
       </a>
       <nav class="header-nav" id="header-nav">
         <a href="#cars" class="nav-link" data-en="Cars" data-he="רכבים">Cars</a>
-        <a href="#yacht" class="nav-link" data-en="Yacht" data-he="יאכטות">Yacht</a>
+        <a href="#yacht" class="nav-link nav-coming" data-en="Yacht" data-he="יאכטות">Yacht <span class="coming-pill">Soon</span></a>
         <a href="#jets" class="nav-link nav-coming" data-en="Jets" data-he="מטוסים">Jets <span class="coming-pill">Soon</span></a>
         <a href="#shop" class="nav-link nav-coming" data-en="Shop" data-he="חנות">Shop <span class="coming-pill">Soon</span></a>
         <a href="#about" class="nav-link" data-en="About" data-he="אודות">About</a>
@@ -112,193 +112,258 @@
 
   <section class="section section-cars" id="cars">
     <div class="container">
+
       <div class="section-head">
         <span class="section-tag" data-en="Cars" data-he="רכבים">Cars</span>
-        <h2 class="section-title" data-en="Car Detailing" data-he="דיטיילינג לרכב">Car Detailing</h2>
-        <p class="section-sub" data-en="Professional detailing that brings your car back to life." data-he="דיטיילינג מקצועי שמחזיר את הרכב שלך לחיים.">Professional detailing that brings your car back to life.</p>
+        <h2 class="section-title" data-en="Build Your Detailing" data-he="בנה את הטיפול שלך">Build Your Detailing</h2>
+        <p class="section-sub" data-en="Start with the base — add exactly what your car needs." data-he="התחל עם הבסיס — הוסף בדיוק מה שהרכב שלך צריך.">Start with the base — add exactly what your car needs.</p>
       </div>
-      <div class="packages-grid">
 
-        <div class="package-card" data-tilt>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Basic" data-he="בייסיק">Basic</h3>
-              <p class="pkg-desc" data-en="Essential exterior wash and clean — the perfect regular maintenance treatment." data-he="שטיפה חיצונית בסיסית — טיפול תחזוקה שוטף מושלם.">Essential exterior wash and clean — the perfect regular maintenance treatment.</p>
-            </div>
-            <ul class="pkg-features">
-              <li data-en="Full exterior wash" data-he="שטיפה חיצונית מלאה">Full exterior wash</li>
-              <li data-en="Wheel & tire clean" data-he="ניקוי גלגלים וצמיגים">Wheel & tire clean</li>
-              <li data-en="Window cleaning" data-he="ניקוי חלונות">Window cleaning</li>
-              <li data-en="Exterior dry & shine" data-he="ייבוש וברק חיצוני">Exterior dry & shine</li>
-            </ul>
-            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Basic Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+      <!-- Base package -->
+      <div class="cars-base reveal">
+        <div class="cars-base-left">
+          <div class="cars-base-tag" data-en="Base Package" data-he="חבילת בסיס">Base Package</div>
+          <h3 class="cars-base-name" data-en="The BMS Clean" data-he="ה-BMS קלין">The BMS Clean</h3>
+          <p class="cars-base-desc" data-en="Everything your car needs to look sharp — inside and out." data-he="כל מה שהרכב שלך צריך כדי להיראות מושלם — מבחוץ ומבפנים.">Everything your car needs to look sharp — inside and out.</p>
+          <ul class="cars-base-features">
+            <li data-en="Full exterior wash" data-he="שטיפה חיצונית מלאה">Full exterior wash</li>
+            <li data-en="Windows in & out" data-he="חלונות פנים וחוץ">Windows in & out</li>
+            <li data-en="Interior vacuum" data-he="שאיבת אבק פנימית">Interior vacuum</li>
+            <li data-en="Dashboard & surfaces" data-he="דשבורד ומשטחים">Dashboard & surfaces</li>
+            <li data-en="Door jambs clean" data-he="ניקוי מסגרות דלתות">Door jambs clean</li>
+            <li data-en="Tire shine" data-he="ברק לצמיגים">Tire shine</li>
+          </ul>
+          <div class="cars-base-meta">
+            <span data-en="1–1.5 hours" data-he="1–1.5 שעות">1–1.5 hours</span>
+          </div>
+        </div>
+        <div class="cars-base-right">
+          <div class="cars-base-price">₪<span>199</span></div>
+          <div class="cars-base-label" data-en="always included" data-he="תמיד כלול">always included</div>
+        </div>
+      </div>
+
+      <!-- Add-ons -->
+      <div class="addons-section reveal">
+        <h3 class="addons-heading" data-en="Customize Your Treatment" data-he="התאם את הטיפול שלך">Customize Your Treatment</h3>
+        <p class="addons-sub" data-en="Tap any add-on to include it. Your total updates in real time." data-he="לחץ על כל תוספת כדי לכלול אותה. הסכום מתעדכן בזמן אמת.">Tap any add-on to include it. Your total updates in real time.</p>
+
+        <div class="addon-tier addon-tier-quick">
+          <div class="addon-tier-header">
+            <span class="addon-tier-label" data-en="Quick Add-ons" data-he="תוספות מהירות">Quick Add-ons</span>
+            <span class="addon-tier-price-hint" data-en="₪40 each" data-he="₪40 כל אחת">₪40 each</span>
+          </div>
+          <div class="addon-cards">
+            <label class="addon-card" data-price="40">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Wheels & Tires" data-he="גלגלים וצמיגים">Wheels & Tires</span>
+                <span class="addon-desc" data-en="Deep wheel clean + tire dressing" data-he="ניקוי עמוק גלגלים + ציפוי צמיגים">Deep wheel clean + tire dressing</span>
+                <span class="addon-price">₪40</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
+            <label class="addon-card" data-price="40">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Ceramic Spray" data-he="ספריי קרמי">Ceramic Spray</span>
+                <span class="addon-desc" data-en="6-month paint protection coat" data-he="ציפוי הגנה לצבע ל-6 חודשים">6-month paint protection coat</span>
+                <span class="addon-price">₪40</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
           </div>
         </div>
 
-        <div class="package-card pkg-featured" data-tilt>
-          <div class="pkg-badge" data-en="Most Popular" data-he="הכי פופולרי">Most Popular</div>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Standard" data-he="סטנדרט">Standard</h3>
-              <p class="pkg-desc" data-en="Full interior & exterior treatment for a complete refresh inside and out." data-he="טיפול מלא פנימי וחיצוני לרענון מוחלט.">Full interior & exterior treatment for a complete refresh inside and out.</p>
-            </div>
-            <ul class="pkg-features">
-              <li data-en="Full exterior wash" data-he="שטיפה חיצונית מלאה">Full exterior wash</li>
-              <li data-en="Deep interior vacuum" data-he="שאיבה פנימית עמוקה">Deep interior vacuum</li>
-              <li data-en="Dashboard & plastics clean" data-he="ניקוי דשבורד ופלסטיקים">Dashboard & plastics clean</li>
-              <li data-en="Interior & exterior windows" data-he="חלונות פנים וחוץ">Interior & exterior windows</li>
-            </ul>
-            <a href="#" class="btn-pkg btn-pkg-featured" data-wa data-wa-msg="Hi, I'm interested in the Standard Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+        <div class="addon-tier addon-tier-upgrade">
+          <div class="addon-tier-header">
+            <span class="addon-tier-label" data-en="Upgrades" data-he="שדרוגים">Upgrades</span>
+          </div>
+          <div class="addon-cards">
+            <label class="addon-card" data-price="80">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Seats Clean" data-he="ניקוי מושבים">Seats Clean</span>
+                <span class="addon-desc" data-en="Hand-wipe all seat surfaces" data-he="ניקוי ידני של כל משטחי המושבים">Hand-wipe all seat surfaces</span>
+                <span class="addon-price">₪80</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
+            <label class="addon-card" data-price="70">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Interior Shine" data-he="ברק פנים">Interior Shine</span>
+                <span class="addon-desc" data-en="All plastics & trim dressed" data-he="כל הפלסטיקים והאביזרים מטופלים">All plastics & trim dressed</span>
+                <span class="addon-price">₪70</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
+            <label class="addon-card" data-price="60">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Engine Bay" data-he="תא מנוע">Engine Bay</span>
+                <span class="addon-desc" data-en="Degrease, clean & dress" data-he="הסרת שמן, ניקוי ופיניש">Degrease, clean & dress</span>
+                <span class="addon-price">₪60</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
+            <label class="addon-card" data-price="50">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Pet Hair Removal" data-he="הסרת שיער חיות">Pet Hair Removal</span>
+                <span class="addon-desc" data-en="Full interior extraction" data-he="חילוץ מלא מהפנים">Full interior extraction</span>
+                <span class="addon-price">₪50</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
           </div>
         </div>
 
-        <div class="package-card" data-tilt>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Premium" data-he="פרימיום">Premium</h3>
-              <p class="pkg-desc" data-en="Deep full detailing — every surface treated with professional-grade products." data-he="דיטיילינג עמוק מלא — כל משטח עם מוצרים מקצועיים.">Deep full detailing — every surface treated with professional-grade products.</p>
-            </div>
-            <ul class="pkg-features">
-              <li data-en="Deep exterior detailing" data-he="דיטיילינג חיצוני עמוק">Deep exterior detailing</li>
-              <li data-en="Full interior deep clean" data-he="ניקוי פנים עמוק מלא">Full interior deep clean</li>
-              <li data-en="Upholstery treatment" data-he="טיפול ריפודים">Upholstery treatment</li>
-              <li data-en="Paint protection & shine" data-he="הגנת צבע וברק">Paint protection & shine</li>
-            </ul>
-            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Premium Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+        <div class="addon-tier addon-tier-deep">
+          <div class="addon-tier-header">
+            <span class="addon-tier-label" data-en="Deep Treatments" data-he="טיפולים עמוקים">Deep Treatments</span>
+          </div>
+          <div class="addon-cards">
+            <label class="addon-card" data-price="130">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Fabric Shampoo" data-he="שמפו לריפוד">Fabric Shampoo</span>
+                <span class="addon-desc" data-en="Deep shampoo for seats & carpet" data-he="שמפו עמוק לריפוד ושטיחים">Deep shampoo for seats & carpet</span>
+                <span class="addon-price">₪130</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
+            <label class="addon-card" data-price="120">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Plastic & Leather" data-he="פלסטיק ועור">Plastic & Leather</span>
+                <span class="addon-desc" data-en="Restore & condition all surfaces" data-he="שחזור וטיפול בכל המשטחים">Restore & condition all surfaces</span>
+                <span class="addon-price">₪120</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
+            <label class="addon-card" data-price="120">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Headliner" data-he="גג פנימי">Headliner</span>
+                <span class="addon-desc" data-en="Full headliner clean & restore" data-he="ניקוי ושחזור גג פנימי מלא">Full headliner clean & restore</span>
+                <span class="addon-price">₪120</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
+            <label class="addon-card" data-price="100">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Odor Elimination" data-he="סילוק ריחות">Odor Elimination</span>
+                <span class="addon-desc" data-en="Ozone treatment at the source" data-he="טיפול אוזון מהשורש">Ozone treatment at the source</span>
+                <span class="addon-price">₪100</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
+            <label class="addon-card" data-price="80">
+              <input type="checkbox" class="addon-check" />
+              <div class="addon-card-body">
+                <span class="addon-name" data-en="Spare Tire Bay" data-he="גלגל רזרבי">Spare Tire Bay</span>
+                <span class="addon-desc" data-en="Clean & protect the spare compartment" data-he="ניקוי והגנה על תא הרזרבי">Clean & protect the spare compartment</span>
+                <span class="addon-price">₪80</span>
+              </div>
+              <span class="addon-tick">✓</span>
+            </label>
           </div>
         </div>
+      </div>
 
-        <div class="package-card" data-tilt>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Before Selling" data-he="לפני מכירה">Before Selling</h3>
-              <p class="pkg-desc" data-en="Maximize your car's resale value — everything done to make it look showroom-ready." data-he="מקסם את ערך המכירה — הכל כדי שייראה כמו חדש.">Maximize your car's resale value — everything done to make it look showroom-ready.</p>
-            </div>
-            <ul class="pkg-features">
-              <li data-en="Full exterior restoration" data-he="שחזור חיצוני מלא">Full exterior restoration</li>
-              <li data-en="Complete interior detail" data-he="דיטיילינג פנים מלא">Complete interior detail</li>
-              <li data-en="Odor elimination" data-he="סילוק ריחות">Odor elimination</li>
-              <li data-en="Showroom finish" data-he="גימור שואורום">Showroom finish</li>
-            </ul>
-            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Before Selling Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+      <!-- Before Selling bundle -->
+      <div class="bundle-card reveal" data-tilt>
+        <div class="bundle-badge" data-en="Best Value" data-he="שווי מירבי">Best Value</div>
+        <div class="bundle-left">
+          <h3 class="bundle-name" data-en="Before Selling" data-he="לפני מכירה">Before Selling</h3>
+          <p class="bundle-desc" data-en="Everything needed to maximize your car's resale value — one flat price." data-he="הכל כדי למקסם את ערך המכירה של הרכב שלך — מחיר אחד קבוע.">Everything needed to maximize your car's resale value — one flat price.</p>
+          <div class="bundle-includes">
+            <span data-en="Base + curated pre-sale add-ons" data-he="בסיס + תוספות נבחרות לפני מכירה">Base + curated pre-sale add-ons</span>
+          </div>
+          <div class="bundle-saving">
+            <span class="bundle-original" data-en="Individual: ₪580" data-he="בנפרד: ₪580">Individual: ₪580</span>
+            <span class="bundle-save-tag" data-en="Save ₪81" data-he="חסוך ₪81">Save ₪81</span>
           </div>
         </div>
+        <div class="bundle-right">
+          <div class="bundle-price">₪499</div>
+          <a href="#" class="btn-bundle" data-wa data-wa-msg="Hi, I'd like to book the Before Selling bundle — ₪499" data-en="Book Bundle" data-he="הזמן חבילה">Book Bundle</a>
+        </div>
+      </div>
 
-        <div class="package-card pkg-museum" data-tilt>
-          <div class="pkg-badge pkg-badge-gold" data-en="Ultimate" data-he="אולטימייט">Ultimate</div>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Museum" data-he="מוזיאון">Museum</h3>
-              <p class="pkg-desc" data-en="Concours-level perfection — every surface restored and preserved to museum exhibition standards." data-he="שלמות ברמת תחרות — כל משטח משוחזר ומשומר לסטנדרטים של תצוגת מוזיאון.">Concours-level perfection — every surface restored and preserved to museum exhibition standards.</p>
+      <!-- Before / After gallery -->
+      <div class="cars-gallery reveal">
+        <div class="cars-gallery-head">
+          <h3 class="cars-gallery-title" data-en="Before & After" data-he="לפני ואחרי">Before & After</h3>
+          <p class="cars-gallery-sub" data-en="Real results from real cars." data-he="תוצאות אמיתיות מרכבים אמיתיים.">Real results from real cars.</p>
+        </div>
+        <div class="ba-grid">
+          <div class="ba-pair">
+            <div class="ba-slot ba-before">
+              <img src="images/cars/before-after/pair1-before.jpg" alt="Driver seat and floor before detailing" loading="lazy">
+              <span class="ba-label" data-en="Before" data-he="לפני">Before</span>
             </div>
-            <ul class="pkg-features">
-              <li data-en="Paint correction & polish" data-he="תיקון וליטוש צבע">Paint correction & polish</li>
-              <li data-en="Ceramic coating" data-he="ציפוי קרמי">Ceramic coating</li>
-              <li data-en="Full leather restoration" data-he="שחזור עור מלא">Full leather restoration</li>
-              <li data-en="Engine bay detailing" data-he="דיטיילינג תא מנוע">Engine bay detailing</li>
-              <li data-en="Museum-grade preservation" data-he="שימור ברמת מוזיאון">Museum-grade preservation</li>
-            </ul>
-            <a href="#" class="btn-pkg btn-pkg-gold" data-wa data-wa-msg="Hi, I'm interested in the Museum Car Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+            <div class="ba-slot ba-after">
+              <img src="images/cars/before-after/pair1-after.jpg" alt="Driver interior after detailing" loading="lazy">
+              <span class="ba-label" data-en="After" data-he="אחרי">After</span>
+            </div>
+          </div>
+          <div class="ba-pair">
+            <div class="ba-slot ba-before">
+              <img src="images/cars/before-after/pair2-before.jpg" alt="Center console before detailing" loading="lazy">
+              <span class="ba-label" data-en="Before" data-he="לפני">Before</span>
+            </div>
+            <div class="ba-slot ba-after">
+              <img src="images/cars/before-after/pair2-after.jpg" alt="Center console after detailing" loading="lazy">
+              <span class="ba-label" data-en="After" data-he="אחרי">After</span>
+            </div>
+          </div>
+          <div class="ba-pair">
+            <div class="ba-slot ba-before">
+              <img src="images/cars/before-after/pair3-before.jpg" alt="Rear seats before detailing" loading="lazy">
+              <span class="ba-label" data-en="Before" data-he="לפני">Before</span>
+            </div>
+            <div class="ba-slot ba-after">
+              <img src="images/cars/before-after/pair3-after.jpg" alt="Rear seats after detailing" loading="lazy">
+              <span class="ba-label" data-en="After" data-he="אחרי">After</span>
+            </div>
           </div>
         </div>
+      </div>
 
+      <!-- Regular photos -->
+      <div class="cars-photos reveal">
+        <div class="photo-slot">
+          <img src="images/cars/interior-detail.jpg" alt="BMS Detail — interior detailing" loading="lazy">
+        </div>
+        <div class="photo-slot">
+          <img src="images/cars/interior-night.jpg" alt="BMS Detail — premium interior finish" loading="lazy">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sticky booking bar -->
+    <div class="booking-bar" id="booking-bar">
+      <div class="booking-bar-inner">
+        <div class="booking-bar-total">
+          <span class="booking-bar-label" data-en="Your total:" data-he="הסכום שלך:">Your total:</span>
+          <span class="booking-bar-amount">₪<span id="booking-total">199</span></span>
+        </div>
+        <a href="#" class="btn-booking-bar" id="booking-wa-btn" data-en="Book via WhatsApp" data-he="הזמן ב-WhatsApp">Book via WhatsApp</a>
       </div>
     </div>
+
   </section>
 
-  <section class="section section-yacht" id="yacht">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag" data-en="Yacht" data-he="יאכטות">Yacht</span>
-        <h2 class="section-title" data-en="Yacht Detailing" data-he="דיטיילינג ליאכטה">Yacht Detailing</h2>
-        <p class="section-sub" data-en="Premium marine detailing — protecting your vessel against the elements." data-he="דיטיילינג ימי פרימיום — הגנה על כלי השיט שלך מפני הסביבה.">Premium marine detailing — protecting your vessel against the elements.</p>
-      </div>
-      <div class="packages-grid">
-
-        <div class="package-card" data-tilt>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Basic" data-he="בייסיק">Basic</h3>
-              <p class="pkg-desc" data-en="Exterior hull wash and basic surface clean — essential marine maintenance." data-he="שטיפת גוף חיצונית וניקוי בסיסי — תחזוקה ימית חיונית.">Exterior hull wash and basic surface clean — essential marine maintenance.</p>
-            </div>
-            <ul class="pkg-features">
-              <li data-en="Hull exterior wash" data-he="שטיפת גוף חיצוני">Hull exterior wash</li>
-              <li data-en="Deck rinse & clean" data-he="שטיפה וניקוי סיפון">Deck rinse & clean</li>
-              <li data-en="Window & glass clean" data-he="ניקוי חלונות וזכוכית">Window & glass clean</li>
-              <li data-en="Surface dry & protect" data-he="ייבוש והגנה על משטחים">Surface dry & protect</li>
-            </ul>
-            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Basic Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
-          </div>
-        </div>
-
-        <div class="package-card pkg-featured" data-tilt>
-          <div class="pkg-badge" data-en="Most Popular" data-he="הכי פופולרי">Most Popular</div>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Standard" data-he="סטנדרט">Standard</h3>
-              <p class="pkg-desc" data-en="Full interior & exterior marine detailing for a complete vessel refresh." data-he="דיטיילינג ימי מלא פנימי וחיצוני לרענון מוחלט.">Full interior & exterior marine detailing for a complete vessel refresh.</p>
-            </div>
-            <ul class="pkg-features">
-              <li data-en="Full hull exterior clean" data-he="ניקוי גוף חיצוני מלא">Full hull exterior clean</li>
-              <li data-en="Interior cabin detail" data-he="דיטיילינג תא פנים">Interior cabin detail</li>
-              <li data-en="Teak & wood treatment" data-he="טיפול טיק ועץ">Teak & wood treatment</li>
-              <li data-en="Stainless steel polish" data-he="ליטוש נירוסטה">Stainless steel polish</li>
-            </ul>
-            <a href="#" class="btn-pkg btn-pkg-featured" data-wa data-wa-msg="Hi, I'm interested in the Standard Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
-          </div>
-        </div>
-
-        <div class="package-card" data-tilt>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Premium" data-he="פרימיום">Premium</h3>
-              <p class="pkg-desc" data-en="Deep full marine detailing — every surface treated to withstand the sea." data-he="דיטיילינג ימי עמוק — כל משטח מוכן לעמוד בפני הים.">Deep full marine detailing — every surface treated to withstand the sea.</p>
-            </div>
-            <ul class="pkg-features">
-              <li data-en="Full exterior compound & polish" data-he="קומפאונד וליטוש חיצוני מלא">Full exterior compound & polish</li>
-              <li data-en="Full interior deep clean" data-he="ניקוי פנים עמוק מלא">Full interior deep clean</li>
-              <li data-en="Upholstery treatment" data-he="טיפול ריפודים">Upholstery treatment</li>
-              <li data-en="Anti-salt protection" data-he="הגנה אנטי-מלח">Anti-salt protection</li>
-            </ul>
-            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Premium Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
-          </div>
-        </div>
-
-        <div class="package-card" data-tilt>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Before Selling" data-he="לפני מכירה">Before Selling</h3>
-              <p class="pkg-desc" data-en="Maximize your vessel's resale value — showroom-ready presentation for buyers." data-he="מקסם את ערך המכירה — מצגת מושלמת לקונים.">Maximize your vessel's resale value — showroom-ready presentation for buyers.</p>
-            </div>
-            <ul class="pkg-features">
-              <li data-en="Full hull restoration" data-he="שחזור גוף מלא">Full hull restoration</li>
-              <li data-en="Complete interior detail" data-he="דיטיילינג פנים מלא">Complete interior detail</li>
-              <li data-en="Odor & mold treatment" data-he="טיפול ריחות ועובש">Odor & mold treatment</li>
-              <li data-en="Showroom presentation" data-he="גימור מצגת שואורום">Showroom presentation</li>
-            </ul>
-            <a href="#" class="btn-pkg" data-wa data-wa-msg="Hi, I'm interested in the Before Selling Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
-          </div>
-        </div>
-
-        <div class="package-card pkg-museum" data-tilt>
-          <div class="pkg-badge pkg-badge-gold" data-en="Ultimate" data-he="אולטימייט">Ultimate</div>
-          <div class="pkg-inner">
-            <div class="pkg-top">
-              <h3 class="pkg-name" data-en="Museum" data-he="מוזיאון">Museum</h3>
-              <p class="pkg-desc" data-en="Concours-level marine perfection — every inch treated to the highest exhibition standard." data-he="שלמות ימית ברמת תחרות — כל סנטימטר לפי הסטנדרט הגבוה ביותר.">Concours-level marine perfection — every inch treated to the highest exhibition standard.</p>
-            </div>
-            <ul class="pkg-features">
-              <li data-en="Gelcoat restoration & polish" data-he="שחזור ג'לקוט וליטוש">Gelcoat restoration & polish</li>
-              <li data-en="Ceramic hull coating" data-he="ציפוי קרמי לגוף">Ceramic hull coating</li>
-              <li data-en="Full teak restoration" data-he="שחזור טיק מלא">Full teak restoration</li>
-              <li data-en="Luxury interior restoration" data-he="שחזור פנים יוקרתי">Luxury interior restoration</li>
-              <li data-en="Museum-grade preservation" data-he="שימור ברמת מוזיאון">Museum-grade preservation</li>
-            </ul>
-            <a href="#" class="btn-pkg btn-pkg-gold" data-wa data-wa-msg="Hi, I'm interested in the Museum Yacht Detailing package" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
-          </div>
-        </div>
-
-      </div>
+  <section class="section section-coming section-yacht" id="yacht">
+    <div class="coming-inner">
+      <span class="section-tag" data-en="Yacht" data-he="יאכטות">Yacht</span>
+      <h2 class="section-title" data-en="Yacht Detailing" data-he="דיטיילינג ליאכטה">Yacht Detailing</h2>
+      <div class="coming-badge-large" data-en="Coming Soon" data-he="בקרוב">Coming Soon</div>
+      <p class="coming-desc" data-en="Premium marine detailing is on the way — hull, deck, cabin, and teak care for your vessel." data-he="דיטיילינג ימי פרימיום בדרך — גוף, סיפון, תאים וטיפול טיק לכלי השיט שלך.">Premium marine detailing is on the way — hull, deck, cabin, and teak care for your vessel.</p>
     </div>
   </section>
 
@@ -320,6 +385,7 @@
     </div>
   </section>
 
+  <!-- Why BMS Detail / About section commented out for now
   <section class="section section-about" id="about">
     <div class="container about-grid">
       <div class="about-text reveal">
@@ -366,6 +432,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- Gallery section commented out — real photos pending
   <section class="section section-gallery" id="gallery">
@@ -416,11 +483,6 @@
             <option value="Cars — Premium" data-en="Cars — Premium" data-he="רכבים — פרימיום">Cars — Premium</option>
             <option value="Cars — Before Selling" data-en="Cars — Before Selling" data-he="רכבים — לפני מכירה">Cars — Before Selling</option>
             <option value="Cars — Museum" data-en="Cars — Museum" data-he="רכבים — מוזיאון">Cars — Museum</option>
-            <option value="Yacht — Basic" data-en="Yacht — Basic" data-he="יאכטה — בייסיק">Yacht — Basic</option>
-            <option value="Yacht — Standard" data-en="Yacht — Standard" data-he="יאכטה — סטנדרט">Yacht — Standard</option>
-            <option value="Yacht — Premium" data-en="Yacht — Premium" data-he="יאכטה — פרימיום">Yacht — Premium</option>
-            <option value="Yacht — Before Selling" data-en="Yacht — Before Selling" data-he="יאכטה — לפני מכירה">Yacht — Before Selling</option>
-            <option value="Yacht — Museum" data-en="Yacht — Museum" data-he="יאכטה — מוזיאון">Yacht — Museum</option>
           </select>
           <textarea class="form-input form-textarea" id="form-msg" data-en-ph="Tell us about your vehicle / any special requests" data-he-ph="ספר לנו על כלי הרכב שלך / בקשות מיוחדות" placeholder="Tell us about your vehicle / any special requests" rows="4"></textarea>
           <button type="submit" class="btn-primary btn-full">
