@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booking Confirmed | BMS Detail</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://bmsdetail.com">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand-bg: #0e0b08;
+      --brand-border: rgba(240,228,208,0.09);
+      --cream: #f2e6d4;
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --white: #ffffff;
+      --muted: rgba(240,228,208,0.48);
+      --silver: #a89880;
+      --font: 'Inter', -apple-system, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--brand-bg);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--brand-border);
+      border-radius: 20px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .check-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+    .check-circle svg { color: var(--gold-light); }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .deposit-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.22);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .deposit-badge-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .deposit-badge-amount {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gold-light);
+      letter-spacing: -0.02em;
+    }
+    .divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(201,168,76,0.2);
+      flex-shrink: 0;
+    }
+    .what-next {
+      text-align: start;
+      margin-bottom: 32px;
+    }
+    .what-next-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-bottom: 14px;
+    }
+    .steps { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--white);
+      color: #000;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 28px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.3s;
+      font-family: var(--font);
+      width: 100%;
+    }
+    .btn-back:hover { background: var(--cream); }
+    .brand {
+      margin-top: 32px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+    .brand a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .brand a:hover { color: var(--silver); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="check-circle">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <p class="eyebrow">Booking Confirmed</p>
+    <h1>Your deposit is in — we'll be in touch!</h1>
+    <p class="sub">We received your ₪50 deposit. Our team will contact you within a few hours to confirm the appointment time and details.</p>
+
+    <div class="deposit-badge">
+      <div>
+        <span class="deposit-badge-label">Deposit paid</span>
+        <span class="deposit-badge-amount">₪50</span>
+      </div>
+      <div class="divider"></div>
+      <div>
+        <span class="deposit-badge-label">Remaining</span>
+        <span class="deposit-badge-amount" id="remaining-amount">on service day</span>
+      </div>
+    </div>
+
+    <div class="what-next">
+      <p class="what-next-title">What happens next</p>
+      <ul class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <span>We'll call or WhatsApp you within a few hours to confirm your appointment.</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span>On service day, our team arrives at your address with all equipment.</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span>After the treatment, pay the remaining balance — cash, card, or Bit.</span>
+        </li>
+      </ul>
+    </div>
+
+    <a href="/" class="btn-back">Back to BMS Detail</a>
+  </div>
+
+  <p class="brand">© 2025 <a href="/">BMS Detail</a></p>
+</body>
+</html>
