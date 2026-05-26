@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+Disallow: /api/
+
+Sitemap: https://bmsdetail.com/sitemap.xml

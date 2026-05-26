@@ -757,6 +757,7 @@ body[lang="he"] .addon-card { padding: 18px 18px 18px 44px; }
   display: inline-flex; align-items: center; justify-content: center;
   padding: 14px 28px; background: var(--gold); color: #0c0a07;
   border-radius: var(--radius-sm); font-weight: 700; font-size: 15px;
+  border: none; cursor: pointer; font-family: var(--font);
   transition: background var(--transition), transform var(--transition);
   white-space: nowrap;
 }
@@ -783,12 +784,13 @@ body[lang="he"] .addon-card { padding: 18px 18px 18px 44px; }
 }
 .btn-booking-bar {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 12px 24px; background: #25d366; color: #fff;
+  padding: 12px 24px; background: var(--white); color: #000;
   font-weight: 700; font-size: 15px; border-radius: var(--radius-sm);
+  border: none; cursor: pointer; font-family: var(--font);
   transition: background var(--transition), transform var(--transition);
   white-space: nowrap;
 }
-.btn-booking-bar:hover { background: #1fad53; transform: translateY(-1px); }
+.btn-booking-bar:hover { background: var(--cream); transform: translateY(-1px); }
 
 /* Before/After gallery */
 .cars-gallery { margin-top: 60px; margin-bottom: 40px; }
@@ -899,4 +901,70 @@ body[lang="he"] .addon-card { padding: 18px 18px 18px 44px; }
 }
 @media (max-width: 420px) {
   .addon-cards { grid-template-columns: 1fr; }
+}
+
+/* ── BOOKING MODAL ── */
+.booking-modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.booking-modal-overlay.open { opacity: 1; pointer-events: all; }
+.booking-modal {
+  background: #131008;
+  border: 1px solid var(--cars-border);
+  border-radius: 20px;
+  width: 100%; max-width: 520px;
+  max-height: 90vh; overflow-y: auto;
+  padding: 36px 32px;
+  transform: translateY(28px) scale(0.97);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+.booking-modal-overlay.open .booking-modal { transform: none; }
+.booking-modal-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,0.06); border: 1px solid var(--brand-border);
+  color: var(--silver); font-size: 18px; line-height: 1;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition); font-family: var(--font);
+}
+body[lang="he"] .booking-modal-close { right: auto; left: 16px; }
+.booking-modal-close:hover { background: rgba(255,255,255,0.12); color: var(--white); }
+.booking-modal-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.booking-modal-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+.booking-modal-sub { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+.booking-modal-order {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--cars-border);
+  border-radius: 10px; padding: 14px 16px; margin-bottom: 24px;
+}
+.booking-order-items { font-size: 13px; color: var(--silver); margin-bottom: 10px; line-height: 1.6; }
+.booking-order-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 10px; border-top: 1px solid var(--brand-border);
+}
+.booking-order-total-label { font-size: 12px; color: var(--muted); font-weight: 500; }
+.booking-order-total-price { font-size: 20px; font-weight: 800; color: var(--white); }
+.booking-form { display: flex; flex-direction: column; gap: 14px; }
+.booking-submit {
+  background: var(--white); color: #000;
+  font-size: 15px; font-weight: 700;
+  padding: 16px; border-radius: 32px; border: none;
+  cursor: pointer; width: 100%; font-family: var(--font);
+  transition: all var(--transition); margin-top: 8px; letter-spacing: 0.01em;
+}
+.booking-submit:hover { background: var(--cream); }
+.booking-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+@media (max-width: 600px) {
+  .booking-modal { padding: 28px 20px; }
+  .booking-form .form-row { grid-template-columns: 1fr; }
 }

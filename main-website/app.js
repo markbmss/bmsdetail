@@ -302,30 +302,28 @@
   }
 
   /* ── Cars add-on builder ── */
+  var _addonTotal = 199;
+  var _addonItems = [{ name: "The BMS Clean (Base)", price: 199 }];
+
   function initAddons() {
     var BASE = 199;
     var bar = document.getElementById("booking-bar");
     var totalEl = document.getElementById("booking-total");
-    var waBtn = document.getElementById("booking-wa-btn");
     if (!bar || !totalEl) return;
 
     function updateBar() {
       var total = BASE;
-      var names = [];
+      _addonItems = [{ name: "The BMS Clean (Base)", price: BASE }];
       document.querySelectorAll(".addon-check:checked").forEach(function (cb) {
         var card = cb.closest(".addon-card");
         if (!card) return;
-        total += parseInt(card.getAttribute("data-price"), 10) || 0;
+        var price = parseInt(card.getAttribute("data-price"), 10) || 0;
+        total += price;
         var nameEl = card.querySelector(".addon-name");
-        if (nameEl) names.push(nameEl.textContent.trim());
+        if (nameEl) _addonItems.push({ name: nameEl.textContent.trim(), price: price });
       });
       totalEl.textContent = total;
-      if (waBtn) {
-        var msg = "Hi, I'd like to book car detailing.\nBase: The BMS Clean - ₪199";
-        if (names.length) msg += "\nAdd-ons: " + names.join(", ");
-        msg += "\nTotal: ₪" + total;
-        waBtn.href = waUrl(msg);
-      }
+      _addonTotal = total;
     }
 
     document.querySelectorAll(".addon-check").forEach(function (cb) {
@@ -343,8 +341,124 @@
       bar.classList.toggle("visible", top < 0);
     }, { passive: true });
 
+    /* PAYMENT COMMENTED OUT — booking bar + bundle buttons wired to payment modal
+    var barBtn = document.getElementById("booking-bar-btn");
+    if (barBtn) barBtn.addEventListener("click", openBookingModal);
+
+    var bundleBtn = document.getElementById("bundle-book-btn");
+    if (bundleBtn) {
+      bundleBtn.addEventListener("click", function () {
+        _addonTotal = 199 + 499;
+        _addonItems = [
+          { name: "The BMS Clean (Base)", price: 199 },
+          { name: "Before Selling Bundle", price: 499 }
+        ];
+        openBookingModal();
+      });
+    }
+    */
+
     updateBar();
   }
+
+  /* ── PAYMENT COMMENTED OUT ──
+  function openBookingModal() {
+    var overlay = document.getElementById("booking-modal-overlay");
+    if (!overlay) return;
+
+    var orderEl = document.getElementById("modal-order-items");
+    if (orderEl) {
+      orderEl.textContent = _addonItems
+        .map(function (i) { return i.name + " ₪" + i.price; })
+        .join(" · ");
+    }
+    var totalEl = document.getElementById("modal-order-total");
+    if (totalEl) totalEl.textContent = "₪" + _addonTotal;
+
+    overlay.classList.add("open");
+    document.body.style.overflow = "hidden";
+
+    var first = overlay.querySelector("input, select");
+    if (first) setTimeout(function () { first.focus(); }, 50);
+  }
+
+  function closeBookingModal() {
+    var overlay = document.getElementById("booking-modal-overlay");
+    if (!overlay) return;
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  function initBookingModal() {
+    var closeBtn = document.getElementById("booking-modal-close");
+    if (closeBtn) closeBtn.addEventListener("click", closeBookingModal);
+
+    var overlay = document.getElementById("booking-modal-overlay");
+    if (overlay) {
+      overlay.addEventListener("click", function (e) {
+        if (e.target === overlay) closeBookingModal();
+      });
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeBookingModal();
+    });
+
+    var form = document.getElementById("booking-form");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var name = document.getElementById("booking-name").value.trim();
+      var phone = document.getElementById("booking-phone").value.trim();
+      var carType = document.getElementById("booking-car-type").value;
+      var address = document.getElementById("booking-address").value.trim();
+      var date = document.getElementById("booking-date").value;
+
+      if (!name || !phone || !address || !date) return;
+
+      var submitBtn = form.querySelector(".booking-submit");
+      submitBtn.disabled = true;
+      submitBtn.textContent = lang === "he" ? "מעבד..." : "Processing…";
+
+      var orderSummary = _addonItems.map(function (i) { return i.name; }).join(", ");
+
+      fetch("/api/create-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: name,
+          customerPhone: phone,
+          carType: carType,
+          address: address,
+          preferredDate: date,
+          orderSummary: orderSummary,
+          totalPrice: _addonTotal
+        })
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data.paymentUrl) {
+            window.location.href = data.paymentUrl;
+          } else {
+            alert(lang === "he"
+              ? "שגיאה ביצירת התשלום. נסה דרך וואטסאפ."
+              : "Payment setup failed. Please try WhatsApp.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = lang === "he" ? "שלם מקדמה ₪50" : "Pay ₪50 Deposit";
+          }
+        })
+        .catch(function () {
+          alert(lang === "he"
+            ? "שגיאת חיבור. נסה דרך וואטסאפ."
+            : "Connection error. Please try WhatsApp.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = lang === "he" ? "שלם מקדמה ₪50" : "Pay ₪50 Deposit";
+        });
+    });
+  }
+  */
 
   /* ── Init ── */
   document.addEventListener("DOMContentLoaded", function () {
@@ -355,6 +469,7 @@
     bindWaLinks();
     initCounters();
     initAddons();
+    // initBookingModal(); // PAYMENT COMMENTED OUT
     applyLang("he");
   });
 })();
