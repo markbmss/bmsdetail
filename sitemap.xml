@@ -4,6 +4,12 @@
     <loc>https://bmsdetail.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-05-25</lastmod>
+    <lastmod>2026-06-10</lastmod>
+  </url>
+  <url>
+    <loc>https://bmsdetail.com/why-us</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-06-10</lastmod>
   </url>
 </urlset>

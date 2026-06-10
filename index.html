@@ -27,6 +27,8 @@
   <meta property="og:title" content="BMS Detail | דיטיילינג רכב נייד בגוש דן ותל אביב">
   <meta property="og:description" content="ניקוי רכב מקצועי נייד — מגיעים אליך בגוש דן. תל אביב, רמת גן, פתח תקווה, ראשון לציון ועוד. החל מ־₪199 · 500+ לקוחות מרוצים · 4.9★.">
   <meta property="og:image" content="https://bmsdetail.com/images/bms-wordmark-light.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="BMS Detail — Premium Mobile Car Detailing">
   <meta property="og:locale" content="en_IL">
   <meta property="og:locale:alternate" content="he_IL">
@@ -47,12 +49,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main-website/styles.css">
-
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://bmsdetail.com/#website",
+        "url": "https://bmsdetail.com",
+        "name": "BMS Detail",
+        "description": "Premium mobile car detailing service in Gush Dan and Tel Aviv, Israel",
+        "inLanguage": ["he-IL", "en-IL"],
+        "publisher": { "@id": "https://bmsdetail.com/#business" }
+      },
       {
         "@type": ["LocalBusiness", "AutomotiveBusiness"],
         "@id": "https://bmsdetail.com/#business",
@@ -63,6 +73,40 @@
         "image": "https://bmsdetail.com/images/bms-wordmark-light.png",
         "telephone": "+972538998195",
         "priceRange": "₪₪",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "גוש דן",
+          "addressRegion": "תל אביב",
+          "addressCountry": "IL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 32.0853,
+          "longitude": 34.7818
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "00:00",
+            "closes": "23:59"
+          }
+        ],
+        "serviceArea": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": 32.0853,
+            "longitude": 34.7818
+          },
+          "geoRadius": "30000"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+972538998195",
+          "contactType": "customer service",
+          "availableLanguage": ["Hebrew", "English"]
+        },
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
@@ -216,12 +260,13 @@
         <a href="#yacht" class="nav-link nav-coming" data-en="Yacht" data-he="יאכטות">Yacht <span class="coming-pill">Soon</span></a>
         <a href="#jets" class="nav-link nav-coming" data-en="Jets" data-he="מטוסים">Jets <span class="coming-pill">Soon</span></a>
         <a href="#shop" class="nav-link nav-coming" data-en="Shop" data-he="חנות">Shop <span class="coming-pill">Soon</span></a>
+        <a href="/why-us" class="nav-link" data-en="Why Us" data-he="למה אנחנו">Why Us</a>
         <a href="#faq" class="nav-link" data-en="FAQ" data-he="שאלות נפוצות">FAQ</a>
         <a href="#contact" class="nav-link" data-en="Contact" data-he="צור קשר">Contact</a>
       </nav>
       <div class="header-right">
         <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
-          <span id="lang-label">HE</span>
+          <span id="lang-label">EN</span>
         </button>
         <a href="#contact" class="btn-book" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
         <button class="nav-burger" id="nav-burger" aria-label="Open menu">
@@ -780,7 +825,7 @@
       </nav>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 BMS Detail. <span data-en="All rights reserved." data-he="כל הזכויות שמורות.">All rights reserved.</span></p>
+      <p>© 2026 BMS Detail. <span data-en="All rights reserved." data-he="כל הזכויות שמורות.">All rights reserved.</span></p>
     </div>
   </footer>
 

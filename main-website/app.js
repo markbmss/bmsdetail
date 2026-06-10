@@ -1,6 +1,6 @@
 (function () {
   var WHATSAPP = "972538998195";
-  var lang = "en";
+  var lang = "he";
 
   /* ── WhatsApp ── */
   function waUrl(msg) {
