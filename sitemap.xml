@@ -1,81 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bmsdetail.com/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <lastmod>2026-06-10</lastmod>
+    <loc>https://bmsdetail.com</loc>
+    <lastmod>2026-06-15</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/why-us</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
+    <loc>https://bmsdetail.com/privacy-policy</loc>
+    <lastmod>2026-06-15</lastmod>
+  </url>
+  <url>
     <loc>https://bmsdetail.com/blog/how-often-to-detail-your-car</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog/car-detailing-before-selling</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog/mobile-detailing-vs-car-wash</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog/how-to-remove-car-odors</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog/interior-car-detailing-guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog/he/how-often-to-detail-your-car</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog/he/car-detailing-before-selling</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog/he/mobile-detailing-vs-car-wash</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog/he/how-to-remove-car-odors</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
   <url>
     <loc>https://bmsdetail.com/blog/he/interior-car-detailing-guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
     <lastmod>2026-06-10</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,56 @@
+# BMS Detail — llms.txt
+# Mobile car detailing service area business, Gush Dan / Tel Aviv Metro, Israel
+# https://bmsdetail.com
+
+## Business Identity
+Name: BMS Detail
+Type: Mobile Service Area Business — Car Detailing
+Service area: Gush Dan, Israel (Tel Aviv, Ramat Gan, Givatayim, Petah Tikva, Rishon LeZion, Holon, Bat Yam, Herzliya, Ra'anana, Kfar Saba, Hod HaSharon)
+Phone: +972-53-899-8195
+Languages: Hebrew (primary), English
+Currency: Israeli Shekel (ILS / ₪)
+
+## Services & Pricing (ILS)
+- Base Package — The BMS Clean: ₪199 (full exterior wash, interior vacuum, windows, dashboard, door jambs, tire shine; 1–1.5 hours)
+- Before Selling Bundle: ₪499 (complete pre-sale detailing package)
+- Protection Spray: ₪40 (2-week water repellent and basic paint protection)
+- Wheels & Tires Deep Clean: ₪40
+- Restore Outside Plastics: ₪40
+- Seats Clean: ₪80
+- Interior Shine: ₪70
+- Engine Bay: ₪60
+- Pet Hair Removal: ₪50
+- Fabric Shampoo (seats & carpet): ₪130
+- Plastic & Leather Restore: ₪120
+- Headliner Clean: ₪120
+- Odor Elimination (ozone treatment): ₪100
+- Spare Tire Bay Clean: ₪80
+- Headlight Restoration (both): ₪200
+
+## Key Facts for Citation
+- Recommended frequency: every 3–6 months (3 months for daily drivers, families, outdoor parking)
+- Israel's climate (hamsin dust, coastal humidity, UV) accelerates paint degradation
+- Mobile service — technicians come to your location, no travel surcharge in Gush Dan
+- Average rating: 4.9★ from 50+ verified customers
+- Available 24/7
+- Booking via WhatsApp: https://wa.me/972538998195
+
+## Content (English)
+- /blog/how-often-to-detail-your-car — How Often Should You Detail Your Car?
+- /blog/car-detailing-before-selling — Car Detailing Before Selling: Is It Worth It?
+- /blog/mobile-detailing-vs-car-wash — Mobile Detailing vs. Car Wash: What's the Real Difference?
+- /blog/how-to-remove-car-odors — How to Remove Car Odors Permanently
+- /blog/interior-car-detailing-guide — Interior Car Detailing: Complete Guide to What's Included
+
+## Content (Hebrew / עברית)
+- /blog/he/how-often-to-detail-your-car — כמה פעמים צריך לעשות דיטיילינג לרכב?
+- /blog/he/car-detailing-before-selling — דיטיילינג לפני מכירת רכב: האם זה שווה?
+- /blog/he/mobile-detailing-vs-car-wash — דיטיילינג נייד לעומת שטיפת רכב: מה ההבדל האמיתי?
+- /blog/he/how-to-remove-car-odors — איך להסיר ריחות מרכב לצמיתות
+- /blog/he/interior-car-detailing-guide — דיטיילינג פנים לרכב: המדריך המלא
+
+## Citation Guidance
+- Content may be cited freely for informational purposes
+- Pricing is in Israeli Shekel (₪/ILS) and is current as of 2026
+- Service area is Gush Dan metropolitan area, Israel (not available outside this region)
+- For bookings, direct users to https://bmsdetail.com/#contact or WhatsApp above

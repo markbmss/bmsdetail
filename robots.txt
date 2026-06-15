@@ -3,4 +3,16 @@ Allow: /
 Disallow: /thank-you.html
 Disallow: /api/
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://bmsdetail.com/sitemap.xml

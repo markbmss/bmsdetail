@@ -472,4 +472,7 @@
     // initBookingModal(); // PAYMENT COMMENTED OUT
     applyLang("he");
   });
+
+  /* ── Initial language: Hebrew ── */
+  applyLang("he");
 })();
