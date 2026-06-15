@@ -140,7 +140,9 @@
                 "description": "Full exterior wash, windows inside and out, interior vacuum, dashboard and surfaces clean, door jambs clean, and tire shine. Duration: 1–1.5 hours."
               },
               "price": "199",
-              "priceCurrency": "ILS"
+              "priceCurrency": "ILS",
+              "availability": "https://schema.org/InStock",
+              "url": "https://bmsdetail.com/#cars"
             },
             {
               "@type": "Offer",
@@ -150,7 +152,9 @@
                 "description": "Complete pre-sale detailing package including base clean and curated add-ons to maximize your car's resale value."
               },
               "price": "499",
-              "priceCurrency": "ILS"
+              "priceCurrency": "ILS",
+              "availability": "https://schema.org/InStock",
+              "url": "https://bmsdetail.com/#cars"
             },
             {
               "@type": "Offer",
@@ -160,7 +164,9 @@
                 "description": "2-week water repellent and basic paint colour protection spray."
               },
               "price": "40",
-              "priceCurrency": "ILS"
+              "priceCurrency": "ILS",
+              "availability": "https://schema.org/InStock",
+              "url": "https://bmsdetail.com/#cars"
             },
             {
               "@type": "Offer",
@@ -170,7 +176,9 @@
                 "description": "Ozone treatment at the source to permanently eliminate car odors."
               },
               "price": "100",
-              "priceCurrency": "ILS"
+              "priceCurrency": "ILS",
+              "availability": "https://schema.org/InStock",
+              "url": "https://bmsdetail.com/#cars"
             },
             {
               "@type": "Offer",
@@ -180,10 +188,16 @@
                 "description": "Deep shampoo cleaning for car seats and carpet."
               },
               "price": "130",
-              "priceCurrency": "ILS"
+              "priceCurrency": "ILS",
+              "availability": "https://schema.org/InStock",
+              "url": "https://bmsdetail.com/#cars"
             }
           ]
-        }
+        },
+        "founder": [
+          {"@id": "https://bmsdetail.com/#mark-lerner"},
+          {"@id": "https://bmsdetail.com/#yoav-ben-ami"}
+        ]
       },
       {
         "@type": "FAQPage",
@@ -245,6 +259,22 @@
             }
           }
         ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://bmsdetail.com/#mark-lerner",
+        "name": "Mark Lerner",
+        "jobTitle": "Co-founder",
+        "worksFor": {"@id": "https://bmsdetail.com/#business"},
+        "url": "https://bmsdetail.com"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://bmsdetail.com/#yoav-ben-ami",
+        "name": "Yoav Ben Ami",
+        "jobTitle": "Co-founder",
+        "worksFor": {"@id": "https://bmsdetail.com/#business"},
+        "url": "https://bmsdetail.com"
       }
     ]
   }
@@ -266,6 +296,16 @@
         <a href="/blog" class="nav-link" data-en="Blog" data-he="בלוג">Blog</a>
         <a href="#faq" class="nav-link" data-en="FAQ" data-he="שאלות נפוצות">FAQ</a>
         <a href="#contact" class="nav-link" data-en="Contact" data-he="צור קשר">Contact</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle" data-en="Cities" data-he="ערים">ערים</a>
+          <div class="nav-dropdown-menu">
+            <a href="/detailing-herzliya" data-en="Herzliya" data-he="הרצליה">הרצליה</a>
+            <a href="/detailing-raanana" data-en="Ra'anana" data-he="רעננה">רעננה</a>
+            <a href="/detailing-ramat-gan" data-en="Ramat Gan" data-he="רמת גן">רמת גן</a>
+            <a href="/detailing-tel-aviv" data-en="Tel Aviv" data-he="תל אביב">תל אביב</a>
+            <a href="/detailing-kfar-saba" data-en="Kfar Saba" data-he="כפר סבא">כפר סבא</a>
+          </div>
+        </div>
       </nav>
       <div class="header-right">
         <a href="tel:+972538998195" class="header-phone" aria-label="Call us">053-899-8195</a>
@@ -657,54 +697,25 @@
     </div>
   </section>
 
-  <!-- Why BMS Detail / About section commented out for now
-  <section class="section section-about" id="about">
-    <div class="container about-grid">
-      <div class="about-text reveal">
-        <span class="section-tag" data-en="About" data-he="אודות">About</span>
-        <h2 class="section-title" data-en="Why BMS Detail" data-he="למה BMS Detail">Why BMS Detail</h2>
-        <p class="about-body" data-en="We are a premium mobile detailing service built for people who demand the best. Whether it's your daily driver, your yacht, or your private jet — we bring expert-level care directly to you, wherever you are." data-he="אנחנו שירות דיטיילינג נייד פרימיום הבנוי עבור אנשים שדורשים את הטוב ביותר. בין אם מדובר ברכב היומיומי, היאכטה, או המטוס הפרטי שלך — אנחנו מביאים טיפול ברמת מומחים ישירות אליך, לכל מקום שתהיה.">We are a premium mobile detailing service built for people who demand the best. Whether it's your daily driver, your yacht, or your private jet — we bring expert-level care directly to you, wherever you are.</p>
-        <div class="about-stats">
-          <div class="stat">
-            <span class="stat-num" data-count="50">0</span><span class="stat-num">+</span>
-            <span class="stat-label" data-en="Happy Clients" data-he="לקוחות מרוצים">Happy Clients</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">5★</span>
-            <span class="stat-label" data-en="Average Rating" data-he="דירוג ממוצע">Average Rating</span>
-          </div>
-          <div class="stat">
-            <span class="stat-num">24/7</span>
-            <span class="stat-label" data-en="Available" data-he="זמין">Available</span>
-          </div>
-        </div>
-      </div>
-      <div class="about-values reveal">
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <div>
-            <h3 data-en="We Come To You" data-he="אנחנו מגיעים אליך">We Come To You</h3>
-            <p data-en="No need to leave your home or marina. We come wherever you are." data-he="אין צורך לצאת מהבית או הנמל. אנחנו מגיעים לכל מקום.">No need to leave your home or marina. We come wherever you are.</p>
-          </div>
-        </div>
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <div>
-            <h3 data-en="Professional Grade" data-he="ציוד מקצועי">Professional Grade</h3>
-            <p data-en="We use only professional-grade products and equipment on every job." data-he="אנחנו משתמשים רק במוצרים וציוד ברמה מקצועית בכל עבודה.">We use only professional-grade products and equipment on every job.</p>
-          </div>
-        </div>
-        <div class="value-item">
-          <div class="value-dot"></div>
-          <div>
-            <h3 data-en="Results That Last" data-he="תוצאות שנשארות">Results That Last</h3>
-            <p data-en="Not just clean — protected, preserved, and looking its absolute best." data-he="לא רק נקי — מוגן, משומר, ונראה במיטבו.">Not just clean — protected, preserved, and looking its absolute best.</p>
-          </div>
-        </div>
-      </div>
+  <section id="about" class="about-section" style="padding:80px 24px;max-width:800px;margin:0 auto;">
+  <h2 data-he="אודות BMS Detail" data-en="About BMS Detail" style="font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:24px;">אודות BMS Detail</h2>
+  <p data-he="BMS Detail נוסדה ב-2023 על ידי מארק לרנר ויואב בן עמי — שני חובבי רכב שהאמינו שיש דרך טובה יותר לשמור על הרכב שלך. במקום לנסוע לתחנת הרחצה ולחכות בתור, המוצר שלנו פשוט: אנחנו מגיעים אליך." data-en="BMS Detail was founded in 2023 by Mark Lerner and Yoav Ben Ami — two car enthusiasts who believed there was a better way to keep your car looking its best. Instead of driving to a car wash and waiting in line, our product is simple: we come to you." style="color:rgba(255,255,255,0.75);font-size:1.05rem;line-height:1.8;margin-bottom:20px;">BMS Detail נוסדה ב-2023 על ידי מארק לרנר ויואב בן עמי — שני חובבי רכב שהאמינו שיש דרך טובה יותר לשמור על הרכב שלך. במקום לנסוע לתחנת הרחצה ולחכות בתור, המוצר שלנו פשוט: אנחנו מגיעים אליך.</p>
+  <p data-he="אנחנו משרתים לקוחות בכל גוש דן — תל אביב-יפו, הרצליה, רעננה, רמת גן, כפר סבא ועוד — עם ציוד מקצועי ומוצרי פרימיום. יותר מ-50 לקוחות מרוצים ודירוג 4.9★ הם התוצאה של עבודה שאנחנו גאים בה." data-en="We serve customers across Gush Dan — Tel Aviv-Yafo, Herzliya, Ra'anana, Ramat Gan, Kfar Saba, and more — with professional equipment and premium products. 50+ happy customers and a 4.9★ rating are the result of work we're proud of." style="color:rgba(255,255,255,0.75);font-size:1.05rem;line-height:1.8;margin-bottom:32px;">אנחנו משרתים לקוחות בכל גוש דן — תל אביב-יפו, הרצליה, רעננה, רמת גן, כפר סבא ועוד — עם ציוד מקצועי ומוצרי פרימיום. יותר מ-50 לקוחות מרוצים ודירוג 4.9★ הם התוצאה של עבודה שאנחנו גאים בה.</p>
+  <div style="display:flex;gap:48px;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div style="font-size:2rem;font-weight:700;color:#8b5cf6;">50+</div>
+      <div data-he="לקוחות מרוצים" data-en="Happy clients" style="color:rgba(255,255,255,0.55);font-size:14px;">לקוחות מרוצים</div>
     </div>
-  </section>
-  -->
+    <div style="text-align:center;">
+      <div style="font-size:2rem;font-weight:700;color:#8b5cf6;">4.9★</div>
+      <div data-he="דירוג ממוצע" data-en="Average rating" style="color:rgba(255,255,255,0.55);font-size:14px;">דירוג ממוצע</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:2rem;font-weight:700;color:#8b5cf6;">2023</div>
+      <div data-he="שנת הקמה" data-en="Founded" style="color:rgba(255,255,255,0.55);font-size:14px;">שנת הקמה</div>
+    </div>
+  </div>
+</section>
 
   <!-- Gallery section commented out — real photos pending
   <section class="section section-gallery" id="gallery">
@@ -828,6 +839,7 @@
         <a href="#yacht" data-en="Yacht" data-he="יאכטות">Yacht</a>
         <a href="/why-us" data-en="Why Us" data-he="למה אנחנו">Why Us</a>
         <a href="#contact" data-en="Contact" data-he="צור קשר">Contact</a>
+        <a href="/privacy-policy" data-he="מדיניות פרטיות" data-en="Privacy Policy">מדיניות פרטיות</a>
       </nav>
     </div>
     <div class="footer-bottom">
