@@ -60,9 +60,27 @@
   document.addEventListener("click", function (e) {
     if (!header.contains(e.target)) nav.classList.remove("open");
   });
-  nav.querySelectorAll("a").forEach(function (a) {
+  nav.querySelectorAll("a:not(.nav-dropdown-toggle)").forEach(function (a) {
     a.addEventListener("click", function () { nav.classList.remove("open"); });
   });
+
+  /* ── Cities dropdown ── */
+  var cityDropdown = document.querySelector(".nav-dropdown");
+  var cityToggle = document.querySelector(".nav-dropdown-toggle");
+  if (cityDropdown && cityToggle) {
+    cityToggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var isOpen = cityDropdown.classList.toggle("open");
+      cityToggle.setAttribute("aria-expanded", isOpen);
+    });
+    document.addEventListener("click", function (e) {
+      if (!cityDropdown.contains(e.target)) {
+        cityDropdown.classList.remove("open");
+        cityToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 
   /* ── Three.js hero — constellation ── */
   function initHero() {
