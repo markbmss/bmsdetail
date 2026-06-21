@@ -148,7 +148,7 @@
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Before Selling Car Detailing Bundle",
+                "name": "All Included Car Detailing Bundle",
                 "description": "Complete pre-sale detailing package including base clean and curated add-ons to maximize your car's resale value."
               },
               "price": "499",
@@ -231,7 +231,7 @@
             "name": "האם כדאי לנקות את הרכב לפני מכירה?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "כן — ניקוי רכב מקצועי לפני מכירה הוא אחת ההשקעות הכי משתלמות שתעשה. רכב נקי ומטופל נראה טוב יותר, מעלה את מחיר המכירה, ומצמצם משא ומתן. חבילת ה'לפני מכירה' שלנו מותאמת בדיוק לזה — ב-₪499 במקום ₪580 אם תרכוש הכל בנפרד."
+              "text": "כן — ניקוי רכב מקצועי לפני מכירה הוא אחת ההשקעות הכי משתלמות שתעשה. רכב נקי ומטופל נראה טוב יותר, מעלה את מחיר המכירה, ומצמצם משא ומתן. חבילת 'הכל כלול' שלנו מותאמת בדיוק לזה — ב-₪999 במקום ₪1,179 אם תרכוש הכל בנפרד."
             }
           },
           {
@@ -334,7 +334,7 @@
       <p class="hero-sub" data-en="Cars · Yachts · Jets" data-he="רכבים · יאכטות · מטוסים">רכבים · יאכטות · מטוסים</p>
       <p class="hero-location">📍 גוש דן · תל אביב · רמת גן · פתח תקווה · ראשון לציון · הרצליה</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
+        <a href="#" class="btn-primary btn-book" data-en="Book Now" data-he="הזמן עכשיו">Book Now</a>
         <a href="#cars" class="btn-ghost" data-en="Explore Services" data-he="גלה שירותים">Explore Services</a>
       </div>
     </div>
@@ -436,33 +436,30 @@
             <span class="addon-tier-price-hint" data-en="₪40 each" data-he="₪40 כל אחת">₪40 each</span>
           </div>
           <div class="addon-cards">
-            <label class="addon-card" data-price="40">
-              <input type="checkbox" class="addon-check" />
+            <div class="addon-card" data-price="40" data-addon-id="wheels">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Wheels & Tires" data-he="גלגלים וצמיגים">Wheels & Tires</span>
                 <span class="addon-desc" data-en="Deep wheel clean + tire dressing" data-he="ניקוי עמוק גלגלים + ציפוי צמיגים">Deep wheel clean + tire dressing</span>
                 <span class="addon-price">₪40</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
-            <label class="addon-card" data-price="40">
-              <input type="checkbox" class="addon-check" />
+            </div>
+            <div class="addon-card" data-price="40" data-addon-id="plastics">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Restore Outside Plastics" data-he="שחזור פלסטיקים חיצוניים">Restore Outside Plastics</span>
                 <span class="addon-desc" data-en="Revive & dress faded exterior trim" data-he="שחזור וטיפול בפלסטיקים חיצוניים דהויים">Revive & dress faded exterior trim</span>
                 <span class="addon-price">₪40</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
-            <label class="addon-card" data-price="50">
-              <input type="checkbox" class="addon-check" />
+            </div>
+            <div class="addon-card" data-price="50" data-addon-id="vacuum">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Full Vacuum and Pet Hair Included" data-he="שאיבת אבק מלאה והסרת שיער חיות">Full Vacuum and Pet Hair Included</span>
                 <span class="addon-desc" data-en="Full interior extraction" data-he="חילוץ מלא מהפנים">Full interior extraction</span>
                 <span class="addon-price">₪50</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
+            </div>
           </div>
         </div>
 
@@ -471,33 +468,30 @@
             <span class="addon-tier-label" data-en="Upgrades" data-he="שדרוגים">Upgrades</span>
           </div>
           <div class="addon-cards">
-            <label class="addon-card" data-price="60">
-              <input type="checkbox" class="addon-check" />
+            <div class="addon-card" data-price="60" data-addon-id="engine">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Engine Bay" data-he="תא מנוע">Engine Bay</span>
                 <span class="addon-desc" data-en="Degrease, clean & dress" data-he="הסרת שמן, ניקוי ופיניש">Degrease, clean & dress</span>
                 <span class="addon-price">₪60</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
-            <label class="addon-card" data-price="80">
-              <input type="checkbox" class="addon-check" />
+            </div>
+            <div class="addon-card" data-price="80" data-addon-id="spray">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Protection Spray" data-he="ספריי הגנה">Protection Spray</span>
                 <span class="addon-desc" data-en="2-week water repellent & basic paint protection" data-he="הגנה מפני מים והגנה בסיסית לצבע ל-2 שבועות">2-week water repellent & basic paint protection</span>
                 <span class="addon-price">₪80</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
-            <label class="addon-card" data-price="80">
-              <input type="checkbox" class="addon-check" />
+            </div>
+            <div class="addon-card" data-price="80" data-addon-id="headliner">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Headliner" data-he="גג פנימי">Headliner</span>
                 <span class="addon-desc" data-en="Full headliner clean & restore" data-he="ניקוי ושחזור גג פנימי מלא">Full headliner clean & restore</span>
                 <span class="addon-price">₪80</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
+            </div>
           </div>
         </div>
 
@@ -506,42 +500,38 @@
             <span class="addon-tier-label" data-en="Deep Treatments" data-he="טיפולים עמוקים">Deep Treatments</span>
           </div>
           <div class="addon-cards">
-            <label class="addon-card" data-price="130">
-              <input type="checkbox" class="addon-check" />
+            <div class="addon-card" data-price="130" data-addon-id="shampoo">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Fabric Shampoo" data-he="שמפו לריפוד">Fabric Shampoo</span>
                 <span class="addon-desc" data-en="Deep shampoo for seats & carpet" data-he="שמפו עמוק לריפוד ושטיחים">Deep shampoo for seats & carpet</span>
                 <span class="addon-price">₪130</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
-            <label class="addon-card" data-price="120">
-              <input type="checkbox" class="addon-check" />
+            </div>
+            <div class="addon-card" data-price="120" data-addon-id="leather">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Plastic & Leather" data-he="פלסטיק ועור">Plastic & Leather</span>
                 <span class="addon-desc" data-en="Restore & condition all surfaces" data-he="שחזור וטיפול בכל המשטחים">Restore & condition all surfaces</span>
                 <span class="addon-price">₪120</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
-            <label class="addon-card" data-price="100">
-              <input type="checkbox" class="addon-check" />
+            </div>
+            <div class="addon-card" data-price="100" data-addon-id="odor">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Odor Elimination" data-he="סילוק ריחות">Odor Elimination</span>
                 <span class="addon-desc" data-en="Ozone treatment at the source" data-he="טיפול אוזון מהשורש">Ozone treatment at the source</span>
                 <span class="addon-price">₪100</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
-            <label class="addon-card" data-price="80">
-              <input type="checkbox" class="addon-check" />
+            </div>
+            <div class="addon-card" data-price="80" data-addon-id="spare">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Spare Tire Bay" data-he="גלגל רזרבי">Spare Tire Bay</span>
                 <span class="addon-desc" data-en="Clean & protect the spare compartment" data-he="ניקוי והגנה על תא הרזרבי">Clean & protect the spare compartment</span>
                 <span class="addon-price">₪80</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
+            </div>
           </div>
         </div>
 
@@ -550,38 +540,39 @@
             <span class="addon-tier-label" data-en="Headlight Restoration" data-he="שחזור פנסים">Headlight Restoration</span>
           </div>
           <div class="addon-cards">
-            <label class="addon-card" data-price="200">
-              <input type="checkbox" class="addon-check" />
+            <div class="addon-card" data-price="200" data-addon-id="headlights">
               <div class="addon-card-body">
                 <span class="addon-name" data-en="Restore Front Headlights" data-he="שחזור פנסים קדמיים">Restore Front Headlights</span>
                 <span class="addon-desc" data-en="Polish & restore both cloudy headlights to clear" data-he="ליטוש ושחזור שני הפנסים הקדמיים לשקיפות מלאה">Polish & restore both cloudy headlights to clear</span>
                 <span class="addon-price">₪200</span>
               </div>
               <span class="addon-tick">✓</span>
-            </label>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Before Selling bundle -->
+      <div class="addons-cta-wrap">
+        <button class="btn-primary btn-book-from-page" id="book-from-addons-btn" data-en="Book with selected add-ons" data-he="הזמן עם התוספות שנבחרו">הזמן עם התוספות שנבחרו</button>
+      </div>
+
+      <!-- All Included bundle -->
       <div class="bundle-card reveal" data-tilt>
         <div class="bundle-badge" data-en="Best Value" data-he="שווי מירבי">Best Value</div>
         <div class="bundle-left">
-          <h3 class="bundle-name" data-en="Before Selling" data-he="לפני מכירה">Before Selling</h3>
-          <p class="bundle-desc" data-en="Everything needed to maximize your car's resale value — one flat price." data-he="הכל כדי למקסם את ערך המכירה של הרכב שלך — מחיר אחד קבוע.">Everything needed to maximize your car's resale value — one flat price.</p>
+          <h3 class="bundle-name" data-en="All Included" data-he="הכל כלול">הכל כלול</h3>
+          <p class="bundle-desc" data-en="The base treatment + every add-on — all together at one great price." data-he="הבסיס + כל התוספות — הכל ביחד במחיר אחד מיוחד.">הבסיס + כל התוספות — הכל ביחד במחיר אחד מיוחד.</p>
           <div class="bundle-includes">
-            <span data-en="Base + curated pre-sale add-ons" data-he="בסיס + תוספות נבחרות לפני מכירה">Base + curated pre-sale add-ons</span>
+            <span data-en="BMS Classic + all 11 add-ons included" data-he="BMS קלאסיק + כל 11 התוספות כלולות">BMS קלאסיק + כל 11 התוספות כלולות</span>
           </div>
           <div class="bundle-saving">
-            <span class="bundle-original" data-en="Individual: ₪580" data-he="בנפרד: ₪580">Individual: ₪580</span>
-            <span class="bundle-save-tag" data-en="Save ₪81" data-he="חסוך ₪81">Save ₪81</span>
+            <span class="bundle-original" data-en="Individual: ₪1,179" data-he="בנפרד: ₪1,179">בנפרד: ₪1,179</span>
+            <span class="bundle-save-tag" data-en="Save ₪180" data-he="חסוך ₪180">חסוך ₪180</span>
           </div>
         </div>
         <div class="bundle-right">
-          <div class="bundle-price">₪499</div>
-          <!-- Bundle deposit button — PAYMENT COMMENTED OUT
-          <button class="btn-bundle" id="bundle-book-btn" data-en="Book Bundle — ₪50 Deposit" data-he="הזמן חבילה — מקדמה ₪50">Book Bundle — ₪50 Deposit</button>
-          -->
+          <div class="bundle-price">₪999</div>
+          <button class="btn-bundle" id="bundle-book-btn" data-open-booking="all" data-en="Book All Included" data-he="הזמן הכל כלול">הזמן הכל כלול</button>
         </div>
       </div>
 
@@ -644,7 +635,7 @@
           <span class="booking-bar-label" data-en="Your total:" data-he="הסכום שלך:">Your total:</span>
           <span class="booking-bar-amount">₪<span id="booking-total">199</span></span>
         </div>
-        <button class="btn-booking-bar" id="booking-bar-btn" data-en="Book Now — ₪50 Deposit" data-he="הזמן עכשיו — מקדמה ₪50">Book Now — ₪50 Deposit</button>
+        <button class="btn-booking-bar" id="booking-bar-btn" data-en="Book Now" data-he="הזמן עכשיו">הזמן עכשיו</button>
       </div>
     </div>
     -->
@@ -753,7 +744,7 @@
 
         <details class="faq-item reveal">
           <summary class="faq-q">האם כדאי לנקות את הרכב לפני מכירה?</summary>
-          <p class="faq-a">בהחלט כן — ניקוי רכב מקצועי לפני מכירה הוא אחת ההשקעות הכי משתלמות. רכב נקי ומטופל נראה טוב יותר בתמונות ובפגישה, מעלה את מחיר המכירה, ומצמצם משא ומתן. חבילת "לפני מכירה" שלנו מותאמת בדיוק לזה — ₪499 במקום ₪580 אם תרכוש הכל בנפרד.</p>
+          <p class="faq-a">בהחלט כן — ניקוי רכב מקצועי לפני מכירה הוא אחת ההשקעות הכי משתלמות. רכב נקי ומטופל נראה טוב יותר בתמונות ובפגישה, מעלה את מחיר המכירה, ומצמצם משא ומתן. חבילת "הכל כלול" שלנו מותאמת בדיוק לזה — ₪999 במקום ₪1,179 אם תרכוש הכל בנפרד.</p>
         </details>
 
         <details class="faq-item reveal">
@@ -779,8 +770,8 @@
     <div class="container">
       <div class="section-head center">
         <span class="section-tag" data-en="Contact" data-he="צור קשר">Contact</span>
-        <h2 class="section-title" data-en="Book Your Treatment" data-he="הזמן את הטיפול שלך">Book Your Treatment</h2>
-        <p class="section-sub" data-en="Fill in the details and we'll reach out on WhatsApp right away." data-he="מלא את הפרטים ונחזור אליך מיד בוואטסאפ.">Fill in the details and we'll reach out on WhatsApp right away.</p>
+        <h2 class="section-title" data-en="Leave Your Details & We'll Get Back to You" data-he="השאר פרטים ונחזור אליך">השאר פרטים ונחזור אליך</h2>
+        <p class="section-sub" data-en="Have a question or a special request? Leave your details and we'll reach out on WhatsApp." data-he="שאלה או בקשה מיוחדת? השאר פרטים ונחזור אליך בוואטסאפ.">שאלה או בקשה מיוחדת? השאר פרטים ונחזור אליך בוואטסאפ.</p>
       </div>
       <div class="form-wrap reveal">
         <form class="contact-form" id="contact-form" novalidate>
@@ -788,14 +779,7 @@
             <input type="text" class="form-input" id="form-name" data-en-ph="Your Name" data-he-ph="שמך" placeholder="Your Name" required>
             <input type="tel" class="form-input" id="form-phone" data-en-ph="Phone Number" data-he-ph="מספר טלפון" placeholder="Phone Number" required>
           </div>
-          <select class="form-input form-select" id="form-service">
-            <option value="" data-en="Select Service" data-he="בחר שירות">Select Service</option>
-            <option value="Cars — Basic" data-en="Cars — Basic" data-he="רכבים — בייסיק">Cars — Basic</option>
-            <option value="Cars — Standard" data-en="Cars — Standard" data-he="רכבים — סטנדרט">Cars — Standard</option>
-            <option value="Cars — Premium" data-en="Cars — Premium" data-he="רכבים — פרימיום">Cars — Premium</option>
-            <option value="Cars — Before Selling" data-en="Cars — Before Selling" data-he="רכבים — לפני מכירה">Cars — Before Selling</option>
-            <option value="Cars — Museum" data-en="Cars — Museum" data-he="רכבים — מוזיאון">Cars — Museum</option>
-          </select>
+
           <textarea class="form-input form-textarea" id="form-msg" data-en-ph="Tell us about your vehicle / any special requests" data-he-ph="ספר לנו על כלי הרכב שלך / בקשות מיוחדות" placeholder="Tell us about your vehicle / any special requests" rows="4"></textarea>
           <button type="submit" class="btn-primary btn-full">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -866,6 +850,113 @@
   </div>
   -->
 
+  <!-- ── BOOKING MODAL ── -->
+  <div id="bk-overlay" class="bk-overlay" role="dialog" aria-modal="true" aria-label="הזמנת תור">
+    <div class="bk-modal">
+      <button class="bk-close" id="bk-close" aria-label="סגור">&#x2715;</button>
+
+      <!-- Progress steps -->
+      <div class="bk-header">
+        <div class="bk-steps" id="bk-steps">
+          <div class="bk-step" data-step="1"><span class="bk-step-num">1</span><span class="bk-step-lbl">שירות</span></div>
+          <div class="bk-step-line"></div>
+          <div class="bk-step" data-step="2"><span class="bk-step-num">2</span><span class="bk-step-lbl">מועד</span></div>
+          <div class="bk-step-line"></div>
+          <div class="bk-step" data-step="3"><span class="bk-step-num">3</span><span class="bk-step-lbl">פרטים</span></div>
+        </div>
+      </div>
+
+      <!-- Step 1: Add-ons -->
+      <div class="bk-panel" id="bk-p1">
+        <p class="bk-panel-title">התאם את הטיפול שלך</p>
+        <div class="bk-base-badge">
+          <span class="bk-base-check">✓</span>
+          <span class="bk-base-name">BMS קלאסיק — תמיד כלול</span>
+          <span class="bk-base-price">₪199</span>
+        </div>
+        <div class="bk-addons-list bk-open" id="bk-addons-list"></div>
+        <p class="bk-addon-count" id="bk-addon-count">0 מתוך 3 תוספות נבחרו</p>
+        <div class="bk-total-row">סה״כ: <span id="bk-total-price">₪199</span></div>
+        <div class="bk-discount-row" id="bk-discount-row"></div>
+        <div class="bk-err" id="bk-err1"></div>
+        <button class="bk-btn-primary" id="bk-next1">המשך</button>
+      </div>
+
+      <!-- Step 2: Date + time -->
+      <div class="bk-panel" id="bk-p2">
+        <p class="bk-panel-title">מתי נגיע אליך?</p>
+        <div class="bk-field">
+          <label class="bk-label">תאריך</label>
+          <div class="bk-date-strip-wrap">
+            <div class="bk-date-strip" id="bk-date-strip"></div>
+          </div>
+        </div>
+        <div class="bk-field">
+          <label class="bk-label">שעת טיפול</label>
+          <div class="bk-time-grid">
+            <button class="bk-time-btn" type="button" data-hour="8">
+              <span class="bk-time-icon">🌅</span>
+              <span class="bk-tname">בוקר</span>
+              <span class="bk-trange">08:00–12:00</span>
+            </button>
+            <button class="bk-time-btn" type="button" data-hour="12">
+              <span class="bk-time-icon">☀️</span>
+              <span class="bk-tname">צהריים</span>
+              <span class="bk-trange">12:00–15:00</span>
+            </button>
+            <button class="bk-time-btn" type="button" data-hour="15">
+              <span class="bk-time-icon">🌇</span>
+              <span class="bk-tname">אחה״צ</span>
+              <span class="bk-trange">15:00–18:00</span>
+            </button>
+          </div>
+        </div>
+        <div class="bk-err" id="bk-err2"></div>
+        <div class="bk-nav">
+          <button class="bk-btn-primary" id="bk-next2">המשך</button>
+          <button class="bk-btn-ghost" data-bk-back="1">חזרה</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Contact -->
+      <div class="bk-panel" id="bk-p3">
+        <p class="bk-panel-title">הפרטים שלך</p>
+        <div class="bk-field">
+          <label class="bk-label" for="bk-name">שם מלא *</label>
+          <input type="text" id="bk-name" class="bk-input" autocomplete="name" />
+        </div>
+        <div class="bk-field">
+          <label class="bk-label" for="bk-phone">טלפון *</label>
+          <input type="tel" id="bk-phone" class="bk-input" autocomplete="tel" inputmode="numeric" placeholder="05x-xxxxxxx" />
+        </div>
+        <div class="bk-field">
+          <label class="bk-label" for="bk-car">רכב (יצרן ודגם)</label>
+          <input type="text" id="bk-car" class="bk-input" placeholder="לדוג׳: טויוטה קורולה" />
+        </div>
+        <div class="bk-field">
+          <label class="bk-label" for="bk-addr">כתובת לטיפול *</label>
+          <input type="text" id="bk-addr" class="bk-input" autocomplete="street-address" placeholder="רחוב ומספר, עיר" />
+        </div>
+        <div class="bk-err" id="bk-err3"></div>
+        <div class="bk-nav">
+          <button class="bk-btn-primary" id="bk-submit">הזמן עכשיו</button>
+          <button class="bk-btn-ghost" data-bk-back="2">חזרה</button>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div class="bk-panel" id="bk-success">
+        <div class="bk-success-wrap">
+          <div class="bk-check">&#x2713;</div>
+          <h3>ההזמנה נרשמה!</h3>
+          <p id="bk-summary"></p>
+          <p class="bk-success-sub">קיבלנו את פרטיך ונחזור אליך בקרוב לאישור</p>
+          <button class="bk-btn-primary" id="bk-done">סגור</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <a href="#" class="wa-float" id="wa-float" data-wa aria-label="WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
@@ -874,6 +965,7 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"></circle></svg>
   </a>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
