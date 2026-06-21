@@ -329,6 +329,7 @@
 
   // Single source of truth for which add-ons are selected — shared by page and modal
   var pageAddonIds = [];
+  var _openBookingModal = null; // set by initBookingModal, used for ?book=1 auto-open
 
   function setPageCard(id, isSelected) {
     var card = document.querySelector(".addon-card[data-addon-id='" + id + "']");
@@ -691,6 +692,7 @@
         return;
       }
       clearErr(1); goTo(2);
+      if (window.fbq) fbq('track', 'InitiateCheckout');
     });
 
     document.getElementById("bk-next2").addEventListener("click", function () {
@@ -758,6 +760,7 @@
         BASE_SVC.name + " · " + dateFmt + " · " + state.timeName;
       goTo(4);
       btn.disabled = false; btn.textContent = "הזמן עכשיו";
+      if (window.fbq) fbq('track', 'Schedule');
 
       // Send email to owner in the background
       if (window.emailjs) {
@@ -827,6 +830,7 @@
       goTo(1);
       overlay.classList.add("open");
       document.body.style.overflow = "hidden";
+      if (window.fbq) fbq('track', 'ViewContent');
     }
 
     function closeModal() {
@@ -859,6 +863,7 @@
     document.querySelectorAll("[data-open-booking='all']").forEach(function (el) {
       el.addEventListener("click", function (e) { e.preventDefault(); openModal(true, false); });
     });
+    _openBookingModal = openModal;
   }
 
   /* ── Init ── */
@@ -873,6 +878,11 @@
     initAddons();
     initBookingModal();
     applyLang("he");
+
+    // Auto-open booking popup when coming from a Meta ad (?book=1)
+    if (new URLSearchParams(window.location.search).get("book") === "1") {
+      setTimeout(function () { if (_openBookingModal) _openBookingModal(false, false); }, 600);
+    }
   });
 
   /* ── Initial language: Hebrew ── */
