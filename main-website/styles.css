@@ -1347,6 +1347,8 @@ body[lang="he"] .booking-modal-close { right: auto; left: 16px; }
 .bk-time-btn:hover { border-color: rgba(201,168,76,0.4); background: rgba(201,168,76,0.05); }
 .bk-time-btn.bk-sel { border-color: var(--gold); background: rgba(201,168,76,0.12); }
 .bk-time-btn.bk-sel .bk-tname { color: var(--gold); }
+.bk-time-btn.bk-disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+.bk-time-btn.bk-disabled::after { content: "תפוס"; display: block; font-size: 0.65rem; color: #e55; margin-top: 2px; }
 .bk-time-icon { font-size: 22px; line-height: 1; }
 .bk-tname { font-size: 14px; font-weight: 700; color: var(--white); }
 .bk-trange { font-size: 10px; color: var(--muted); direction: ltr; letter-spacing: 0.2px; }

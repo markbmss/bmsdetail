@@ -617,6 +617,42 @@
     var dateStripEl = document.getElementById("bk-date-strip");
     var DAY_NAMES = ["א׳","ב׳","ג׳","ד׳","ה׳","ו׳","שב׳"];
     var MONTH_NAMES = ["ינו׳","פבר׳","מרץ","אפר׳","מאי","יוני","יולי","אוג׳","ספט׳","אוק׳","נוב׳","דצמ׳"];
+
+    // ── Availability ──
+    var bookedSlots = {}; // { "YYYY-MM-DD": [8, 12, 15] }
+
+    function refreshTimeButtons(date) {
+      var booked = bookedSlots[date] || [];
+      overlay.querySelectorAll(".bk-time-btn").forEach(function (btn) {
+        var hour = parseInt(btn.dataset.hour, 10);
+        btn.classList.remove("bk-sel", "bk-disabled");
+        if (booked.indexOf(hour) > -1) btn.classList.add("bk-disabled");
+      });
+      if (state.timeHour !== null && booked.indexOf(state.timeHour) > -1) {
+        state.timeHour = null; state.timeName = "";
+      }
+    }
+
+    function fetchAvailability() {
+      var pad = function (n) { return String(n).padStart(2, "0"); };
+      var fmt = function (d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); };
+      var from = new Date(); from.setDate(from.getDate() + 1);
+      var to   = new Date(); to.setDate(to.getDate() + 21);
+      fetch("/api/availability?from=" + fmt(from) + "&to=" + fmt(to))
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          bookedSlots = data;
+          if (dateStripEl) {
+            dateStripEl.querySelectorAll(".bk-day-card").forEach(function (card) {
+              var booked = bookedSlots[card.dataset.date] || [];
+              if (booked.length >= 3) card.classList.add("bk-disabled");
+            });
+          }
+          if (state.date) refreshTimeButtons(state.date);
+        })
+        .catch(function (err) { console.warn("Availability fetch failed:", err); });
+    }
+
     if (dateStripEl) {
       for (var _di = 1; _di <= 21; _di++) {
         (function (offset) {
@@ -638,6 +674,7 @@
               card.classList.add("bk-sel");
               state.date = card.dataset.date;
               clearErr(2);
+              refreshTimeButtons(card.dataset.date);
             });
           }
           dateStripEl.appendChild(card);
@@ -648,6 +685,7 @@
     // ── Time block buttons ──
     overlay.querySelectorAll(".bk-time-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
+        if (btn.classList.contains("bk-disabled")) return;
         overlay.querySelectorAll(".bk-time-btn").forEach(function (b) { b.classList.remove("bk-sel"); });
         btn.classList.add("bk-sel");
         state.timeHour = parseInt(btn.dataset.hour, 10);
@@ -831,6 +869,7 @@
       overlay.classList.add("open");
       document.body.style.overflow = "hidden";
       if (window.fbq) fbq('track', 'ViewContent');
+      fetchAvailability();
     }
 
     function closeModal() {
