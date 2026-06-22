@@ -6,6 +6,8 @@ import ClientDetail from './components/ClientDetail'
 import CalendarView from './components/CalendarView'
 import AppointmentModal from './components/AppointmentModal'
 import IncomeView from './components/IncomeView'
+import DashboardView from './components/DashboardView'
+import RetentionView from './components/RetentionView'
 import { fetchAppointmentsRange } from './lib/appointments'
 import { startOfWeekSunday, addWeeks, endOfWeekSaturday } from './lib/weekUtils'
 
@@ -32,7 +34,7 @@ function avatarColor(name) {
 
 export default function App() {
   const [authed, setAuthed] = useState(() => sessionStorage.getItem('app_auth') === 'true')
-  const [activeView, setActiveView] = useState('clients')
+  const [activeView, setActiveView] = useState('dashboard')
   const [clients, setClients] = useState([])
   const [activeId, setActiveId] = useState(null)
   const [search, setSearch] = useState('')
@@ -150,13 +152,23 @@ export default function App() {
   return (
     <div dir="rtl" style={{ display: 'flex', flexDirection: 'column', height: '100%', fontFamily: font, background: '#f5f4f1' }}>
       <div style={{ display: 'flex', gap: 4, borderBottom: '0.5px solid #e0ddd6', background: '#fafaf8', flexShrink: 0, paddingInline: 8 }}>
+        <button type="button" style={tabStyle(activeView === 'dashboard')} onClick={() => setActiveView('dashboard')}>לוח בקרה</button>
         <button type="button" style={tabStyle(activeView === 'clients')} onClick={() => setActiveView('clients')}>קבצי לקוחות</button>
         <button type="button" style={tabStyle(activeView === 'calendar')} onClick={() => setActiveView('calendar')}>יומן</button>
         <button type="button" style={tabStyle(activeView === 'income')} onClick={() => setActiveView('income')}>הכנסות</button>
+        <button type="button" style={tabStyle(activeView === 'retention')} onClick={() => setActiveView('retention')}>לקוחות לטיפול</button>
       </div>
 
       <div style={{ flex: 1, display: 'flex', minHeight: 0, overflow: 'hidden' }}>
-        {activeView === 'clients' ? (
+        {activeView === 'dashboard' ? (
+          <div style={{ flex: 1, overflowY: 'auto', minWidth: 0, background: '#f5f4f1' }}>
+            <DashboardView clients={clients} onGoToRetention={() => setActiveView('retention')} />
+          </div>
+        ) : activeView === 'retention' ? (
+          <div style={{ flex: 1, overflowY: 'auto', minWidth: 0, background: '#f5f4f1' }}>
+            <RetentionView clients={clients} />
+          </div>
+        ) : activeView === 'clients' ? (
           <>
             <div style={{
               width: 260, minWidth: 260, background: '#fafaf8',
