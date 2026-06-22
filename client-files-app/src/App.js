@@ -5,6 +5,7 @@ import ClientModal from './components/ClientModal'
 import ClientDetail from './components/ClientDetail'
 import CalendarView from './components/CalendarView'
 import AppointmentModal from './components/AppointmentModal'
+import IncomeView from './components/IncomeView'
 import { fetchAppointmentsRange } from './lib/appointments'
 import { startOfWeekSunday, addWeeks, endOfWeekSaturday } from './lib/weekUtils'
 
@@ -151,6 +152,7 @@ export default function App() {
       <div style={{ display: 'flex', gap: 4, borderBottom: '0.5px solid #e0ddd6', background: '#fafaf8', flexShrink: 0, paddingInline: 8 }}>
         <button type="button" style={tabStyle(activeView === 'clients')} onClick={() => setActiveView('clients')}>קבצי לקוחות</button>
         <button type="button" style={tabStyle(activeView === 'calendar')} onClick={() => setActiveView('calendar')}>יומן</button>
+        <button type="button" style={tabStyle(activeView === 'income')} onClick={() => setActiveView('income')}>הכנסות</button>
       </div>
 
       <div style={{ flex: 1, display: 'flex', minHeight: 0, overflow: 'hidden' }}>
@@ -246,6 +248,10 @@ export default function App() {
               )}
             </div>
           </>
+        ) : activeView === 'income' ? (
+          <div style={{ flex: 1, overflowY: 'auto', minWidth: 0, background: '#f5f4f1' }}>
+            <IncomeView clients={clients} />
+          </div>
         ) : (
           <div style={{ flex: 1, overflowY: 'auto', minWidth: 0, background: '#f5f4f1' }}>
             <CalendarView
