@@ -503,23 +503,8 @@
   }
   */
 
-  /* ── Booking modal ── */
-  function initBookingModal() {
-    var SB_URL  = "https://dgyvidlvqgghcftrvelu.supabase.co";
-    // anon key is intentionally public — RLS restricts reads, only inserts allowed
-    var SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRneXZpZGx2cWdnaGNmdHJ2ZWx1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzAxNzEsImV4cCI6MjA5MzQwNjE3MX0.Nysxc2X3rlz3TAy_Hm3t24464Qe3h2lrtHuZQcNMKLk";
-
-    var overlay  = document.getElementById("bk-overlay");
-    if (!overlay) return;
-
-    var sb = null;
-    function getSB() {
-      if (!sb && window.supabase) sb = window.supabase.createClient(SB_URL, SB_ANON);
-      return sb;
-    }
-
-    var BASE_SVC = { id: "base", name: "BMS קלאסיק", price: 199, dur: 90 };
-
+  /* ── Bottom sheet booking ── */
+  function initBookingSheet() {
     var ADDONS = [
       { id: "wheels",     name: "גלגלים וצמיגים",             price: 40  },
       { id: "plastics",   name: "שחזור פלסטיקים חיצוניים",   price: 40  },
@@ -531,102 +516,29 @@
       { id: "odor",       name: "סילוק ריחות (אוזון)",        price: 100 },
       { id: "leather",    name: "פלסטיק ועור — שחזור",        price: 120 },
       { id: "shampoo",    name: "שמפו לריפוד ושטיחים",        price: 130 },
-      { id: "headlights", name: "שחזור פנסים קדמיים",         price: 200 }
+      { id: "headlights", name: "שחזור פנסים קדמיים",         price: 200 },
+      { id: "ceramic",    name: "ציפוי קרמי",                  price: 600 }
     ];
 
-    var state = { addons: [], date: "", timeHour: null, timeName: "" };
+    var overlay     = document.getElementById("bs-overlay");
+    if (!overlay) return;
 
-    // ── Build add-on rows ──
-    var addonsListEl = document.getElementById("bk-addons-list");
-    var addonCountEl = document.getElementById("bk-addon-count");
-    var MIN_ADDONS = 3;
-
-    var ALL_INCLUDED_PRICE = 999;
-
-    function computeTotal() {
-      return state.addons.reduce(function (sum, id) {
-        var a = ADDONS.find(function (x) { return x.id === id; });
-        return sum + (a ? a.price : 0);
-      }, 0) + BASE_SVC.price;
-    }
-
-    function updateAddonCount() {
-      var n = state.addons.length;
-      var allSelected = n === ADDONS.length;
-      var met = n >= MIN_ADDONS;
-
-      if (addonCountEl) {
-        addonCountEl.textContent = allSelected
-          ? "הכל כלול ✓"
-          : met
-            ? n + " תוספות נבחרו ✓"
-            : n + " מתוך " + MIN_ADDONS + " תוספות נבחרו";
-        addonCountEl.classList.toggle("bk-met", met);
-      }
-
-      var totalEl = document.getElementById("bk-total-price");
-      var discountEl = document.getElementById("bk-discount-row");
-      if (totalEl) {
-        var rawTotal = computeTotal();
-        if (allSelected) {
-          totalEl.textContent = "₪" + ALL_INCLUDED_PRICE;
-          totalEl.classList.add("bk-bundle");
-          if (discountEl) {
-            discountEl.innerHTML =
-              '<span class="bk-strike">₪' + rawTotal + '</span>' +
-              '<span class="bk-save-tag">חסוך ₪' + (rawTotal - ALL_INCLUDED_PRICE) + '</span>';
-            discountEl.classList.add("bk-show");
-          }
-        } else {
-          totalEl.textContent = "₪" + rawTotal;
-          totalEl.classList.remove("bk-bundle");
-          if (discountEl) discountEl.classList.remove("bk-show");
-        }
-      }
-    }
-
-    ADDONS.forEach(function (a) {
-      var row = document.createElement("div");
-      row.className = "bk-addon-row";
-      row.dataset.addonId = a.id;
-      row.innerHTML =
-        '<span class="bk-addon-box"></span>' +
-        '<span class="bk-addon-row-name">' + a.name + '</span>' +
-        '<span class="bk-addon-row-price">+₪' + a.price + '</span>';
-      row.addEventListener("click", function () {
-        row.classList.toggle("bk-sel");
-        var nowSel = row.classList.contains("bk-sel");
-        var idx = state.addons.indexOf(a.id);
-        var pageIdx = pageAddonIds.indexOf(a.id);
-        if (nowSel) {
-          if (idx === -1) state.addons.push(a.id);
-          if (pageIdx === -1) pageAddonIds.push(a.id);
-        } else {
-          if (idx > -1) state.addons.splice(idx, 1);
-          if (pageIdx > -1) pageAddonIds.splice(pageIdx, 1);
-        }
-        setPageCard(a.id, nowSel); // keep main page card in sync
-        updateAddonCount();
-        clearErr(1);
-      });
-      addonsListEl.appendChild(row);
-    });
-
+    var state = { pkgName: "", pkgPrice: 0, addonIds: [], date: "", timeHour: null, timeName: "" };
 
     // ── Date strip ──
-    var dateStripEl = document.getElementById("bk-date-strip");
-    var DAY_NAMES = ["א׳","ב׳","ג׳","ד׳","ה׳","ו׳","שב׳"];
+    var dateStripEl = document.getElementById("bs-date-strip");
+    var DAY_NAMES   = ["א׳","ב׳","ג׳","ד׳","ה׳","ו׳","שב׳"];
     var MONTH_NAMES = ["ינו׳","פבר׳","מרץ","אפר׳","מאי","יוני","יולי","אוג׳","ספט׳","אוק׳","נוב׳","דצמ׳"];
 
     // ── Availability ──
-    var bookedSlots = {}; // { "YYYY-MM-DD": [8, 12, 15] }
+    var bookedSlots = {};
 
-    function refreshTimeButtons(date) {
-      var booked = bookedSlots[date] || [];
-      overlay.querySelectorAll(".bk-time-btn").forEach(function (btn) {
+    function refreshTimeButtons() {
+      var booked = bookedSlots[state.date] || [];
+      overlay.querySelectorAll(".bs-time-btn").forEach(function (btn) {
         var hour = parseInt(btn.dataset.hour, 10);
-        btn.classList.remove("bk-sel", "bk-disabled");
-        if (booked.indexOf(hour) > -1) btn.classList.add("bk-disabled");
+        btn.classList.remove("bs-sel", "bs-disabled");
+        if (booked.indexOf(hour) > -1) btn.classList.add("bs-disabled");
       });
       if (state.timeHour !== null && booked.indexOf(state.timeHour) > -1) {
         state.timeHour = null; state.timeName = "";
@@ -643,12 +555,12 @@
         .then(function (data) {
           bookedSlots = data;
           if (dateStripEl) {
-            dateStripEl.querySelectorAll(".bk-day-card").forEach(function (card) {
-              var booked = bookedSlots[card.dataset.date] || [];
-              if (booked.length >= 3) card.classList.add("bk-disabled");
+            dateStripEl.querySelectorAll(".bs-day-card").forEach(function (card) {
+              var b = bookedSlots[card.dataset.date] || [];
+              if (b.length >= 3) card.classList.add("bs-disabled");
             });
           }
-          if (state.date) refreshTimeButtons(state.date);
+          if (state.date) refreshTimeButtons();
         })
         .catch(function (err) { console.warn("Availability fetch failed:", err); });
     }
@@ -662,19 +574,19 @@
           var dateStr = y + "-" + String(mo + 1).padStart(2,"0") + "-" + String(dd).padStart(2,"0");
           var card = document.createElement("button");
           card.type = "button";
-          card.className = "bk-day-card" + (isSat ? " bk-disabled" : "");
+          card.className = "bs-day-card" + (isSat ? " bs-disabled" : "");
           card.dataset.date = dateStr;
           card.innerHTML =
-            '<span class="bk-day-name">' + DAY_NAMES[d.getDay()] + '</span>' +
-            '<span class="bk-day-num">' + dd + '</span>' +
-            '<span class="bk-day-month">' + MONTH_NAMES[mo] + '</span>';
+            '<span class="bs-day-name">' + DAY_NAMES[d.getDay()] + '</span>' +
+            '<span class="bs-day-num">' + dd + '</span>' +
+            '<span class="bs-day-month">' + MONTH_NAMES[mo] + '</span>';
           if (!isSat) {
             card.addEventListener("click", function () {
-              dateStripEl.querySelectorAll(".bk-day-card").forEach(function (c) { c.classList.remove("bk-sel"); });
-              card.classList.add("bk-sel");
+              dateStripEl.querySelectorAll(".bs-day-card").forEach(function (c) { c.classList.remove("bs-sel"); });
+              card.classList.add("bs-sel");
               state.date = card.dataset.date;
-              clearErr(2);
-              refreshTimeButtons(card.dataset.date);
+              clearErr();
+              refreshTimeButtons();
             });
           }
           dateStripEl.appendChild(card);
@@ -683,67 +595,19 @@
     }
 
     // ── Time block buttons ──
-    overlay.querySelectorAll(".bk-time-btn").forEach(function (btn) {
+    overlay.querySelectorAll(".bs-time-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        if (btn.classList.contains("bk-disabled")) return;
-        overlay.querySelectorAll(".bk-time-btn").forEach(function (b) { b.classList.remove("bk-sel"); });
-        btn.classList.add("bk-sel");
+        if (btn.classList.contains("bs-disabled")) return;
+        overlay.querySelectorAll(".bs-time-btn").forEach(function (b) { b.classList.remove("bs-sel"); });
+        btn.classList.add("bs-sel");
         state.timeHour = parseInt(btn.dataset.hour, 10);
-        state.timeName = btn.querySelector(".bk-tname").textContent + " (" + btn.querySelector(".bk-trange").textContent + ")";
+        state.timeName = btn.querySelector(".bs-time-name").textContent +
+          " (" + btn.querySelector(".bs-time-range").textContent + ")";
+        clearErr();
       });
     });
 
-    // ── Step navigation ──
-    var panels = {
-      1: document.getElementById("bk-p1"),
-      2: document.getElementById("bk-p2"),
-      3: document.getElementById("bk-p3"),
-      4: document.getElementById("bk-success")
-    };
-    var stepEls = overlay.querySelectorAll(".bk-step");
-
-    function goTo(n) {
-      Object.values(panels).forEach(function (p) { if (p) p.classList.remove("bk-active"); });
-      if (panels[n]) panels[n].classList.add("bk-active");
-      stepEls.forEach(function (s) {
-        var sn = parseInt(s.dataset.step, 10);
-        s.classList.toggle("active", sn === n);
-        s.classList.toggle("done", sn < n);
-      });
-      var stepsWrap = document.getElementById("bk-steps");
-      if (stepsWrap) stepsWrap.style.visibility = n === 4 ? "hidden" : "visible";
-      overlay.querySelector(".bk-modal").scrollTop = 0;
-    }
-
-    function showErr(panelN, msg) {
-      var el = document.getElementById("bk-err" + panelN);
-      if (el) { el.textContent = msg; el.classList.add("bk-show"); }
-    }
-    function clearErr(panelN) {
-      var el = document.getElementById("bk-err" + panelN);
-      if (el) { el.textContent = ""; el.classList.remove("bk-show"); }
-    }
-
-    document.getElementById("bk-next1").addEventListener("click", function () {
-      if (state.addons.length < MIN_ADDONS) {
-        showErr(1, "יש לבחור לפחות " + MIN_ADDONS + " תוספות להמשך");
-        return;
-      }
-      clearErr(1); goTo(2);
-      if (window.fbq) fbq('track', 'InitiateCheckout');
-    });
-
-    document.getElementById("bk-next2").addEventListener("click", function () {
-      if (!state.date) { showErr(2, "אנא בחר תאריך"); return; }
-      if (state.timeHour === null) { showErr(2, "אנא בחר שעת טיפול"); return; }
-      clearErr(2); goTo(3); document.getElementById("bk-name").focus();
-    });
-
-    overlay.querySelectorAll("[data-bk-back]").forEach(function (btn) {
-      btn.addEventListener("click", function () { goTo(parseInt(btn.dataset.bkBack, 10)); });
-    });
-
-    // ── Rate limiting: one booking per phone per 24 h (localStorage) ──
+    // ── Rate limiting ──
     function canBook(phone) {
       try {
         var key = "bms_last_" + phone.replace(/\D/g, "");
@@ -753,156 +617,144 @@
     }
     function recordBook(phone) {
       try {
-        var key = "bms_last_" + phone.replace(/\D/g, "");
-        localStorage.setItem(key, String(Date.now()));
+        localStorage.setItem("bms_last_" + phone.replace(/\D/g, ""), String(Date.now()));
       } catch (e) {}
     }
 
+    function clearErr() {
+      var el = document.getElementById("bs-err");
+      if (el) el.textContent = "";
+    }
+    function showErr(msg) {
+      var el = document.getElementById("bs-err");
+      if (el) el.textContent = msg;
+    }
+
     // ── Submit ──
-    document.getElementById("bk-submit").addEventListener("click", function () {
-      var name    = document.getElementById("bk-name").value.trim();
-      var phone   = document.getElementById("bk-phone").value.trim();
-      var car     = document.getElementById("bk-car").value.trim();
-      var address = document.getElementById("bk-addr").value.trim();
-      if (!name)    { showErr(3, "אנא הזן שם מלא"); return; }
-      if (!phone)   { showErr(3, "אנא הזן מספר טלפון"); return; }
-      if (!address) { showErr(3, "אנא הזן כתובת לטיפול"); return; }
+    document.getElementById("bs-submit").addEventListener("click", function () {
+      var name  = document.getElementById("bs-name").value.trim();
+      var phone = document.getElementById("bs-phone").value.trim();
+      if (!state.date)            { showErr("אנא בחר תאריך"); return; }
+      if (state.timeHour === null) { showErr("אנא בחר שעת טיפול"); return; }
+      if (!name)                  { showErr("אנא הזן שם מלא"); return; }
+      if (!phone)                 { showErr("אנא הזן מספר טלפון"); return; }
       if (!canBook(phone)) {
-        showErr(3, "כבר קיבלנו הזמנה ממספר זה היום. לשינוי או ביטול צרו קשר ישירות.");
+        showErr("כבר קיבלנו הזמנה ממספר זה היום. לשינוי צרו קשר ישירות.");
         return;
       }
-      clearErr(3);
+      clearErr();
       recordBook(phone);
-      submitBooking({ name: name, phone: phone, car: car, address: address });
+      submitBooking({ name: name, phone: phone });
     });
 
     function submitBooking(contact) {
-      var btn = document.getElementById("bk-submit");
+      var btn = document.getElementById("bs-submit");
       btn.disabled = true; btn.textContent = "שולח...";
 
-      // Build date display
       var parts = state.date.split("-");
       var startD = new Date(+parts[0], +parts[1] - 1, +parts[2], state.timeHour, 0, 0);
       var dateFmt = startD.toLocaleDateString("he-IL", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
 
-      // Build add-ons summary
-      var addonsSelected = ADDONS.filter(function (a) { return state.addons.indexOf(a.id) > -1; });
+      var addonsSelected = ADDONS.filter(function (a) { return state.addonIds.indexOf(a.id) > -1; });
       var addonLines = addonsSelected.length
         ? addonsSelected.map(function (a) { return "• " + a.name + " — ₪" + a.price; }).join("\n")
         : "ללא תוספות";
-      var allSelected = state.addons.length === ADDONS.length;
-      var finalPrice = allSelected ? ALL_INCLUDED_PRICE : computeTotal();
 
-      // Show success screen immediately — don't make the user wait for the email
-      document.getElementById("bk-summary").textContent =
-        BASE_SVC.name + " · " + dateFmt + " · " + state.timeName;
-      goTo(4);
-      btn.disabled = false; btn.textContent = "הזמן עכשיו";
+      // Show success immediately
+      document.getElementById("bs-form-body").style.display = "none";
+      document.getElementById("bs-success").style.display = "block";
       if (window.fbq) fbq('track', 'Schedule');
 
-      // Send email to owner in the background
+      // EmailJS
       if (window.emailjs) {
         emailjs.send(EJS_SERVICE, EJS_TEMPLATE, {
           customer_name:    contact.name,
           customer_phone:   contact.phone,
-          customer_car:     contact.car || "לא צוין",
-          customer_address: contact.address,
+          customer_car:     "לא צוין",
+          customer_address: "לא צוין",
           booking_date:     dateFmt,
           booking_time:     state.timeName,
-          addons:           addonLines,
-          total_price:      finalPrice
-        }).catch(function (err) {
-          console.warn("EmailJS error:", err);
-        });
+          addons:           "חבילה: " + state.pkgName + "\n" + addonLines,
+          total_price:      state.pkgPrice
+        }).catch(function (err) { console.warn("EmailJS error:", err); });
       }
 
-      // Create Google Calendar event in the background
+      // Google Calendar
       fetch("/api/book", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           customerName:    contact.name,
           customerPhone:   contact.phone,
-          customerCar:     contact.car || "לא צוין",
-          customerAddress: contact.address,
+          customerCar:     "לא צוין",
+          customerAddress: "לא צוין",
           date:            state.date,
           timeHour:        state.timeHour,
           timeName:        state.timeName,
-          addons:          addonLines,
-          finalPrice:      finalPrice
+          addons:          "חבילה: " + state.pkgName + "\n" + addonLines,
+          finalPrice:      state.pkgPrice
         })
-      }).catch(function (err) {
-        console.warn("Calendar API error:", err);
-      });
+      }).catch(function (err) { console.warn("Calendar API error:", err); });
     }
 
     // ── Open / Close ──
-    function openModal(preSelectAll, fromPage) {
-      // Reset state
-      state.addons = []; state.date = ""; state.timeHour = null; state.timeName = "";
-      overlay.querySelectorAll(".bk-time-btn").forEach(function (b) { b.classList.remove("bk-sel"); });
-      if (dateStripEl) dateStripEl.querySelectorAll(".bk-day-card").forEach(function (c) { c.classList.remove("bk-sel"); });
-      ["bk-name","bk-phone","bk-car","bk-addr"].forEach(function (id) {
-        var el = document.getElementById(id); if (el) el.value = "";
-      });
-      [1,2,3].forEach(clearErr);
+    function openSheet(pkgName, pkgPrice, addonIds) {
+      state.pkgName = pkgName; state.pkgPrice = pkgPrice; state.addonIds = addonIds || [];
+      state.date = ""; state.timeHour = null; state.timeName = "";
 
-      // Determine which add-ons to pre-select
-      addonsListEl.querySelectorAll(".bk-addon-row").forEach(function (r) { r.classList.remove("bk-sel"); });
-      if (preSelectAll) {
-        // "All Included" — select everything and update page cards too
-        state.addons = ADDONS.map(function (a) { return a.id; });
-        pageAddonIds = ADDONS.map(function (a) { return a.id; });
-        addonsListEl.querySelectorAll(".bk-addon-row").forEach(function (r) { r.classList.add("bk-sel"); });
-        ADDONS.forEach(function (a) { setPageCard(a.id, true); });
-      } else if (fromPage) {
-        // Mirror whatever is currently in pageAddonIds (the shared truth)
-        pageAddonIds.forEach(function (id) {
-          if (state.addons.indexOf(id) === -1) state.addons.push(id);
-          var row = addonsListEl.querySelector("[data-addon-id='" + id + "']");
-          if (row) row.classList.add("bk-sel");
-        });
-      }
-      updateAddonCount();
+      overlay.querySelectorAll(".bs-time-btn").forEach(function (b) { b.classList.remove("bs-sel", "bs-disabled"); });
+      if (dateStripEl) dateStripEl.querySelectorAll(".bs-day-card").forEach(function (c) { c.classList.remove("bs-sel"); });
 
-      goTo(1);
-      overlay.classList.add("open");
+      document.getElementById("bs-name").value = "";
+      document.getElementById("bs-phone").value = "";
+      clearErr();
+
+      var submitBtn = document.getElementById("bs-submit");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "הזמן עכשיו · ₪" + pkgPrice;
+      submitBtn.style.display = "";
+      document.getElementById("bs-form-body").style.display = "";
+      document.getElementById("bs-success").style.display = "none";
+
+      document.getElementById("bs-pkg-name").textContent = pkgName;
+      document.getElementById("bs-pkg-price").textContent = "₪" + pkgPrice;
+      var arrEl = document.getElementById("bs-pkg-arrival");
+      if (arrEl) arrEl.style.display = pkgPrice > 199 ? "" : "none";
+
+      overlay.classList.add("bs-open");
       document.body.style.overflow = "hidden";
-      if (window.fbq) fbq('track', 'ViewContent');
+      if (window.fbq) fbq('track', 'InitiateCheckout');
       fetchAvailability();
     }
 
-    function closeModal() {
-      overlay.classList.remove("open");
+    function closeSheet() {
+      overlay.classList.remove("bs-open");
       document.body.style.overflow = "";
     }
 
-    document.getElementById("bk-close").addEventListener("click", closeModal);
-    document.getElementById("bk-done").addEventListener("click", closeModal);
-    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeSheet(); });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && overlay.classList.contains("open")) closeModal();
+      if (e.key === "Escape" && overlay.classList.contains("bs-open")) closeSheet();
+    });
+    document.getElementById("bs-done").addEventListener("click", closeSheet);
+
+    // Package buttons
+    document.querySelectorAll("[data-pkg-ids]").forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        e.preventDefault();
+        var ids   = el.dataset.pkgIds ? el.dataset.pkgIds.split(",").filter(Boolean) : [];
+        var name  = el.dataset.pkgName  || "BMS";
+        var price = parseInt(el.dataset.pkgPrice, 10) || 199;
+        openSheet(name, price, ids);
+      });
     });
 
-    // Generic "Book Now" buttons — open fresh with no pre-selections
+    // Generic "Book Now" buttons (hero CTA etc.)
     document.querySelectorAll(".btn-book").forEach(function (el) {
-      el.addEventListener("click", function (e) { e.preventDefault(); openModal(false, false); });
+      el.addEventListener("click", function (e) { e.preventDefault(); openSheet("קלאסיק", 199, []); });
     });
-    // Sticky booking bar — carry over any add-ons checked on the main page
-    var barBookBtn = document.getElementById("booking-bar-btn");
-    if (barBookBtn) {
-      barBookBtn.addEventListener("click", function (e) { e.preventDefault(); openModal(false, true); });
-    }
-    // "Book with selected add-ons" button in the add-ons section
-    var bookFromAddonsBtn = document.getElementById("book-from-addons-btn");
-    if (bookFromAddonsBtn) {
-      bookFromAddonsBtn.addEventListener("click", function (e) { e.preventDefault(); openModal(false, true); });
-    }
-    // "All Included" bundle button — pre-selects everything
-    document.querySelectorAll("[data-open-booking='all']").forEach(function (el) {
-      el.addEventListener("click", function (e) { e.preventDefault(); openModal(true, false); });
-    });
-    _openBookingModal = openModal;
+
+    _openBookingModal = function () { openSheet("קלאסיק", 199, []); };
   }
 
   /* ── Init ── */
@@ -915,7 +767,7 @@
     bindWaLinks();
     initCounters();
     initAddons();
-    initBookingModal();
+    initBookingSheet();
     applyLang("he");
 
     // Auto-open booking popup when coming from a Meta ad (?book=1)
