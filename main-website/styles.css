@@ -3,20 +3,20 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --brand-bg: #0e0b08;
-  --brand-surface: #171210;
-  --brand-border: rgba(240,228,208,0.09);
-  --cream: #f2e6d4;
-  --silver: #a89880;
+  --brand-bg: #0a1628;
+  --brand-surface: #11213a;
+  --brand-border: rgba(238,241,246,0.08);
+  --cream: #eef1f6;
+  --silver: #a3b1c2;
   --gold: #c9a84c;
   --gold-light: #e2c97e;
   --white: #ffffff;
-  --muted: rgba(240,228,208,0.48);
+  --muted: rgba(238,241,246,0.5);
 
-  --cars-bg: #0c0a07;
-  --cars-surface: #131008;
-  --cars-accent: #d0c0a8;
-  --cars-border: rgba(220,200,180,0.1);
+  --cars-bg: #091320;
+  --cars-surface: #101d33;
+  --cars-accent: #b7c3d3;
+  --cars-border: rgba(200,214,230,0.1);
 
   --yacht-bg: #040c18;
   --yacht-surface: #081422;
@@ -422,7 +422,7 @@ body[lang="he"] .pkg-features li::before { left: auto; right: 0; }
 
 /* ── STATS STRIP ── */
 .stats-strip {
-  background: #0e0b08;
+  background: var(--brand-bg);
   border-bottom: 1px solid var(--brand-border);
   padding: 32px 0;
 }
