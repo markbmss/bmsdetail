@@ -91,14 +91,12 @@
     ]
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../main-website/fonts.css">
   <style>
     :root { --gold:#c9a84c; --gold-dim:#a8863a; --bg:#0e0e0e; --surface:#161616; --border:#2a2a2a; --text:#e8e8e8; --muted:#888; --white:#fff; --radius:6px; --max:740px; }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+    body { background: var(--bg); color: var(--text); font-family: 'Heebo', sans-serif; font-size: 16px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
     nav { position: sticky; top: 0; z-index: 100; background: rgba(14,14,14,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 58px; display: flex; align-items: center; justify-content: space-between; }
     nav .logo img { height: 28px; display: block; }
     nav .nav-links { display: flex; gap: 24px; list-style: none; }
@@ -110,10 +108,10 @@
     .lang-switch:hover { border-color: var(--gold); }
     .article-wrap { max-width: var(--max); margin: 0 auto; padding: 60px 24px 80px; }
     .article-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-    .article-wrap h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 20px; }
+    .article-wrap h1 { font-family: 'Heebo', sans-serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 20px; }
     .article-intro { font-size: 18px; color: #bbb; line-height: 1.7; margin-bottom: 16px; }
     .article-meta { font-size: 12px; color: #555; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
-    .article-body h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(20px, 2.5vw, 26px); font-weight: 700; color: var(--white); margin: 48px 0 16px; }
+    .article-body h2 { font-family: 'Heebo', sans-serif; font-size: clamp(20px, 2.5vw, 26px); font-weight: 700; color: var(--white); margin: 48px 0 16px; }
     .article-body h3 { font-size: 17px; font-weight: 600; color: var(--white); margin: 28px 0 10px; }
     .article-body p { color: #c8c8c8; margin-bottom: 18px; }
     .article-body ul, .article-body ol { margin: 0 0 18px 24px; color: #c8c8c8; }
@@ -125,7 +123,7 @@
     .compare-table td { padding: 11px 16px; border: 1px solid var(--border); color: #c8c8c8; vertical-align: top; }
     .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
     .article-cta { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px; text-align: center; margin-top: 56px; }
-    .article-cta h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--white); margin-bottom: 12px; }
+    .article-cta h2 { font-family: 'Heebo', sans-serif; font-size: 24px; color: var(--white); margin-bottom: 12px; }
     .article-cta p { color: var(--muted); margin-bottom: 24px; }
     .btn-primary { display: inline-block; background: var(--gold); color: #000; font-weight: 700; font-size: 14px; padding: 13px 28px; border-radius: var(--radius); text-decoration: none; transition: background 0.2s; }
     .btn-primary:hover { background: var(--gold-dim); }

@@ -1,3 +1,5 @@
+@import url('fonts.css');
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -24,7 +26,7 @@
   --radius: 16px;
   --radius-sm: 10px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --font: 'Inter', -apple-system, sans-serif;
+  --font: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
