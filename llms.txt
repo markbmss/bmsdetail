@@ -11,21 +11,10 @@ Languages: Hebrew (primary), English
 Currency: Israeli Shekel (ILS / ₪)
 
 ## Services & Pricing (ILS)
-- Base Package — The BMS Clean: ₪199 (full exterior wash, interior vacuum, windows, dashboard, door jambs, tire shine; 1–1.5 hours)
-- Before Selling Bundle: ₪499 (complete pre-sale detailing package)
-- Protection Spray: ₪40 (2-week water repellent and basic paint protection)
-- Wheels & Tires Deep Clean: ₪40
-- Restore Outside Plastics: ₪40
-- Seats Clean: ₪80
-- Interior Shine: ₪70
-- Engine Bay: ₪60
-- Pet Hair Removal: ₪50
-- Fabric Shampoo (seats & carpet): ₪130
-- Plastic & Leather Restore: ₪120
-- Headliner Clean: ₪120
-- Odor Elimination (ozone treatment): ₪100
-- Spare Tire Bay Clean: ₪80
-- Headlight Restoration (both): ₪200
+Three fixed packages — no standalone à la carte add-ons:
+- BMS Classic: ₪199 (full exterior wash, windows inside and out, interior vacuum, dashboard and surfaces, door jamb cleaning; arrival fee not included)
+- BMS Silver: ₪399 (everything in Classic, plus wheel and tire cleaning, exterior plastic restoration, full interior vacuum with pet hair removal, 2-week paint protection spray; arrival fee included)
+- BMS Gold: ₪649 (everything in Silver, plus engine bay cleaning, headliner cleaning, spare tire bay cleaning, plastic and leather restoration, fabric shampoo for seats and carpets; arrival fee included; most comprehensive package, recommended before selling a car)
 
 ## Key Facts for Citation
 - Recommended frequency: every 3–6 months (3 months for daily drivers, families, outdoor parking)
