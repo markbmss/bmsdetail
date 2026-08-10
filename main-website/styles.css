@@ -505,6 +505,7 @@ body[lang="he"] .pkg-features li::before { left: auto; right: 0; }
   border-radius: var(--radius);
   overflow: hidden;
 }
+#value .process-grid { grid-template-columns: repeat(2, 1fr); }
 .process-step {
   padding: 40px 36px;
   background: var(--brand-bg);
@@ -694,7 +695,7 @@ body[lang="he"] .ig-float { left: auto; right: 28px; }
   .packages-grid .package-card:nth-child(n) { grid-column: auto; }
   .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
   .gallery-item { height: 200px; }
-  .process-grid { grid-template-columns: 1fr; }
+  .process-grid, #value .process-grid { grid-template-columns: 1fr; }
   .process-step { padding: 32px 28px; }
   .stats-strip-inner { flex-wrap: wrap; }
   .strip-stat { flex: 0 0 50%; padding: 20px; }
