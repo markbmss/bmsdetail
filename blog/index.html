@@ -1,32 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BMS Detail Blog — Car Detailing Tips & Guides | Gush Dan</title>
-  <meta name="description" content="Expert car detailing tips, guides and advice from BMS Detail — Israel's premier mobile detailing service in Gush Dan and Tel Aviv." />
+  <title>בלוג BMS Detail | טיפים ומדריכים לדיטיילינג רכב בגוש דן</title>
+  <meta name="description" content="טיפים, מדריכים ועצות מקצועיות לדיטיילינג רכב מ-BMS Detail — שירות דיטיילינג נייד מוביל בגוש דן ותל אביב." />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="author" content="BMS Detail" />
   <link rel="canonical" href="https://bmsdetail.com/blog" />
-  <link rel="alternate" hreflang="en-IL" href="https://bmsdetail.com/blog" />
   <link rel="alternate" hreflang="he-IL" href="https://bmsdetail.com/blog" />
+  <link rel="alternate" hreflang="en-IL" href="https://bmsdetail.com/blog" />
   <link rel="alternate" hreflang="x-default" href="https://bmsdetail.com/blog" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bmsdetail.com/blog" />
   <meta property="og:site_name" content="BMS Detail" />
-  <meta property="og:title" content="BMS Detail Blog — Car Detailing Tips & Guides" />
-  <meta property="og:description" content="Expert car detailing tips, guides and advice from BMS Detail — Israel's premier mobile detailing service in Gush Dan and Tel Aviv." />
+  <meta property="og:title" content="בלוג BMS Detail | טיפים ומדריכים לדיטיילינג רכב" />
+  <meta property="og:description" content="טיפים, מדריכים ועצות מקצועיות לדיטיילינג רכב מ-BMS Detail — שירות דיטיילינג נייד מוביל בגוש דן ותל אביב." />
   <meta property="og:image" content="https://bmsdetail.com/images/bms-wordmark-light.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="en_IL" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:locale:alternate" content="en_IL" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="BMS Detail Blog — Car Detailing Tips & Guides" />
-  <meta name="twitter:description" content="Expert car detailing tips, guides and advice from BMS Detail in Gush Dan." />
+  <meta name="twitter:title" content="בלוג BMS Detail | טיפים ומדריכים לדיטיילינג רכב" />
+  <meta name="twitter:description" content="טיפים, מדריכים ועצות מקצועיות לדיטיילינג רכב מ-BMS Detail בגוש דן." />
   <meta name="twitter:image" content="https://bmsdetail.com/images/bms-wordmark-light.png" />
 
   <!-- Theme & icons -->
@@ -43,10 +44,10 @@
         "@type": "Blog",
         "@id": "https://bmsdetail.com/blog#blog",
         "url": "https://bmsdetail.com/blog",
-        "name": "BMS Detail Blog",
-        "description": "Expert car detailing tips, guides and advice from BMS Detail",
+        "name": "בלוג BMS Detail",
+        "description": "טיפים, מדריכים ועצות מקצועיות לדיטיילינג רכב מ-BMS Detail",
         "publisher": { "@id": "https://bmsdetail.com/#business" },
-        "inLanguage": ["en-IL", "he-IL"],
+        "inLanguage": ["he-IL", "en-IL"],
         "blogPost": [
           {"@id": "https://bmsdetail.com/blog/how-often-to-detail-your-car"},
           {"@id": "https://bmsdetail.com/blog/car-detailing-before-selling"},
@@ -63,8 +64,8 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bmsdetail.com" },
-          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://bmsdetail.com/blog" }
+          { "@type": "ListItem", "position": 1, "name": "בית", "item": "https://bmsdetail.com" },
+          { "@type": "ListItem", "position": 2, "name": "בלוג", "item": "https://bmsdetail.com/blog" }
         ]
       }
     ]
@@ -77,11 +78,11 @@
     :root {
       --gold:     #c9a84c;
       --gold-dim: #a8863a;
-      --bg:       #0e0e0e;
-      --surface:  #161616;
-      --border:   #2a2a2a;
-      --text:     #e8e8e8;
-      --muted:    #888;
+      --bg:       #0a1628;
+      --surface:  #11213a;
+      --border:   #1c2d47;
+      --text:     #eef1f6;
+      --muted:    #7c8aa0;
       --white:    #ffffff;
       --radius:   6px;
     }
@@ -100,7 +101,7 @@
     /* Nav */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(14,14,14,0.92);
+      background: rgba(10,22,40,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 0 24px; height: 58px;
@@ -242,146 +243,151 @@
   <nav>
     <a href="/" class="logo"><img src="/images/bms-wordmark-light.png" alt="BMS Detail" /></a>
     <ul class="nav-links">
-      <li><a href="/#cars">Services</a></li>
-      <li><a href="/why-us">Why Us</a></li>
-      <li><a href="/blog" class="active">Blog</a></li>
-      <li><a href="/#faq">FAQ</a></li>
-      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/#cars">רכבים</a></li>
+      <li><a href="/why-us">למה אנחנו</a></li>
+      <li><a href="/blog" class="active">בלוג</a></li>
+      <li><a href="/#faq">שאלות נפוצות</a></li>
+      <li><a href="/#contact">צור קשר</a></li>
     </ul>
-    <a href="tel:+972538998195" style="font-size:13px;color:#888;text-decoration:none;margin-right:16px;">053-899-8195</a>
-    <a href="/#contact" class="btn-book">Book Now</a>
+    <a href="tel:+972538998195" style="font-size:13px;color:#7c8aa0;text-decoration:none;margin-left:16px;">053-899-8195</a>
+    <a href="/#contact" class="btn-book">הזמן עכשיו</a>
   </nav>
 
   <div class="blog-hero">
-    <span class="blog-eyebrow">BMS Detail · Knowledge Base</span>
-    <h1>Car Detailing Tips & Guides</h1>
-    <p>Expert advice from Israel's leading mobile detailing team — everything you need to keep your car looking its best.</p>
+    <span class="blog-eyebrow">BMS Detail · מאגר ידע</span>
+    <h1>טיפים ומדריכים לדיטיילינג רכב</h1>
+    <p>עצות מקצועיות מהצוות המוביל בישראל לדיטיילינג נייד — כל מה שצריך כדי לשמור על הרכב שלך במיטבו.</p>
     <div class="blog-divider"></div>
   </div>
 
   <div class="lang-bar">
-    <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
-    <button class="lang-btn" onclick="setLang('he')" id="btn-he">HE</button>
+    <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    <button class="lang-btn active" onclick="setLang('he')" id="btn-he">HE</button>
   </div>
 
   <div class="blog-grid-wrap">
     <div class="blog-grid" id="blog-grid">
-      <a class="blog-card" href="/blog/how-often-to-detail-your-car">
-        <span class="card-tag">Maintenance</span>
-        <div class="card-title">How Often Should You Detail Your Car?</div>
-        <div class="card-excerpt">Most car owners don't detail often enough. Learn exactly how often your car needs professional care based on your lifestyle, usage, and Israel's climate.</div>
-        <div class="card-meta"><span>June 10, 2026</span></div>
-        <span class="card-read-more">Read article →</span>
+      <a class="blog-card" href="/blog/he/how-often-to-detail-your-car">
+        <span class="card-tag">תחזוקה</span>
+        <div class="card-title">כמה פעמים צריך לעשות דיטיילינג לרכב?</div>
+        <div class="card-excerpt">רוב בעלי הרכב לא עושים דיטיילינג מספיק. למד בדיוק כמה פעמים צריך טיפול מקצועי בהתאם לסגנון החיים שלך.</div>
+        <div class="card-meta"><span>10 ביוני 2026</span></div>
+        <span class="card-read-more">קרא עוד ←</span>
       </a>
-      <a class="blog-card" href="/blog/car-detailing-before-selling">
-        <span class="card-tag">Selling Your Car</span>
-        <div class="card-title">Car Detailing Before Selling: Is It Worth It?</div>
-        <div class="card-excerpt">A professional detail before listing your car can increase its perceived value by 5–15%. Here's what buyers notice first and whether it pays.</div>
-        <div class="card-meta"><span>June 10, 2026</span></div>
-        <span class="card-read-more">Read article →</span>
+      <a class="blog-card" href="/blog/he/car-detailing-before-selling">
+        <span class="card-tag">מכירת רכב</span>
+        <div class="card-title">דיטיילינג לפני מכירת רכב: האם זה שווה?</div>
+        <div class="card-excerpt">דיטיילינג מקצועי לפני הצגת הרכב למכירה יכול להעלות את ערכו הנתפס ב-5–15%. הנה מה שקונים שמים לב אליו.</div>
+        <div class="card-meta"><span>10 ביוני 2026</span></div>
+        <span class="card-read-more">קרא עוד ←</span>
       </a>
-      <a class="blog-card" href="/blog/mobile-detailing-vs-car-wash">
-        <span class="card-tag">Car Care</span>
-        <div class="card-title">Mobile Detailing vs. Car Wash: What's the Real Difference?</div>
-        <div class="card-excerpt">A car wash takes 10 minutes and removes surface dirt. Mobile detailing takes 2–4 hours and restores the car. They are not the same service.</div>
-        <div class="card-meta"><span>June 10, 2026</span></div>
-        <span class="card-read-more">Read article →</span>
+      <a class="blog-card" href="/blog/he/mobile-detailing-vs-car-wash">
+        <span class="card-tag">טיפוח רכב</span>
+        <div class="card-title">דיטיילינג נייד לעומת שטיפת רכב: מה ההבדל האמיתי?</div>
+        <div class="card-excerpt">שטיפת רכב לוקחת 10 דקות ומסירה לכלוך מהמשטח. דיטיילינג נייד לוקח 2–4 שעות ומשחזר את הרכב. הם לא אותו שירות.</div>
+        <div class="card-meta"><span>10 ביוני 2026</span></div>
+        <span class="card-read-more">קרא עוד ←</span>
       </a>
-      <a class="blog-card" href="/blog/how-to-remove-car-odors">
-        <span class="card-tag">Car Care</span>
-        <div class="card-title">How to Remove Car Odors Permanently</div>
-        <div class="card-excerpt">Baking soda masks car odors for a few days. Ozone treatment eliminates them permanently. Here's why DIY methods fail and what actually works.</div>
-        <div class="card-meta"><span>June 10, 2026</span></div>
-        <span class="card-read-more">Read article →</span>
+      <a class="blog-card" href="/blog/he/how-to-remove-car-odors">
+        <span class="card-tag">טיפוח רכב</span>
+        <div class="card-title">איך להסיר ריחות מרכב לצמיתות</div>
+        <div class="card-excerpt">סודה לשתייה מסווה ריחות לכמה ימים. טיפול אוזון מחסל אותם לצמיתות. הנה למה שיטות DIY נכשלות ומה באמת עובד.</div>
+        <div class="card-meta"><span>10 ביוני 2026</span></div>
+        <span class="card-read-more">קרא עוד ←</span>
       </a>
-      <a class="blog-card" href="/blog/interior-car-detailing-guide">
-        <span class="card-tag">Guide</span>
-        <div class="card-title">Interior Car Detailing: Complete Guide to What's Included</div>
-        <div class="card-excerpt">Interior detailing treats every surface in a specific sequence. This guide covers all 6 steps, how long it takes, and what it costs in Israel.</div>
-        <div class="card-meta"><span>June 10, 2026</span></div>
-        <span class="card-read-more">Read article →</span>
+      <a class="blog-card" href="/blog/he/interior-car-detailing-guide">
+        <span class="card-tag">מדריך</span>
+        <div class="card-title">דיטיילינג פנים לרכב: המדריך המלא — מה כולל השירות</div>
+        <div class="card-excerpt">דיטיילינג פנים מטפל בכל משטח בסדר ספציפי. המדריך הזה מכסה את כל 6 השלבים, כמה זמן לוקח ומה זה עולה בישראל.</div>
+        <div class="card-meta"><span>10 ביוני 2026</span></div>
+        <span class="card-read-more">קרא עוד ←</span>
       </a>
     </div>
   </div>
 
   <footer>
     <img src="/images/bms-wordmark-light.png" alt="BMS Detail" />
-    <p style="font-size:13px;color:#888;margin-bottom:16px;"><a href="tel:+972538998195" style="color:#888;text-decoration:none;">053-899-8195</a></p>
+    <p style="font-size:13px;color:#7c8aa0;margin-bottom:16px;"><a href="tel:+972538998195" style="color:#7c8aa0;text-decoration:none;">053-899-8195</a></p>
     <ul class="footer-links">
-      <li><a href="/#cars">Services</a></li>
-      <li><a href="/why-us">Why Us</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/#faq">FAQ</a></li>
-      <li><a href="/#contact">Contact</a></li>
-      <li><a href="/privacy-policy" data-he="מדיניות פרטיות" data-en="Privacy Policy">Privacy Policy</a></li>
+      <li><a href="/#cars">רכבים</a></li>
+      <li><a href="/why-us">למה אנחנו</a></li>
+      <li><a href="/blog">בלוג</a></li>
+      <li><a href="/#faq">שאלות נפוצות</a></li>
+      <li><a href="/#contact">צור קשר</a></li>
+      <li><a href="/privacy-policy">מדיניות פרטיות</a></li>
     </ul>
-    <p class="footer-copy">© 2026 BMS Detail. All rights reserved.</p>
+    <p class="footer-copy">© 2026 BMS Detail. כל הזכויות שמורות.</p>
   </footer>
 
   <script>
     var articles = [
       {
-        tag: "Maintenance",
+        tag: { en: "Maintenance", he: "תחזוקה" },
         title: { en: "How Often Should You Detail Your Car?", he: "כמה פעמים צריך לעשות דיטיילינג לרכב?" },
         excerpt: { en: "Most car owners don't detail often enough. Learn exactly how often your car needs professional care based on your lifestyle, usage, and Israel's climate.", he: "רוב בעלי הרכב לא עושים דיטיילינג מספיק. למד בדיוק כמה פעמים צריך טיפול מקצועי בהתאם לסגנון החיים שלך." },
-        date: "June 10, 2026",
+        date: { en: "June 10, 2026", he: "10 ביוני 2026" },
         lang: { en: "/blog/how-often-to-detail-your-car", he: "/blog/he/how-often-to-detail-your-car" }
       },
       {
-        tag: "Selling Your Car",
+        tag: { en: "Selling Your Car", he: "מכירת רכב" },
         title: { en: "Car Detailing Before Selling: Is It Worth It?", he: "דיטיילינג לפני מכירת רכב: האם זה שווה?" },
         excerpt: { en: "A professional detail before listing your car can increase its perceived value by 5–15%. Here's what buyers notice first and whether it pays.", he: "דיטיילינג מקצועי לפני הצגת הרכב למכירה יכול להעלות את ערכו הנתפס ב-5–15%. הנה מה שקונים שמים לב אליו." },
-        date: "June 10, 2026",
+        date: { en: "June 10, 2026", he: "10 ביוני 2026" },
         lang: { en: "/blog/car-detailing-before-selling", he: "/blog/he/car-detailing-before-selling" }
       },
       {
-        tag: "Car Care",
+        tag: { en: "Car Care", he: "טיפוח רכב" },
         title: { en: "Mobile Detailing vs. Car Wash: What's the Real Difference?", he: "דיטיילינג נייד לעומת שטיפת רכב: מה ההבדל האמיתי?" },
         excerpt: { en: "A car wash takes 10 minutes and removes surface dirt. Mobile detailing takes 2–4 hours and restores the car. They are not the same service.", he: "שטיפת רכב לוקחת 10 דקות ומסירה לכלוך מהמשטח. דיטיילינג נייד לוקח 2–4 שעות ומשחזר את הרכב. הם לא אותו שירות." },
-        date: "June 10, 2026",
+        date: { en: "June 10, 2026", he: "10 ביוני 2026" },
         lang: { en: "/blog/mobile-detailing-vs-car-wash", he: "/blog/he/mobile-detailing-vs-car-wash" }
       },
       {
-        tag: "Car Care",
+        tag: { en: "Car Care", he: "טיפוח רכב" },
         title: { en: "How to Remove Car Odors Permanently", he: "איך להסיר ריחות מרכב לצמיתות" },
         excerpt: { en: "Baking soda masks car odors for a few days. Ozone treatment eliminates them permanently. Here's why DIY methods fail and what actually works.", he: "סודה לשתייה מסווה ריחות לכמה ימים. טיפול אוזון מחסל אותם לצמיתות. הנה למה שיטות DIY נכשלות ומה באמת עובד." },
-        date: "June 10, 2026",
+        date: { en: "June 10, 2026", he: "10 ביוני 2026" },
         lang: { en: "/blog/how-to-remove-car-odors", he: "/blog/he/how-to-remove-car-odors" }
       },
       {
-        tag: "Guide",
+        tag: { en: "Guide", he: "מדריך" },
         title: { en: "Interior Car Detailing: Complete Guide to What's Included", he: "דיטיילינג פנים לרכב: המדריך המלא — מה כולל השירות" },
         excerpt: { en: "Interior detailing treats every surface in a specific sequence. This guide covers all 6 steps, how long it takes, and what it costs in Israel.", he: "דיטיילינג פנים מטפל בכל משטח בסדר ספציפי. המדריך הזה מכסה את כל 6 השלבים, כמה זמן לוקח ומה זה עולה בישראל." },
-        date: "June 10, 2026",
+        date: { en: "June 10, 2026", he: "10 ביוני 2026" },
         lang: { en: "/blog/interior-car-detailing-guide", he: "/blog/he/interior-car-detailing-guide" }
       }
     ];
 
-    var currentLang = "en";
+    var currentLang = "he";
+    var readMore = { en: "Read article →", he: "קרא עוד ←" };
+    var emptyMsg = { en: "Articles coming soon — check back shortly.", he: "מאמרים בקרוב — חזרו לבקר בקרוב." };
 
     function setLang(lang) {
       currentLang = lang;
       document.getElementById("btn-en").classList.toggle("active", lang === "en");
       document.getElementById("btn-he").classList.toggle("active", lang === "he");
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "he" ? "rtl" : "ltr";
       renderGrid();
     }
 
     function renderGrid() {
       var grid = document.getElementById("blog-grid");
       if (articles.length === 0) {
-        grid.innerHTML = '<div class="blog-empty"><p>Articles coming soon — check back shortly.</p></div>';
+        grid.innerHTML = '<div class="blog-empty"><p>' + emptyMsg[currentLang] + '</p></div>';
         return;
       }
       grid.innerHTML = articles.map(function(a) {
         var url = a.lang[currentLang];
         var title = a.title[currentLang];
         var excerpt = a.excerpt[currentLang];
+        var tag = a.tag[currentLang];
         return '<a class="blog-card" href="' + url + '">'
-          + '<span class="card-tag">' + a.tag + '</span>'
+          + '<span class="card-tag">' + tag + '</span>'
           + '<div class="card-title">' + title + '</div>'
           + '<div class="card-excerpt">' + excerpt + '</div>'
-          + '<div class="card-meta"><span>' + a.date + '</span></div>'
-          + '<span class="card-read-more">Read article →</span>'
+          + '<div class="card-meta"><span>' + a.date[currentLang] + '</span></div>'
+          + '<span class="card-read-more">' + readMore[currentLang] + '</span>'
           + '</a>';
       }).join('');
     }
