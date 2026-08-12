@@ -711,15 +711,15 @@
 
       var submitBtn = document.getElementById("bs-submit");
       submitBtn.disabled = false;
-      submitBtn.textContent = "הזמן עכשיו · ₪" + pkgPrice;
+      submitBtn.textContent = "הזמן עכשיו · החל מ-₪" + pkgPrice;
       submitBtn.style.display = "";
       document.getElementById("bs-form-body").style.display = "";
       document.getElementById("bs-success").style.display = "none";
 
       document.getElementById("bs-pkg-name").textContent = pkgName;
-      document.getElementById("bs-pkg-price").textContent = "₪" + pkgPrice;
+      document.getElementById("bs-pkg-price").textContent = "החל מ-₪" + pkgPrice;
       var arrEl = document.getElementById("bs-pkg-arrival");
-      if (arrEl) arrEl.style.display = pkgPrice > 199 ? "" : "none";
+      if (arrEl) arrEl.style.display = "none";
 
       overlay.classList.add("bs-open");
       document.body.style.overflow = "hidden";
@@ -751,10 +751,10 @@
 
     // Generic "Book Now" buttons (hero CTA etc.)
     document.querySelectorAll(".btn-book").forEach(function (el) {
-      el.addEventListener("click", function (e) { e.preventDefault(); openSheet("קלאסיק", 199, []); });
+      el.addEventListener("click", function (e) { e.preventDefault(); openSheet("דיטייל", 500, []); });
     });
 
-    _openBookingModal = function () { openSheet("קלאסיק", 199, []); };
+    _openBookingModal = function () { openSheet("דיטייל", 500, []); };
   }
 
   /* ── Init ── */

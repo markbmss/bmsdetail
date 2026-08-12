@@ -29,7 +29,7 @@
   --font: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
   font-family: var(--font);
@@ -338,10 +338,13 @@ ul { list-style: none; }
 
 .pkg-price-row { display: flex; align-items: baseline; gap: 8px; margin: 8px 0 4px; }
 .pkg-was { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+.pkg-price-from { font-size: 13px; color: var(--muted); }
 .pkg-price { font-size: 28px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; }
 .pkg-price-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .pkg-arrival-note { font-size: 11px; color: #e55; margin-bottom: 14px; }
 .pkg-arrival-incl { font-size: 11px; color: #4ade80; margin-bottom: 14px; }
+.pkg-size-note { font-size: 11px; color: var(--muted); margin-bottom: 14px; }
+.pkg-steps { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius: 20px; padding: 3px 10px; margin-bottom: 10px; }
 .addon-price-was { color: var(--muted); font-size: 0.85em; margin-inline-end: 2px; }
 
 .package-card {
@@ -523,39 +526,26 @@ body[lang="he"] .pkg-features li::before { left: auto; right: 0; }
 }
 .process-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
-/* ── COMING SOON ── */
-.section-coming {
-  background: #0b0907;
-  min-height: 380px;
-  display: flex; align-items: center; justify-content: center; text-align: center;
+/* ── WHAT'S NEXT STRIP ── */
+.next-strip {
+  background: var(--brand-surface);
   border-top: 1px solid var(--brand-border);
   border-bottom: 1px solid var(--brand-border);
+  padding: 20px 0;
 }
-.section-shop { background: #0d0a06; }
-.section-coming.section-yacht {
-  background: var(--yacht-bg);
-  background-image: radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.12) 0%, transparent 65%);
+.next-strip-inner {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; flex-wrap: wrap;
 }
-.section-coming.section-yacht .section-tag {
-  background: rgba(56,189,248,0.1);
-  color: var(--yacht-accent);
-  border: 1px solid var(--yacht-border);
+.next-strip-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--silver);
 }
-.coming-inner { padding: 60px 24px; max-width: 540px; }
-.coming-inner .section-tag { background: rgba(255,255,255,0.05); color: var(--silver); border: 1px solid var(--brand-border); }
-.section-coming.section-yacht .coming-inner .section-tag {
-  background: rgba(56,189,248,0.1);
-  color: var(--yacht-accent);
-  border: 1px solid var(--yacht-border);
+.next-strip-items { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.next-strip-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--muted);
 }
-.coming-badge-large {
-  display: inline-block; font-size: 11px; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  padding: 8px 20px; border-radius: 20px;
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--gold); background: rgba(201,168,76,0.06); margin: 20px 0;
-}
-.coming-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
 
 /* ── ABOUT ── */
 .section-about { background: var(--brand-bg); }
@@ -1005,6 +995,13 @@ body[lang="he"] .addon-card { padding: 18px 18px 18px 44px; }
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 48px;
+}
+.cars-aftercare-note {
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: -24px;
+  margin-bottom: 8px;
 }
 .photo-slot {
   aspect-ratio: 4 / 3;
