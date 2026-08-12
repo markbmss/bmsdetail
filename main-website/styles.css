@@ -1,20 +1,22 @@
+@import url('fonts.css');
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --brand-bg: #0e0b08;
-  --brand-surface: #171210;
-  --brand-border: rgba(240,228,208,0.09);
-  --cream: #f2e6d4;
-  --silver: #a89880;
+  --brand-bg: #0a1628;
+  --brand-surface: #11213a;
+  --brand-border: rgba(238,241,246,0.08);
+  --cream: #eef1f6;
+  --silver: #a3b1c2;
   --gold: #c9a84c;
   --gold-light: #e2c97e;
   --white: #ffffff;
-  --muted: rgba(240,228,208,0.48);
+  --muted: rgba(238,241,246,0.5);
 
-  --cars-bg: #0c0a07;
-  --cars-surface: #131008;
-  --cars-accent: #d0c0a8;
-  --cars-border: rgba(220,200,180,0.1);
+  --cars-bg: #091320;
+  --cars-surface: #101d33;
+  --cars-accent: #b7c3d3;
+  --cars-border: rgba(200,214,230,0.1);
 
   --yacht-bg: #040c18;
   --yacht-surface: #081422;
@@ -24,10 +26,10 @@
   --radius: 16px;
   --radius-sm: 10px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --font: 'Inter', -apple-system, sans-serif;
+  --font: 'Heebo', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
   font-family: var(--font);
@@ -209,7 +211,6 @@ ul { list-style: none; }
 .hero .scroll-line {
   background: linear-gradient(to bottom, rgba(190,210,240,0.45), transparent);
 }
-#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
 .hero-dot-grid {
   position: absolute; inset: 0; z-index: 1;
   background-image: radial-gradient(rgba(192,208,232,0.13) 1px, transparent 1px);
@@ -336,10 +337,13 @@ ul { list-style: none; }
 
 .pkg-price-row { display: flex; align-items: baseline; gap: 8px; margin: 8px 0 4px; }
 .pkg-was { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+.pkg-price-from { font-size: 13px; color: var(--muted); }
 .pkg-price { font-size: 28px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; }
 .pkg-price-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .pkg-arrival-note { font-size: 11px; color: #e55; margin-bottom: 14px; }
 .pkg-arrival-incl { font-size: 11px; color: #4ade80; margin-bottom: 14px; }
+.pkg-size-note { font-size: 11px; color: var(--muted); margin-bottom: 14px; }
+.pkg-steps { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; color: var(--gold); background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius: 20px; padding: 3px 10px; margin-bottom: 10px; }
 .addon-price-was { color: var(--muted); font-size: 0.85em; margin-inline-end: 2px; }
 
 .package-card {
@@ -418,9 +422,50 @@ body[lang="he"] .pkg-features li::before { left: auto; right: 0; }
 .section-yacht .btn-pkg-featured { background: var(--yacht-accent); color: #fff; }
 .section-yacht .btn-pkg-featured:hover { background: #38bdf8; }
 
+/* ── AUDIENCE FORK ── */
+.audience-fork {
+  padding: 56px 0 64px;
+  background: var(--brand-surface);
+  border-bottom: 1px solid var(--brand-border);
+}
+.fork-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.fork-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 32px;
+  border-radius: var(--radius);
+  border: 1px solid var(--brand-border);
+  background: var(--brand-bg);
+  transition: var(--transition);
+}
+.fork-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-2px); }
+.fork-card-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); }
+.fork-card-title { font-size: 22px; font-weight: 700; color: var(--white); }
+.fork-card-desc { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
+.fork-card-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: 999px;
+  font-size: 14px; font-weight: 600;
+  transition: var(--transition);
+}
+.fork-card-b2c .fork-card-cta { background: var(--gold); color: #0a1628; }
+.fork-card-b2c .fork-card-cta:hover { background: var(--gold-light); }
+.fork-card-b2b { border-color: var(--silver); }
+.fork-card-b2b .fork-card-cta { background: transparent; border: 1.5px solid var(--silver); color: var(--cream); }
+.fork-card-b2b .fork-card-cta:hover { border-color: var(--cream); background: rgba(238,241,246,0.06); }
+@media (max-width: 720px) {
+  .fork-grid { grid-template-columns: 1fr; }
+}
+
 /* ── STATS STRIP ── */
 .stats-strip {
-  background: #0e0b08;
+  background: var(--brand-bg);
   border-bottom: 1px solid var(--brand-border);
   padding: 32px 0;
 }
@@ -462,6 +507,7 @@ body[lang="he"] .pkg-features li::before { left: auto; right: 0; }
   border-radius: var(--radius);
   overflow: hidden;
 }
+#value .process-grid { grid-template-columns: repeat(2, 1fr); }
 .process-step {
   padding: 40px 36px;
   background: var(--brand-bg);
@@ -479,39 +525,26 @@ body[lang="he"] .pkg-features li::before { left: auto; right: 0; }
 }
 .process-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
-/* ── COMING SOON ── */
-.section-coming {
-  background: #0b0907;
-  min-height: 380px;
-  display: flex; align-items: center; justify-content: center; text-align: center;
+/* ── WHAT'S NEXT STRIP ── */
+.next-strip {
+  background: var(--brand-surface);
   border-top: 1px solid var(--brand-border);
   border-bottom: 1px solid var(--brand-border);
+  padding: 20px 0;
 }
-.section-shop { background: #0d0a06; }
-.section-coming.section-yacht {
-  background: var(--yacht-bg);
-  background-image: radial-gradient(ellipse at 50% 0%, rgba(56,189,248,0.12) 0%, transparent 65%);
+.next-strip-inner {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; flex-wrap: wrap;
 }
-.section-coming.section-yacht .section-tag {
-  background: rgba(56,189,248,0.1);
-  color: var(--yacht-accent);
-  border: 1px solid var(--yacht-border);
+.next-strip-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--silver);
 }
-.coming-inner { padding: 60px 24px; max-width: 540px; }
-.coming-inner .section-tag { background: rgba(255,255,255,0.05); color: var(--silver); border: 1px solid var(--brand-border); }
-.section-coming.section-yacht .coming-inner .section-tag {
-  background: rgba(56,189,248,0.1);
-  color: var(--yacht-accent);
-  border: 1px solid var(--yacht-border);
+.next-strip-items { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.next-strip-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--muted);
 }
-.coming-badge-large {
-  display: inline-block; font-size: 11px; font-weight: 700;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  padding: 8px 20px; border-radius: 20px;
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--gold); background: rgba(201,168,76,0.06); margin: 20px 0;
-}
-.coming-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
 
 /* ── ABOUT ── */
 .section-about { background: var(--brand-bg); }
@@ -589,7 +622,7 @@ body[lang="he"] .form-select { background-position: left 16px center; padding-ri
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
 .footer-links a { font-size: 14px; color: var(--muted); transition: color var(--transition); }
 .footer-links a:hover { color: var(--white); }
-.footer-bottom { text-align: center; font-size: 12px; color: rgba(255,255,255,0.2); padding-top: 24px; border-top: 1px solid var(--brand-border); }
+.footer-bottom { text-align: center; font-size: 12px; color: var(--muted); padding-top: 24px; border-top: 1px solid var(--brand-border); }
 
 /* ── WHATSAPP ── */
 .wa-float {
@@ -651,7 +684,7 @@ body[lang="he"] .ig-float { left: auto; right: 28px; }
   .packages-grid .package-card:nth-child(n) { grid-column: auto; }
   .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
   .gallery-item { height: 200px; }
-  .process-grid { grid-template-columns: 1fr; }
+  .process-grid, #value .process-grid { grid-template-columns: 1fr; }
   .process-step { padding: 32px 28px; }
   .stats-strip-inner { flex-wrap: wrap; }
   .strip-stat { flex: 0 0 50%; padding: 20px; }
@@ -961,6 +994,13 @@ body[lang="he"] .addon-card { padding: 18px 18px 18px 44px; }
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 48px;
+}
+.cars-aftercare-note {
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: -24px;
+  margin-bottom: 8px;
 }
 .photo-slot {
   aspect-ratio: 4 / 3;
