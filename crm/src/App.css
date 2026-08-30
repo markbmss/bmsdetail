@@ -124,6 +124,10 @@
   margin: 0 auto;
 }
 
+.authed-shell main:has(.board) {
+  max-width: 1400px;
+}
+
 .today-status {
   padding: 24px;
   color: var(--text-muted);
@@ -475,4 +479,109 @@
   border-radius: 8px;
   background: var(--surface);
   color: var(--text);
+}
+
+.view-toggle {
+  display: flex;
+  gap: 4px;
+  padding-right: 8px;
+  margin-right: 4px;
+  border-right: 1px solid var(--border);
+}
+
+/* Kanban board */
+
+.board {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  align-items: flex-start;
+}
+
+.board-column {
+  flex: 0 0 220px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 120px;
+}
+
+.board-column-over {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+}
+
+.board-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0 2px;
+}
+
+.board-column-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.board-column-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 60px;
+}
+
+.board-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: grab;
+  touch-action: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.board-card-dragging {
+  cursor: grabbing;
+  box-shadow: var(--shadow, 0 4px 12px rgba(0, 0, 0, 0.3));
+  opacity: 0.9;
+}
+
+.board-card-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.board-card-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.board-card-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.board-card-source {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.board-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.board-card-convert {
+  padding: 4px 10px;
+  font-size: 12px;
 }

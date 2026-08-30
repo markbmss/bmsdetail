@@ -1,18 +1,30 @@
 import { useEffect, useState } from 'react'
 import type { Lead, LeadStatus } from '../lib/types'
-import { fetchLeads, createLead, updateLead, convertLead, type LeadInput, type ConvertInput } from '../lib/leads'
+import {
+  fetchLeads,
+  createLead,
+  updateLead,
+  updateLeadStatus,
+  convertLead,
+  type LeadInput,
+  type ConvertInput,
+} from '../lib/leads'
 import { waLink } from '../lib/dates'
 import LeadForm from '../components/LeadForm'
 import ConvertLeadModal from '../components/ConvertLeadModal'
 import ImportLeadsModal from '../components/ImportLeadsModal'
+import LeadsBoard from '../components/LeadsBoard'
 
 const FILTERS: Array<LeadStatus | 'all'> = ['all', 'new', 'contacted', 'quoted', 'booked', 'done', 'lost']
+
+type View = 'board' | 'list'
 
 export default function Leads() {
   const [leads, setLeads] = useState<Lead[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [filter, setFilter] = useState<LeadStatus | 'all'>('all')
+  const [view, setView] = useState<View>('board')
 
   const [editing, setEditing] = useState<Lead | null>(null)
   const [creating, setCreating] = useState(false)
@@ -55,21 +67,47 @@ export default function Leads() {
     await reload()
   }
 
+  async function handleStatusChange(id: string, status: LeadStatus) {
+    const previous = leads
+    setLeads((ls) => ls.map((l) => (l.id === id ? { ...l, status } : l)))
+    try {
+      await updateLeadStatus(id, status)
+    } catch (err) {
+      setLeads(previous)
+      setError((err as Error).message)
+    }
+  }
+
   const visible = filter === 'all' ? leads : leads.filter((l) => l.status === filter)
 
   return (
     <div className="leads-page">
       <div className="leads-header">
         <div className="leads-filters">
-          {FILTERS.map((f) => (
+          <div className="view-toggle">
             <button
-              key={f}
-              className={f === filter ? 'filter-btn filter-btn-active' : 'filter-btn'}
-              onClick={() => setFilter(f)}
+              className={view === 'board' ? 'filter-btn filter-btn-active' : 'filter-btn'}
+              onClick={() => setView('board')}
             >
-              {f}
+              Board
             </button>
-          ))}
+            <button
+              className={view === 'list' ? 'filter-btn filter-btn-active' : 'filter-btn'}
+              onClick={() => setView('list')}
+            >
+              List
+            </button>
+          </div>
+          {view === 'list' &&
+            FILTERS.map((f) => (
+              <button
+                key={f}
+                className={f === filter ? 'filter-btn filter-btn-active' : 'filter-btn'}
+                onClick={() => setFilter(f)}
+              >
+                {f}
+              </button>
+            ))}
         </div>
         <div className="leads-header-actions">
           <button className="btn-secondary" onClick={() => setImporting(true)}>
@@ -82,7 +120,16 @@ export default function Leads() {
       {loading && <p className="today-status">Loading leads…</p>}
       {error && <p className="today-status today-error">Error: {error}</p>}
 
-      {!loading && !error && (
+      {!loading && !error && view === 'board' && (
+        <LeadsBoard
+          leads={leads}
+          onStatusChange={handleStatusChange}
+          onOpenLead={setEditing}
+          onConvert={setConverting}
+        />
+      )}
+
+      {!loading && !error && view === 'list' && (
         <ul className="leads-list">
           {visible.length === 0 && <p className="reminder-empty">No leads in this view.</p>}
           {visible.map((lead) => {

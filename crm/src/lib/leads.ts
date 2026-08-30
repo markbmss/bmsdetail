@@ -10,6 +10,11 @@ export async function fetchLeads(): Promise<Lead[]> {
   return data as Lead[]
 }
 
+export async function updateLeadStatus(id: string, status: LeadStatus): Promise<void> {
+  const { error } = await supabase.from('leads').update({ status }).eq('id', id)
+  if (error) throw error
+}
+
 export type LeadInput = {
   name: string
   phone: string
