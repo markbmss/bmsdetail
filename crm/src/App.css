@@ -585,3 +585,128 @@
   padding: 4px 10px;
   font-size: 12px;
 }
+
+/* Customers */
+
+.customers-search {
+  flex: 1;
+  max-width: 360px;
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.customer-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.customer-header h1 {
+  font-size: 22px;
+  margin: 0 0 4px;
+}
+
+.customer-header-meta {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.customer-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.section-add-btn {
+  margin-left: 12px;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.car-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.car-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.car-card-header .lead-row-name,
+.car-card-header .lead-row-meta {
+  display: block;
+}
+
+.coatings-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.coating-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 12px;
+  background: var(--bg);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.coating-status {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.coating-status-ok {
+  color: #16a34a;
+}
+
+.coating-status-due,
+.coating-status-expired {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.coating-status-expiring {
+  color: #d97706;
+  font-weight: 600;
+}
+
+.coating-status-unknown {
+  color: var(--text-muted);
+}
