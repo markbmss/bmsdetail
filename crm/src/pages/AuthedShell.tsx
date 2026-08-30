@@ -1,5 +1,6 @@
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
+import Today from './Today'
 
 export default function AuthedShell() {
   const { session } = useAuth()
@@ -14,7 +15,7 @@ export default function AuthedShell() {
         </div>
       </header>
       <main>
-        <p>Logged in. Today dashboard, Leads, and Customers screens come next.</p>
+        <Today />
       </main>
     </div>
   )
