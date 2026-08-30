@@ -4,6 +4,7 @@ import { fetchLeads, createLead, updateLead, convertLead, type LeadInput, type C
 import { waLink } from '../lib/dates'
 import LeadForm from '../components/LeadForm'
 import ConvertLeadModal from '../components/ConvertLeadModal'
+import ImportLeadsModal from '../components/ImportLeadsModal'
 
 const FILTERS: Array<LeadStatus | 'all'> = ['all', 'new', 'contacted', 'quoted', 'booked', 'done', 'lost']
 
@@ -16,6 +17,7 @@ export default function Leads() {
   const [editing, setEditing] = useState<Lead | null>(null)
   const [creating, setCreating] = useState(false)
   const [converting, setConverting] = useState<Lead | null>(null)
+  const [importing, setImporting] = useState(false)
 
   async function reload() {
     setLoading(true)
@@ -69,7 +71,12 @@ export default function Leads() {
             </button>
           ))}
         </div>
-        <button onClick={() => setCreating(true)}>+ New lead</button>
+        <div className="leads-header-actions">
+          <button className="btn-secondary" onClick={() => setImporting(true)}>
+            Import CSV
+          </button>
+          <button onClick={() => setCreating(true)}>+ New lead</button>
+        </div>
       </div>
 
       {loading && <p className="today-status">Loading leads…</p>}
@@ -111,6 +118,15 @@ export default function Leads() {
       {editing && <LeadForm lead={editing} onClose={() => setEditing(null)} onSave={handleUpdate} />}
       {converting && (
         <ConvertLeadModal lead={converting} onClose={() => setConverting(null)} onConvert={handleConvert} />
+      )}
+      {importing && (
+        <ImportLeadsModal
+          onClose={() => setImporting(false)}
+          onDone={() => {
+            setImporting(false)
+            reload()
+          }}
+        />
       )}
     </div>
   )

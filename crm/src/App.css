@@ -267,6 +267,11 @@
   border-color: var(--accent);
 }
 
+.leads-header-actions {
+  display: flex;
+  gap: 8px;
+}
+
 .leads-header > button,
 .form-actions button[type='submit'] {
   padding: 8px 16px;
