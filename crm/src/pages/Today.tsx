@@ -10,7 +10,7 @@ import {
   type WarrantyExpiringItem,
 } from '../lib/reminders'
 import type { B2BAccount } from '../lib/types'
-import { waLink } from '../lib/dates'
+import { waLink, callLink } from '../lib/dates'
 
 type State = {
   loading: boolean
@@ -93,14 +93,13 @@ export default function Today() {
       <ReminderSection title="Ceramic booster due" count={state.boosterDue.length}>
         {state.boosterDue.map(({ coating, nextBoosterDate }) => {
           const customer = coating.car?.customer
-          const phone = waLink(customer?.phone)
           return (
             <Row
               key={coating.id}
               primary={customer?.name ?? 'Unknown customer'}
               secondary={[coating.car?.make_model, coating.product].filter(Boolean).join(' · ')}
               due={`due ${nextBoosterDate}`}
-              phoneLink={phone}
+              phone={customer?.phone}
             />
           )
         })}
@@ -109,14 +108,13 @@ export default function Today() {
       <ReminderSection title="Warranty expiring (30d)" count={state.warrantyExpiring.length}>
         {state.warrantyExpiring.map(({ coating, warrantyEndDate }) => {
           const customer = coating.car?.customer
-          const phone = waLink(customer?.phone)
           return (
             <Row
               key={coating.id}
               primary={customer?.name ?? 'Unknown customer'}
               secondary={[coating.car?.make_model, coating.product].filter(Boolean).join(' · ')}
               due={`expires ${warrantyEndDate}`}
-              phoneLink={phone}
+              phone={customer?.phone}
             />
           )
         })}
@@ -129,7 +127,7 @@ export default function Today() {
             primary={account.name ?? 'Unnamed account'}
             secondary={account.contact_name ?? ''}
             due={`renews ${account.renewal_date}`}
-            phoneLink={waLink(account.phone)}
+            phone={account.phone}
           />
         ))}
       </ReminderSection>
@@ -160,13 +158,15 @@ function Row({
   primary,
   secondary,
   due,
-  phoneLink,
+  phone,
 }: {
   primary: string
   secondary: string
   due: string
-  phoneLink: string | null
+  phone?: string | null
 }) {
+  const wa = waLink(phone)
+  const call = callLink(phone)
   return (
     <li className="reminder-row">
       <div className="reminder-row-main">
@@ -174,8 +174,13 @@ function Row({
         {secondary && <span className="reminder-row-secondary">{secondary}</span>}
       </div>
       <span className="reminder-row-due">{due}</span>
-      {phoneLink && (
-        <a className="reminder-row-wa" href={phoneLink} target="_blank" rel="noreferrer">
+      {call && (
+        <a className="reminder-row-call" href={call} title="Call">
+          Call
+        </a>
+      )}
+      {wa && (
+        <a className="reminder-row-wa" href={wa} target="_blank" rel="noreferrer">
           WhatsApp
         </a>
       )}
@@ -191,7 +196,7 @@ function FollowupLeadRow({ item }: { item: Extract<FollowupItem, { kind: 'lead' 
       primary={lead.name ?? 'Unnamed lead'}
       secondary={secondary}
       due={`due ${lead.next_followup ?? ''}${lead.source ? ` · ${lead.source}` : ''}`}
-      phoneLink={waLink(lead.phone)}
+      phone={lead.phone}
     />
   )
 }
@@ -203,7 +208,6 @@ function FollowupTaskRow({ item }: { item: Extract<FollowupItem, { kind: 'task' 
       primary={task.title ?? 'Untitled task'}
       secondary={task.notes ?? ''}
       due={`due ${task.due_date ?? ''}`}
-      phoneLink={null}
     />
   )
 }

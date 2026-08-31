@@ -14,7 +14,7 @@ import {
   type CoatingInput,
 } from '../lib/customers'
 import { getCoatingStatus } from '../lib/coatingStatus'
-import { waLink } from '../lib/dates'
+import { waLink, callLink } from '../lib/dates'
 import CustomerForm from '../components/CustomerForm'
 import CarForm from '../components/CarForm'
 import CoatingForm from '../components/CoatingForm'
@@ -84,7 +84,8 @@ export default function CustomerDetail() {
   if (!data) return null
 
   const { customer, cars, coatings, jobs } = data
-  const phone = waLink(customer.phone)
+  const wa = waLink(customer.phone)
+  const call = callLink(customer.phone)
 
   return (
     <div className="customer-detail">
@@ -101,8 +102,13 @@ export default function CustomerDetail() {
           {customer.notes && <p className="form-hint">{customer.notes}</p>}
         </div>
         <div className="customer-header-actions">
-          {phone && (
-            <a className="reminder-row-wa" href={phone} target="_blank" rel="noreferrer">
+          {call && (
+            <a className="reminder-row-call" href={call} title="Call">
+              Call
+            </a>
+          )}
+          {wa && (
+            <a className="reminder-row-wa" href={wa} target="_blank" rel="noreferrer">
               WhatsApp
             </a>
           )}

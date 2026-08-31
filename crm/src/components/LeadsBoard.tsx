@@ -8,7 +8,8 @@ import {
   type DragEndEvent,
 } from '@dnd-kit/core'
 import type { Lead, LeadStatus } from '../lib/types'
-import { waLink, relativeTime } from '../lib/dates'
+import { waLink, callLink, relativeTime } from '../lib/dates'
+import { isFollowupDue } from '../lib/leads'
 
 const COLUMNS: LeadStatus[] = ['new', 'contacted', 'quoted', 'booked', 'done', 'lost']
 
@@ -94,8 +95,10 @@ function BoardCard({
   onConvert: (lead: Lead) => void
 }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id: lead.id })
-  const phone = waLink(lead.phone)
+  const wa = waLink(lead.phone)
+  const call = callLink(lead.phone)
   const canConvert = !lead.customer_id && lead.status !== 'lost'
+  const followupDue = isFollowupDue(lead)
 
   const style = transform
     ? {
@@ -113,7 +116,10 @@ function BoardCard({
       {...attributes}
     >
       <div className="board-card-main" onClick={() => onOpen(lead)}>
-        <span className="board-card-name">{lead.name ?? 'Unnamed lead'}</span>
+        <span className="board-card-name">
+          {followupDue && <span className="urgency-dot" title="Follow-up due" />}
+          {lead.name ?? 'Unnamed lead'}
+        </span>
         <span className="board-card-meta">
           {[lead.city, lead.service_interest].filter(Boolean).join(' · ')}
         </span>
@@ -122,10 +128,20 @@ function BoardCard({
         </span>
       </div>
       <div className="board-card-actions">
-        {phone && (
+        {call && (
+          <a
+            className="reminder-row-call"
+            href={call}
+            onClick={(e) => e.stopPropagation()}
+            title="Call"
+          >
+            Call
+          </a>
+        )}
+        {wa && (
           <a
             className="reminder-row-wa"
-            href={phone}
+            href={wa}
             target="_blank"
             rel="noreferrer"
             onClick={(e) => e.stopPropagation()}

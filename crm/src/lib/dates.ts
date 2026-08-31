@@ -23,6 +23,13 @@ export function waLink(phone: string | null | undefined): string | null {
   return `https://wa.me/${international}`
 }
 
+/** tel: link from a stored phone number, for one-tap calling. */
+export function callLink(phone: string | null | undefined): string | null {
+  if (!phone) return null
+  const digits = phone.replace(/[^\d+]/g, '')
+  return digits ? `tel:${digits}` : null
+}
+
 export function daysBetween(fromISO: string, toISO: string): number {
   const from = new Date(fromISO + 'T00:00:00Z')
   const to = new Date(toISO + 'T00:00:00Z')

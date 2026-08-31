@@ -6,10 +6,11 @@ import {
   updateLead,
   updateLeadStatus,
   convertLead,
+  isFollowupDue,
   type LeadInput,
   type ConvertInput,
 } from '../lib/leads'
-import { waLink, relativeTime } from '../lib/dates'
+import { waLink, callLink, relativeTime } from '../lib/dates'
 import LeadForm from '../components/LeadForm'
 import ConvertLeadModal from '../components/ConvertLeadModal'
 import ImportLeadsModal from '../components/ImportLeadsModal'
@@ -24,6 +25,7 @@ export default function Leads() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [filter, setFilter] = useState<LeadStatus | 'all'>('all')
+  const [search, setSearch] = useState('')
   const [view, setView] = useState<View>('board')
 
   const [editing, setEditing] = useState<Lead | null>(null)
@@ -78,7 +80,15 @@ export default function Leads() {
     }
   }
 
-  const visible = filter === 'all' ? leads : leads.filter((l) => l.status === filter)
+  const searched = search.trim()
+    ? leads.filter(
+        (l) =>
+          (l.name ?? '').toLowerCase().includes(search.toLowerCase()) ||
+          (l.phone ?? '').includes(search) ||
+          (l.city ?? '').toLowerCase().includes(search.toLowerCase()),
+      )
+    : leads
+  const visible = filter === 'all' ? searched : searched.filter((l) => l.status === filter)
 
   return (
     <div className="leads-page">
@@ -110,6 +120,12 @@ export default function Leads() {
             ))}
         </div>
         <div className="leads-header-actions">
+          <input
+            className="customers-search"
+            placeholder="Search by name, phone, or city…"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <button className="btn-secondary" onClick={() => setImporting(true)}>
             Import CSV
           </button>
@@ -122,7 +138,7 @@ export default function Leads() {
 
       {!loading && !error && view === 'board' && (
         <LeadsBoard
-          leads={leads}
+          leads={searched}
           onStatusChange={handleStatusChange}
           onOpenLead={setEditing}
           onConvert={setConverting}
@@ -133,12 +149,16 @@ export default function Leads() {
         <ul className="leads-list">
           {visible.length === 0 && <p className="reminder-empty">No leads in this view.</p>}
           {visible.map((lead) => {
-            const phone = waLink(lead.phone)
+            const wa = waLink(lead.phone)
+            const call = callLink(lead.phone)
             const canConvert = !lead.customer_id && lead.status !== 'lost'
             return (
               <li key={lead.id} className="lead-row">
                 <div className="lead-row-main" onClick={() => setEditing(lead)}>
-                  <span className="lead-row-name">{lead.name ?? 'Unnamed lead'}</span>
+                  <span className="lead-row-name">
+                    {isFollowupDue(lead) && <span className="urgency-dot" title="Follow-up due" />}
+                    {lead.name ?? 'Unnamed lead'}
+                  </span>
                   <span className="lead-row-meta">
                     {[lead.city, lead.service_interest, lead.source].filter(Boolean).join(' · ')}
                   </span>
@@ -146,8 +166,13 @@ export default function Leads() {
                 <span className="reminder-row-due">{relativeTime(lead.created_at)}</span>
                 <span className={`status-badge status-${lead.status}`}>{lead.status}</span>
                 {lead.customer_id && <span className="converted-badge">converted</span>}
-                {phone && (
-                  <a className="reminder-row-wa" href={phone} target="_blank" rel="noreferrer">
+                {call && (
+                  <a className="reminder-row-call" href={call} title="Call">
+                    Call
+                  </a>
+                )}
+                {wa && (
+                  <a className="reminder-row-wa" href={wa} target="_blank" rel="noreferrer">
                     WhatsApp
                   </a>
                 )}

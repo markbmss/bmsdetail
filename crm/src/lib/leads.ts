@@ -1,5 +1,6 @@
 import { supabase } from './supabaseClient'
 import type { Lead, LeadStatus } from './types'
+import { todayISO } from './dates'
 
 export async function fetchLeads(): Promise<Lead[]> {
   const { data, error } = await supabase
@@ -13,6 +14,13 @@ export async function fetchLeads(): Promise<Lead[]> {
 export async function updateLeadStatus(id: string, status: LeadStatus): Promise<void> {
   const { error } = await supabase.from('leads').update({ status }).eq('id', id)
   if (error) throw error
+}
+
+/** True when this lead would show up in Today's "Follow-ups due" list — same rule, applied per-card. */
+export function isFollowupDue(lead: Lead): boolean {
+  if (lead.status === 'done' || lead.status === 'lost') return false
+  if (!lead.next_followup) return false
+  return lead.next_followup <= todayISO()
 }
 
 export type LeadInput = {
