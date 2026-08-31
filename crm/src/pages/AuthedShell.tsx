@@ -5,12 +5,14 @@ import Today from './Today'
 import Leads from './Leads'
 import Customers from './Customers'
 import CustomerDetail from './CustomerDetail'
+import NewLeadNotifier from '../components/NewLeadNotifier'
 
 export default function AuthedShell() {
   const { session } = useAuth()
 
   return (
     <div className="authed-shell">
+      <NewLeadNotifier />
       <header>
         <div className="authed-shell-brand">
           <span>BMS Detail CRM</span>
