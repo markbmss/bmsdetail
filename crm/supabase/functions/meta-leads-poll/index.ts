@@ -116,6 +116,8 @@ async function insertLeadIfNew(lead: GraphLead): Promise<boolean> {
     service_interest: serviceInterest || null,
     source: 'meta',
     status: 'new',
+    // Use Meta's real lead-creation time, not whenever this poll happened to run.
+    created_at: lead.created_time,
     notes: `${tag} Raw form fields: ${JSON.stringify(fields)}`,
   })
   if (insertError) throw insertError

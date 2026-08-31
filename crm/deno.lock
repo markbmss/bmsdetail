@@ -9,12 +9,15 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@dnd-kit/core@^6.3.1",
         "npm:@supabase/supabase-js@^2.112.4",
         "npm:@types/node@^24.13.3",
+        "npm:@types/papaparse@^5.5.2",
         "npm:@types/react-dom@^19.2.4",
         "npm:@types/react@^19.2.18",
         "npm:@vitejs/plugin-react@^6.1.0",
         "npm:oxlint@^1.79.0",
+        "npm:papaparse@^5.7.0",
         "npm:react-dom@^19.2.8",
         "npm:react-router-dom@^7.18.3",
         "npm:react@^19.2.8",

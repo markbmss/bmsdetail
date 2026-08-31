@@ -11,6 +11,7 @@ import {
 
 const FIELDS: Array<{ key: keyof ColumnMapping; label: string; required: boolean }> = [
   { key: 'id', label: 'Meta lead ID (for de-dup on re-import)', required: false },
+  { key: 'createdTime', label: 'Created time (for accurate "time joined")', required: false },
   { key: 'name', label: 'Name', required: true },
   { key: 'phone', label: 'Phone', required: false },
   { key: 'city', label: 'City', required: false },

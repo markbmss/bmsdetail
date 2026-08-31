@@ -1,5 +1,6 @@
 import Papa from 'papaparse'
 import { supabase } from './supabaseClient'
+import { parseMetaCsvDate } from './dates'
 
 export type ParsedCsv = {
   headers: string[]
@@ -17,6 +18,7 @@ export function parseCsv(text: string): ParsedCsv {
 
 export type ColumnMapping = {
   id: string | null // Meta's lead id column, used for dedup tagging
+  createdTime: string | null // Meta's real lead-creation timestamp, not our insert time
   name: string | null
   phone: string | null
   city: string | null
@@ -26,6 +28,7 @@ export type ColumnMapping = {
 
 const CANDIDATES: Record<keyof ColumnMapping, string[]> = {
   id: ['id', 'lead_id', 'מזהה'],
+  createdTime: ['created', 'created_time', 'created time', 'date created', 'תאריך יצירה'],
   name: ['full_name', 'name', 'שם מלא', 'שם'],
   phone: ['phone_number', 'phone', 'טלפון', 'מספר טלפון'],
   city: ['city', 'עיר'],
@@ -44,6 +47,7 @@ export function guessMapping(headers: string[]): ColumnMapping {
   }
   return {
     id: find(CANDIDATES.id),
+    createdTime: find(CANDIDATES.createdTime),
     name: find(CANDIDATES.name),
     phone: find(CANDIDATES.phone),
     city: find(CANDIDATES.city),
@@ -88,6 +92,7 @@ export async function importLeads(
       const city = mapping.city ? row[mapping.city] : null
       const car = mapping.car ? row[mapping.car] : null
       const serviceInterest = mapping.serviceInterest ? row[mapping.serviceInterest] : null
+      const createdAt = mapping.createdTime ? parseMetaCsvDate(row[mapping.createdTime] ?? '') : null
 
       const { error: insertError } = await supabase.from('leads').insert({
         name: name || null,
@@ -97,6 +102,10 @@ export async function importLeads(
         service_interest: serviceInterest || null,
         source: 'meta',
         status: 'new',
+        // Use Meta's real creation time when we have it, so "time joined" in
+        // the UI reflects when the lead actually came in, not when we
+        // happened to run this import.
+        ...(createdAt ? { created_at: createdAt } : {}),
         notes: tag ? `${tag} Raw row: ${JSON.stringify(row)}` : `Imported from CSV. Raw row: ${JSON.stringify(row)}`,
       })
       if (insertError) throw insertError

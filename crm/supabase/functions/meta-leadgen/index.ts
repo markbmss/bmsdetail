@@ -97,11 +97,11 @@ function extractLeadgenIds(payload: MetaWebhookPayload): string[] {
 }
 
 type GraphLeadField = { name: string; values?: string[] }
-type GraphLeadResponse = { id: string; field_data?: GraphLeadField[] }
+type GraphLeadResponse = { id: string; created_time: string; field_data?: GraphLeadField[] }
 
 async function processLead(leadgenId: string) {
   const res = await fetch(
-    `https://graph.facebook.com/v21.0/${leadgenId}?access_token=${PAGE_ACCESS_TOKEN}`,
+    `https://graph.facebook.com/v21.0/${leadgenId}?fields=id,created_time,field_data&access_token=${PAGE_ACCESS_TOKEN}`,
   )
   if (!res.ok) {
     throw new Error(`Graph API error ${res.status}: ${await res.text()}`)
@@ -130,6 +130,8 @@ async function processLead(leadgenId: string) {
     service_interest: serviceInterest || null,
     source: 'meta',
     status: 'new',
+    // Use Meta's real lead-creation time, not whenever the webhook delivered.
+    created_at: lead.created_time,
     notes: `Meta lead ${leadgenId}. Raw form fields: ${JSON.stringify(fields)}`,
   })
   if (error) throw error

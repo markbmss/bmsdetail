@@ -25,6 +25,10 @@
 // Expected JSON body:
 //   {
 //     "external_id": "1234567890",   // optional, used for de-dup on repeat delivery
+//     "created_time": "2026-08-30T06:44:00+03:00", // optional, ISO 8601 — the
+//                                     // lead's real creation time (e.g. from
+//                                     // Make's Facebook Lead Ads trigger),
+//                                     // not whenever this request arrives
 //     "name": "Yossi Cohen",
 //     "phone": "0501234567",
 //     "city": "Herzliya",
@@ -43,6 +47,7 @@ const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY)
 
 type IntakeBody = {
   external_id?: string
+  created_time?: string // Meta's real lead-creation timestamp, e.g. from the Facebook Lead Ads trigger's own "Created" field
   name?: string
   phone?: string
   city?: string
@@ -84,6 +89,11 @@ Deno.serve(async (req) => {
     }
   }
 
+  // Use the caller's real creation timestamp when given and valid, rather
+  // than defaulting to whenever this request happened to arrive.
+  const createdAt =
+    body.created_time && !Number.isNaN(new Date(body.created_time).getTime()) ? body.created_time : undefined
+
   const { data, error } = await supabase
     .from('leads')
     .insert({
@@ -94,6 +104,7 @@ Deno.serve(async (req) => {
       service_interest: body.service_interest || null,
       source: body.source || 'meta',
       status: 'new',
+      ...(createdAt ? { created_at: createdAt } : {}),
       notes: tag ? `${tag} Delivered via leads-intake.` : 'Delivered via leads-intake.',
     })
     .select()
