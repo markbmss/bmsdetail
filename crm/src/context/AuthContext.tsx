@@ -17,10 +17,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session)
       setLoading(false)
+      // Realtime's RLS check uses its own auth token, not the REST client's
+      // session automatically — without this, postgres_changes subscriptions
+      // silently receive nothing even though .subscribe() reports SUBSCRIBED.
+      if (data.session) supabase.realtime.setAuth(data.session.access_token)
     })
 
     const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
       setSession(newSession)
+      supabase.realtime.setAuth(newSession?.access_token ?? null)
     })
 
     return () => listener.subscription.unsubscribe()
