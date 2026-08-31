@@ -28,3 +28,22 @@ export function daysBetween(fromISO: string, toISO: string): number {
   const to = new Date(toISO + 'T00:00:00Z')
   return Math.round((to.getTime() - from.getTime()) / 86_400_000)
 }
+
+/** Relative "time joined" label from a timestamptz string, e.g. "5m ago", "3h ago", "2d ago". */
+export function relativeTime(timestamp: string): string {
+  const then = new Date(timestamp).getTime()
+  const now = Date.now()
+  const seconds = Math.max(0, Math.round((now - then) / 1000))
+
+  if (seconds < 60) return 'just now'
+  const minutes = Math.round(seconds / 60)
+  if (minutes < 60) return `${minutes}m ago`
+  const hours = Math.round(minutes / 60)
+  if (hours < 24) return `${hours}h ago`
+  const days = Math.round(hours / 24)
+  if (days < 30) return `${days}d ago`
+  const months = Math.round(days / 30)
+  if (months < 12) return `${months}mo ago`
+  const years = Math.round(months / 12)
+  return `${years}y ago`
+}

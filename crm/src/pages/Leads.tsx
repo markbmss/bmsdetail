@@ -9,7 +9,7 @@ import {
   type LeadInput,
   type ConvertInput,
 } from '../lib/leads'
-import { waLink } from '../lib/dates'
+import { waLink, relativeTime } from '../lib/dates'
 import LeadForm from '../components/LeadForm'
 import ConvertLeadModal from '../components/ConvertLeadModal'
 import ImportLeadsModal from '../components/ImportLeadsModal'
@@ -143,6 +143,7 @@ export default function Leads() {
                     {[lead.city, lead.service_interest, lead.source].filter(Boolean).join(' · ')}
                   </span>
                 </div>
+                <span className="reminder-row-due">{relativeTime(lead.created_at)}</span>
                 <span className={`status-badge status-${lead.status}`}>{lead.status}</span>
                 {lead.customer_id && <span className="converted-badge">converted</span>}
                 {phone && (

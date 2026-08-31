@@ -1,6 +1,14 @@
-import { DndContext, useDraggable, useDroppable, type DragEndEvent } from '@dnd-kit/core'
+import {
+  DndContext,
+  useDraggable,
+  useDroppable,
+  useSensor,
+  useSensors,
+  PointerSensor,
+  type DragEndEvent,
+} from '@dnd-kit/core'
 import type { Lead, LeadStatus } from '../lib/types'
-import { waLink } from '../lib/dates'
+import { waLink, relativeTime } from '../lib/dates'
 
 const COLUMNS: LeadStatus[] = ['new', 'contacted', 'quoted', 'booked', 'done', 'lost']
 
@@ -15,6 +23,12 @@ export default function LeadsBoard({
   onOpenLead: (lead: Lead) => void
   onConvert: (lead: Lead) => void
 }) {
+  // Without a distance constraint, dnd-kit treats any pointer movement (even
+  // a click's natural 1-2px jitter) as a drag, which swallows onClick on the
+  // card. Requiring 8px of movement before a drag activates lets plain
+  // clicks (open lead) and real drags (change status) coexist.
+  const sensors = useSensors(useSensor(PointerSensor, { activationConstraint: { distance: 8 } }))
+
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event
     if (!over) return
@@ -26,7 +40,7 @@ export default function LeadsBoard({
   }
 
   return (
-    <DndContext onDragEnd={handleDragEnd}>
+    <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       <div className="board">
         {COLUMNS.map((status) => (
           <BoardColumn
@@ -103,7 +117,9 @@ function BoardCard({
         <span className="board-card-meta">
           {[lead.city, lead.service_interest].filter(Boolean).join(' · ')}
         </span>
-        {lead.source && <span className="board-card-source">{lead.source}</span>}
+        <span className="board-card-source">
+          {[lead.source, relativeTime(lead.created_at)].filter(Boolean).join(' · ')}
+        </span>
       </div>
       <div className="board-card-actions">
         {phone && (
