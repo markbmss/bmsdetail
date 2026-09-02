@@ -9,7 +9,7 @@ import {
 } from '@dnd-kit/core'
 import type { Lead, LeadStatus } from '../lib/types'
 import { waLink, callLink, relativeTime } from '../lib/dates'
-import { isFollowupDue } from '../lib/leads'
+import { isFollowupDue, leadStatusLabel } from '../lib/leads'
 
 const COLUMNS: LeadStatus[] = ['new', 'contacted', 'quoted', 'booked', 'done', 'lost']
 
@@ -73,7 +73,7 @@ function BoardColumn({
   return (
     <div ref={setNodeRef} className={isOver ? 'board-column board-column-over' : 'board-column'}>
       <div className="board-column-header">
-        <span className={`status-badge status-${status}`}>{status}</span>
+        <span className={`status-badge status-${status}`}>{leadStatusLabel(status)}</span>
         <span className="board-column-count">{leads.length}</span>
       </div>
       <div className="board-column-cards">
@@ -117,8 +117,8 @@ function BoardCard({
     >
       <div className="board-card-main" onClick={() => onOpen(lead)}>
         <span className="board-card-name">
-          {followupDue && <span className="urgency-dot" title="Follow-up due" />}
-          {lead.name ?? 'Unnamed lead'}
+          {followupDue && <span className="urgency-dot" title="מעקב לביצוע" />}
+          {lead.name ?? 'ליד ללא שם'}
         </span>
         <span className="board-card-meta">
           {[lead.city, lead.service_interest].filter(Boolean).join(' · ')}
@@ -133,9 +133,9 @@ function BoardCard({
             className="reminder-row-call"
             href={call}
             onClick={(e) => e.stopPropagation()}
-            title="Call"
+            title="התקשר"
           >
-            Call
+            התקשר
           </a>
         )}
         {wa && (
@@ -149,7 +149,7 @@ function BoardCard({
             WhatsApp
           </a>
         )}
-        {lead.customer_id && <span className="converted-badge">converted</span>}
+        {lead.customer_id && <span className="converted-badge">הומר</span>}
         {canConvert && (
           <button
             className="btn-secondary board-card-convert"
@@ -158,7 +158,7 @@ function BoardCard({
               onConvert(lead)
             }}
           >
-            Convert
+            המרה
           </button>
         )}
       </div>

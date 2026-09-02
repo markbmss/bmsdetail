@@ -55,21 +55,21 @@ export function parseMetaCsvDate(value: string): string | null {
   return `${yyyy}-${mm.padStart(2, '0')}-${dd.padStart(2, '0')}T${String(hour).padStart(2, '0')}:${min}:00${offset}`
 }
 
-/** Relative "time joined" label from a timestamptz string, e.g. "5m ago", "3h ago", "2d ago". */
+/** Relative "time joined" label from a timestamptz string, e.g. "לפני 5 דק'", "לפני 3 שע'", "לפני יומיים". */
 export function relativeTime(timestamp: string): string {
   const then = new Date(timestamp).getTime()
   const now = Date.now()
   const seconds = Math.max(0, Math.round((now - then) / 1000))
 
-  if (seconds < 60) return 'just now'
+  if (seconds < 60) return 'הרגע'
   const minutes = Math.round(seconds / 60)
-  if (minutes < 60) return `${minutes}m ago`
+  if (minutes < 60) return `לפני ${minutes} דק'`
   const hours = Math.round(minutes / 60)
-  if (hours < 24) return `${hours}h ago`
+  if (hours < 24) return `לפני ${hours} שע'`
   const days = Math.round(hours / 24)
-  if (days < 30) return `${days}d ago`
+  if (days < 30) return `לפני ${days} ימים`
   const months = Math.round(days / 30)
-  if (months < 12) return `${months}mo ago`
+  if (months < 12) return `לפני ${months} חוד'`
   const years = Math.round(months / 12)
-  return `${years}y ago`
+  return `לפני ${years} שנים`
 }

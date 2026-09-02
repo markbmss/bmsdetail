@@ -43,37 +43,37 @@ export default function CustomerForm({
   }
 
   return (
-    <Modal title={customer ? 'Edit customer' : 'New customer'} onClose={onClose}>
+    <Modal title={customer ? 'עריכת לקוח' : 'לקוח חדש'} onClose={onClose}>
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Name *
+          שם *
           <input value={input.name} onChange={(e) => set('name', e.target.value)} required />
         </label>
         <div className="form-row">
           <label>
-            Phone
-            <input value={input.phone} onChange={(e) => set('phone', e.target.value)} />
+            טלפון
+            <input dir="ltr" value={input.phone} onChange={(e) => set('phone', e.target.value)} />
           </label>
           <label>
-            Email
-            <input value={input.email} onChange={(e) => set('email', e.target.value)} />
+            אימייל
+            <input dir="ltr" value={input.email} onChange={(e) => set('email', e.target.value)} />
           </label>
         </div>
         <label>
-          City
+          עיר
           <input value={input.city} onChange={(e) => set('city', e.target.value)} />
         </label>
         <label>
-          Notes
+          הערות
           <textarea value={input.notes} onChange={(e) => set('notes', e.target.value)} rows={3} />
         </label>
         {error && <p className="form-error">{error}</p>}
         <div className="form-actions">
           <button type="button" className="btn-secondary" onClick={onClose}>
-            Cancel
+            ביטול
           </button>
           <button type="submit" disabled={saving}>
-            {saving ? 'Saving…' : 'Save'}
+            {saving ? 'שומר…' : 'שמירה'}
           </button>
         </div>
       </form>

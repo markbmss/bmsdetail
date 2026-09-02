@@ -7,7 +7,7 @@ import './App.css'
 function Gate() {
   const { session, loading } = useAuth()
 
-  if (loading) return <div className="app-loading">Loading…</div>
+  if (loading) return <div className="app-loading">טוען…</div>
   return session ? <AuthedShell /> : <Login />
 }
 

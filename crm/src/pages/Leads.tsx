@@ -7,6 +7,7 @@ import {
   updateLeadStatus,
   convertLead,
   isFollowupDue,
+  leadStatusLabel,
   type LeadInput,
   type ConvertInput,
 } from '../lib/leads'
@@ -17,6 +18,15 @@ import ImportLeadsModal from '../components/ImportLeadsModal'
 import LeadsBoard from '../components/LeadsBoard'
 
 const FILTERS: Array<LeadStatus | 'all'> = ['all', 'new', 'contacted', 'quoted', 'booked', 'done', 'lost']
+const FILTER_LABELS: Record<LeadStatus | 'all', string> = {
+  all: 'הכל',
+  new: 'חדש',
+  contacted: 'בטיפול',
+  quoted: 'הצעת מחיר',
+  booked: 'נקבע',
+  done: 'הושלם',
+  lost: 'אבוד',
+}
 
 type View = 'board' | 'list'
 
@@ -99,13 +109,13 @@ export default function Leads() {
               className={view === 'board' ? 'filter-btn filter-btn-active' : 'filter-btn'}
               onClick={() => setView('board')}
             >
-              Board
+              לוח
             </button>
             <button
               className={view === 'list' ? 'filter-btn filter-btn-active' : 'filter-btn'}
               onClick={() => setView('list')}
             >
-              List
+              רשימה
             </button>
           </div>
           {view === 'list' &&
@@ -115,26 +125,26 @@ export default function Leads() {
                 className={f === filter ? 'filter-btn filter-btn-active' : 'filter-btn'}
                 onClick={() => setFilter(f)}
               >
-                {f}
+                {FILTER_LABELS[f]}
               </button>
             ))}
         </div>
         <div className="leads-header-actions">
           <input
             className="customers-search"
-            placeholder="Search by name, phone, or city…"
+            placeholder="חיפוש לפי שם, טלפון או עיר…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           <button className="btn-secondary" onClick={() => setImporting(true)}>
-            Import CSV
+            ייבוא CSV
           </button>
-          <button onClick={() => setCreating(true)}>+ New lead</button>
+          <button onClick={() => setCreating(true)}>+ ליד חדש</button>
         </div>
       </div>
 
-      {loading && <p className="today-status">Loading leads…</p>}
-      {error && <p className="today-status today-error">Error: {error}</p>}
+      {loading && <p className="today-status">טוען לידים…</p>}
+      {error && <p className="today-status today-error">שגיאה: {error}</p>}
 
       {!loading && !error && view === 'board' && (
         <LeadsBoard
@@ -147,7 +157,7 @@ export default function Leads() {
 
       {!loading && !error && view === 'list' && (
         <ul className="leads-list">
-          {visible.length === 0 && <p className="reminder-empty">No leads in this view.</p>}
+          {visible.length === 0 && <p className="reminder-empty">אין לידים בתצוגה זו.</p>}
           {visible.map((lead) => {
             const wa = waLink(lead.phone)
             const call = callLink(lead.phone)
@@ -156,19 +166,19 @@ export default function Leads() {
               <li key={lead.id} className="lead-row">
                 <div className="lead-row-main" onClick={() => setEditing(lead)}>
                   <span className="lead-row-name">
-                    {isFollowupDue(lead) && <span className="urgency-dot" title="Follow-up due" />}
-                    {lead.name ?? 'Unnamed lead'}
+                    {isFollowupDue(lead) && <span className="urgency-dot" title="מעקב לביצוע" />}
+                    {lead.name ?? 'ליד ללא שם'}
                   </span>
                   <span className="lead-row-meta">
                     {[lead.city, lead.service_interest, lead.source].filter(Boolean).join(' · ')}
                   </span>
                 </div>
                 <span className="reminder-row-due">{relativeTime(lead.created_at)}</span>
-                <span className={`status-badge status-${lead.status}`}>{lead.status}</span>
-                {lead.customer_id && <span className="converted-badge">converted</span>}
+                <span className={`status-badge status-${lead.status}`}>{leadStatusLabel(lead.status)}</span>
+                {lead.customer_id && <span className="converted-badge">הומר</span>}
                 {call && (
-                  <a className="reminder-row-call" href={call} title="Call">
-                    Call
+                  <a className="reminder-row-call" href={call} title="התקשר">
+                    התקשר
                   </a>
                 )}
                 {wa && (
@@ -178,7 +188,7 @@ export default function Leads() {
                 )}
                 {canConvert && (
                   <button className="btn-secondary" onClick={() => setConverting(lead)}>
-                    Convert
+                    המרה
                   </button>
                 )}
               </li>

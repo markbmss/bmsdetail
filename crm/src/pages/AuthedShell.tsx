@@ -18,25 +18,25 @@ export default function AuthedShell() {
           <span>BMS Detail CRM</span>
           <nav>
             <NavLink to="/" end className={({ isActive }) => (isActive ? 'nav-link nav-link-active' : 'nav-link')}>
-              Today
+              היום
             </NavLink>
             <NavLink
               to="/leads"
               className={({ isActive }) => (isActive ? 'nav-link nav-link-active' : 'nav-link')}
             >
-              Leads
+              לידים
             </NavLink>
             <NavLink
               to="/customers"
               className={({ isActive }) => (isActive ? 'nav-link nav-link-active' : 'nav-link')}
             >
-              Customers
+              לקוחות
             </NavLink>
           </nav>
         </div>
         <div className="authed-shell-user">
           <span>{session?.user.email}</span>
-          <button onClick={() => supabase.auth.signOut()}>Sign out</button>
+          <button onClick={() => supabase.auth.signOut()}>התנתקות</button>
         </div>
       </header>
       <main>

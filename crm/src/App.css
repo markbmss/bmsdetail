@@ -1,3 +1,11 @@
+/* Isolates LTR content (phone numbers, emails) embedded inside RTL text —
+   without this, bidi resolution can visually misplace symbols like the
+   leading "+" in a phone number. */
+.ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
 .app-loading {
   display: flex;
   align-items: center;
@@ -312,7 +320,7 @@
   height: 7px;
   border-radius: 999px;
   background: var(--danger);
-  margin-right: 6px;
+  margin-inline-end: 6px;
   vertical-align: middle;
 }
 
@@ -607,9 +615,9 @@
 .view-toggle {
   display: flex;
   gap: 4px;
-  padding-right: 12px;
-  margin-right: 8px;
-  border-right: 1px solid var(--border);
+  padding-inline-end: 12px;
+  margin-inline-end: 8px;
+  border-inline-end: 1px solid var(--border);
 }
 
 /* Kanban board */
@@ -619,11 +627,16 @@
   gap: 12px;
   overflow-x: auto;
   padding-bottom: 8px;
-  align-items: flex-start;
+  align-items: stretch;
+  /* Caps the board to the visible viewport so columns scroll internally
+     instead of the whole page growing with the longest column. */
+  height: calc(100svh - 190px);
 }
 
 .board-column {
   flex: 0 0 230px;
+  display: flex;
+  flex-direction: column;
   background: rgba(255, 255, 255, 0.015);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -643,6 +656,7 @@
   justify-content: space-between;
   margin-bottom: 12px;
   padding: 0 2px;
+  flex-shrink: 0;
 }
 
 .board-column-count {
@@ -655,6 +669,12 @@
   flex-direction: column;
   gap: 8px;
   min-height: 60px;
+  /* flex-basis 0 + overflow lets this shrink and scroll within the column's
+     bounded height, rather than pushing the column (and page) taller. */
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding-inline-end: 4px;
 }
 
 .board-card {
@@ -774,7 +794,7 @@
 }
 
 .section-add-btn {
-  margin-left: 12px;
+  margin-inline-start: 12px;
   padding: 4px 12px;
   font-size: 12px;
 }

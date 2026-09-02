@@ -49,19 +49,19 @@ export default function Customers() {
       <div className="leads-header">
         <input
           className="customers-search"
-          placeholder="Search by name, phone, or city…"
+          placeholder="חיפוש לפי שם, טלפון או עיר…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button onClick={() => setCreating(true)}>+ New customer</button>
+        <button onClick={() => setCreating(true)}>+ לקוח חדש</button>
       </div>
 
-      {loading && <p className="today-status">Loading customers…</p>}
-      {error && <p className="today-status today-error">Error: {error}</p>}
+      {loading && <p className="today-status">טוען לקוחות…</p>}
+      {error && <p className="today-status today-error">שגיאה: {error}</p>}
 
       {!loading && !error && (
         <ul className="leads-list">
-          {visible.length === 0 && <p className="reminder-empty">No customers found.</p>}
+          {visible.length === 0 && <p className="reminder-empty">לא נמצאו לקוחות.</p>}
           {visible.map((c) => {
             const wa = waLink(c.phone)
             const call = callLink(c.phone)
@@ -69,11 +69,15 @@ export default function Customers() {
               <li key={c.id} className="lead-row">
                 <div className="lead-row-main" onClick={() => navigate(`/customers/${c.id}`)}>
                   <span className="lead-row-name">{c.name}</span>
-                  <span className="lead-row-meta">{[c.city, c.phone].filter(Boolean).join(' · ')}</span>
+                  <span className="lead-row-meta">
+                    {c.city}
+                    {c.city && c.phone && ' · '}
+                    {c.phone && <span className="ltr">{c.phone}</span>}
+                  </span>
                 </div>
                 {call && (
-                  <a className="reminder-row-call" href={call} title="Call">
-                    Call
+                  <a className="reminder-row-call" href={call} title="התקשר">
+                    התקשר
                   </a>
                 )}
                 {wa && (

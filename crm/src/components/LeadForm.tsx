@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import type { Lead, LeadStatus } from '../lib/types'
-import type { LeadInput } from '../lib/leads'
+import { LEAD_STATUS_LABELS, type LeadInput } from '../lib/leads'
 import Modal from './Modal'
 
 const STATUSES: LeadStatus[] = ['new', 'contacted', 'quoted', 'booked', 'done', 'lost']
@@ -49,33 +49,33 @@ export default function LeadForm({
   }
 
   return (
-    <Modal title={lead ? 'Edit lead' : 'New lead'} onClose={onClose}>
+    <Modal title={lead ? 'עריכת ליד' : 'ליד חדש'} onClose={onClose}>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form-row">
           <label>
-            Name
+            שם
             <input value={input.name} onChange={(e) => set('name', e.target.value)} />
           </label>
           <label>
-            Phone
-            <input value={input.phone} onChange={(e) => set('phone', e.target.value)} />
+            טלפון
+            <input dir="ltr" value={input.phone} onChange={(e) => set('phone', e.target.value)} />
           </label>
         </div>
         <div className="form-row">
           <label>
-            Source
+            מקור
             <input
               value={input.source}
               onChange={(e) => set('source', e.target.value)}
-              placeholder="ad / instant-form / whatsapp / referral"
+              placeholder="מודעה / טופס / whatsapp / הפניה"
             />
           </label>
           <label>
-            Status
+            סטטוס
             <select value={input.status} onChange={(e) => set('status', e.target.value as LeadStatus)}>
               {STATUSES.map((s) => (
                 <option key={s} value={s}>
-                  {s}
+                  {LEAD_STATUS_LABELS[s]}
                 </option>
               ))}
             </select>
@@ -83,24 +83,24 @@ export default function LeadForm({
         </div>
         <div className="form-row">
           <label>
-            Car
+            רכב
             <input value={input.car} onChange={(e) => set('car', e.target.value)} />
           </label>
           <label>
-            City
+            עיר
             <input value={input.city} onChange={(e) => set('city', e.target.value)} />
           </label>
         </div>
         <div className="form-row">
           <label>
-            Service interest
+            תחום עניין
             <input
               value={input.service_interest}
               onChange={(e) => set('service_interest', e.target.value)}
             />
           </label>
           <label>
-            Next follow-up
+            מעקב הבא
             <input
               type="date"
               value={input.next_followup}
@@ -109,16 +109,16 @@ export default function LeadForm({
           </label>
         </div>
         <label>
-          Notes
+          הערות
           <textarea value={input.notes} onChange={(e) => set('notes', e.target.value)} rows={3} />
         </label>
         {error && <p className="form-error">{error}</p>}
         <div className="form-actions">
           <button type="button" className="btn-secondary" onClick={onClose}>
-            Cancel
+            ביטול
           </button>
           <button type="submit" disabled={saving}>
-            {saving ? 'Saving…' : 'Save'}
+            {saving ? 'שומר…' : 'שמירה'}
           </button>
         </div>
       </form>

@@ -44,19 +44,19 @@ export default function CoatingForm({
   }
 
   return (
-    <Modal title={coating ? 'Edit coating' : 'Add coating'} onClose={onClose}>
+    <Modal title={coating ? 'עריכת ציפוי' : 'הוספת ציפוי'} onClose={onClose}>
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Product
+          מוצר
           <input
             value={input.product}
             onChange={(e) => set('product', e.target.value)}
-            placeholder="e.g. 3D Graphene 3yr"
+            placeholder="למשל: 3D Graphene 3 שנים"
           />
         </label>
         <div className="form-row">
           <label>
-            Applied date
+            תאריך יישום
             <input
               type="date"
               value={input.applied_date}
@@ -64,7 +64,7 @@ export default function CoatingForm({
             />
           </label>
           <label>
-            Last booster date
+            תאריך בוסטר אחרון
             <input
               type="date"
               value={input.last_booster_date}
@@ -74,7 +74,7 @@ export default function CoatingForm({
         </div>
         <div className="form-row">
           <label>
-            Warranty (months)
+            אחריות (חודשים)
             <input
               type="number"
               value={input.warranty_months}
@@ -82,7 +82,7 @@ export default function CoatingForm({
             />
           </label>
           <label>
-            Booster interval (days)
+            מרווח בוסטר (ימים)
             <input
               type="number"
               value={input.booster_interval_days}
@@ -91,16 +91,16 @@ export default function CoatingForm({
           </label>
         </div>
         <label>
-          Notes
+          הערות
           <textarea value={input.notes} onChange={(e) => set('notes', e.target.value)} rows={2} />
         </label>
         {error && <p className="form-error">{error}</p>}
         <div className="form-actions">
           <button type="button" className="btn-secondary" onClick={onClose}>
-            Cancel
+            ביטול
           </button>
           <button type="submit" disabled={saving}>
-            {saving ? 'Saving…' : 'Save'}
+            {saving ? 'שומר…' : 'שמירה'}
           </button>
         </div>
       </form>

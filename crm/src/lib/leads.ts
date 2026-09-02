@@ -16,6 +16,21 @@ export async function updateLeadStatus(id: string, status: LeadStatus): Promise<
   if (error) throw error
 }
 
+// Display-only Hebrew labels — the underlying DB enum values stay English
+// (lead_status), so status filtering/CSS classes/API calls are unaffected.
+export const LEAD_STATUS_LABELS: Record<LeadStatus, string> = {
+  new: 'חדש',
+  contacted: 'בטיפול',
+  quoted: 'הצעת מחיר',
+  booked: 'נקבע',
+  done: 'הושלם',
+  lost: 'אבוד',
+}
+
+export function leadStatusLabel(status: LeadStatus): string {
+  return LEAD_STATUS_LABELS[status]
+}
+
 /** True when this lead would show up in Today's "Follow-ups due" list — same rule, applied per-card. */
 export function isFollowupDue(lead: Lead): boolean {
   if (lead.status === 'done' || lead.status === 'lost') return false
@@ -95,7 +110,7 @@ export async function convertLead(lead: Lead, input: ConvertInput) {
   const { data: customer, error: customerError } = await supabase
     .from('customers')
     .insert({
-      name: input.customerName || lead.name || 'Unnamed customer',
+      name: input.customerName || lead.name || 'לקוח ללא שם',
       phone: input.customerPhone || lead.phone || null,
       city: input.customerCity || lead.city || null,
     })

@@ -1,5 +1,16 @@
 import { supabase } from './supabaseClient'
-import type { Customer, Car, Coating, Job } from './types'
+import type { Customer, Car, Coating, Job, JobStatus } from './types'
+
+export const JOB_STATUS_LABELS: Record<JobStatus, string> = {
+  scheduled: 'מתוכנן',
+  done: 'הושלם',
+  paid: 'שולם',
+  cancelled: 'בוטל',
+}
+
+export function jobStatusLabel(status: JobStatus): string {
+  return JOB_STATUS_LABELS[status]
+}
 
 export async function fetchCustomers(): Promise<Customer[]> {
   const { data, error } = await supabase.from('customers').select('*').order('name', { ascending: true })

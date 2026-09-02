@@ -14,6 +14,7 @@ import {
   type CoatingInput,
 } from '../lib/customers'
 import { getCoatingStatus } from '../lib/coatingStatus'
+import { jobStatusLabel } from '../lib/customers'
 import { waLink, callLink } from '../lib/dates'
 import CustomerForm from '../components/CustomerForm'
 import CarForm from '../components/CarForm'
@@ -79,8 +80,8 @@ export default function CustomerDetail() {
     await reload()
   }
 
-  if (loading) return <p className="today-status">Loading customer…</p>
-  if (error) return <p className="today-status today-error">Error: {error}</p>
+  if (loading) return <p className="today-status">טוען לקוח…</p>
+  if (error) return <p className="today-status today-error">שגיאה: {error}</p>
   if (!data) return null
 
   const { customer, cars, coatings, jobs } = data
@@ -90,21 +91,35 @@ export default function CustomerDetail() {
   return (
     <div className="customer-detail">
       <Link to="/customers" className="back-link">
-        ← Customers
+        → לקוחות
       </Link>
 
       <div className="customer-header">
         <div>
           <h1>{customer.name}</h1>
           <p className="customer-header-meta">
-            {[customer.city, customer.phone, customer.email].filter(Boolean).join(' · ')}
+            {[
+              customer.city,
+              customer.phone && (
+                <span key="phone" className="ltr">
+                  {customer.phone}
+                </span>
+              ),
+              customer.email && (
+                <span key="email" className="ltr">
+                  {customer.email}
+                </span>
+              ),
+            ]
+              .filter(Boolean)
+              .flatMap((part, i) => (i === 0 ? [part] : [' · ', part]))}
           </p>
           {customer.notes && <p className="form-hint">{customer.notes}</p>}
         </div>
         <div className="customer-header-actions">
           {call && (
-            <a className="reminder-row-call" href={call} title="Call">
-              Call
+            <a className="reminder-row-call" href={call} title="התקשר">
+              התקשר
             </a>
           )}
           {wa && (
@@ -113,20 +128,20 @@ export default function CustomerDetail() {
             </a>
           )}
           <button className="btn-secondary" onClick={() => setEditingCustomer(true)}>
-            Edit
+            עריכה
           </button>
         </div>
       </div>
 
       <section className="reminder-section">
         <h2>
-          Cars <span className="reminder-count">{cars.length}</span>
+          רכבים <span className="reminder-count">{cars.length}</span>
           <button className="btn-secondary section-add-btn" onClick={() => setAddingCar(true)}>
-            + Add car
+            + הוספת רכב
           </button>
         </h2>
 
-        {cars.length === 0 && <p className="reminder-empty">No cars on file.</p>}
+        {cars.length === 0 && <p className="reminder-empty">אין רכבים רשומים.</p>}
 
         {cars.map((car) => {
           const carCoatings = coatings.filter((c) => c.car_id === car.id)
@@ -134,30 +149,30 @@ export default function CustomerDetail() {
             <div key={car.id} className="car-card">
               <div className="car-card-header">
                 <div>
-                  <span className="lead-row-name">{car.make_model ?? 'Unnamed car'}</span>
+                  <span className="lead-row-name">{car.make_model ?? 'רכב ללא שם'}</span>
                   <span className="lead-row-meta">
                     {[car.plate, car.color, car.year].filter(Boolean).join(' · ')}
                   </span>
                 </div>
                 <div className="customer-header-actions">
                   <button className="btn-secondary" onClick={() => setAddingCoatingForCar(car.id)}>
-                    + Add coating
+                    + הוספת ציפוי
                   </button>
                   <button className="btn-secondary" onClick={() => setEditingCar(car)}>
-                    Edit
+                    עריכה
                   </button>
                 </div>
               </div>
 
               {carCoatings.length === 0 ? (
-                <p className="reminder-empty">No coatings on file for this car.</p>
+                <p className="reminder-empty">אין ציפויים רשומים לרכב זה.</p>
               ) : (
                 <ul className="coatings-list">
                   {carCoatings.map((coating) => {
                     const status = getCoatingStatus(coating)
                     return (
                       <li key={coating.id} className="coating-row" onClick={() => setEditingCoating(coating)}>
-                        <span className="board-card-name">{coating.product ?? 'Coating'}</span>
+                        <span className="board-card-name">{coating.product ?? 'ציפוי'}</span>
                         <span className={`coating-status coating-status-${status.boosterLevel}`}>
                           {status.boosterLabel}
                         </span>
@@ -176,19 +191,19 @@ export default function CustomerDetail() {
 
       <section className="reminder-section">
         <h2>
-          Job history <span className="reminder-count">{jobs.length}</span>
+          היסטוריית עבודות <span className="reminder-count">{jobs.length}</span>
         </h2>
         {jobs.length === 0 ? (
-          <p className="reminder-empty">No jobs on file yet.</p>
+          <p className="reminder-empty">אין עבודות רשומות עדיין.</p>
         ) : (
           <ul className="leads-list">
             {jobs.map((job) => (
               <li key={job.id} className="lead-row">
                 <div className="lead-row-main">
-                  <span className="lead-row-name">{job.service ?? 'Job'}</span>
-                  <span className="lead-row-meta">{job.job_date ?? 'No date'}</span>
+                  <span className="lead-row-name">{job.service ?? 'עבודה'}</span>
+                  <span className="lead-row-meta">{job.job_date ?? 'ללא תאריך'}</span>
                 </div>
-                <span className={`status-badge status-${job.status}`}>{job.status}</span>
+                <span className={`status-badge status-${job.status}`}>{jobStatusLabel(job.status)}</span>
                 {job.price != null && <span className="lead-row-meta">₪{job.price}</span>}
               </li>
             ))}

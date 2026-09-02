@@ -10,13 +10,13 @@ import {
 } from '../lib/csvImport'
 
 const FIELDS: Array<{ key: keyof ColumnMapping; label: string; required: boolean }> = [
-  { key: 'id', label: 'Meta lead ID (for de-dup on re-import)', required: false },
-  { key: 'createdTime', label: 'Created time (for accurate "time joined")', required: false },
-  { key: 'name', label: 'Name', required: true },
-  { key: 'phone', label: 'Phone', required: false },
-  { key: 'city', label: 'City', required: false },
-  { key: 'car', label: 'Car', required: false },
-  { key: 'serviceInterest', label: 'Service interest', required: false },
+  { key: 'id', label: 'מזהה ליד ב-Meta (למניעת כפילויות בייבוא חוזר)', required: false },
+  { key: 'createdTime', label: 'זמן יצירה (לדיוק ב"זמן הצטרפות")', required: false },
+  { key: 'name', label: 'שם', required: true },
+  { key: 'phone', label: 'טלפון', required: false },
+  { key: 'city', label: 'עיר', required: false },
+  { key: 'car', label: 'רכב', required: false },
+  { key: 'serviceInterest', label: 'תחום עניין', required: false },
 ]
 
 export default function ImportLeadsModal({
@@ -43,7 +43,7 @@ export default function ImportLeadsModal({
         const text = String(reader.result)
         const csv = parseCsv(text)
         if (csv.rows.length === 0) {
-          setError('No rows found in that CSV.')
+          setError('לא נמצאו שורות בקובץ ה-CSV.')
           return
         }
         setParsed(csv)
@@ -74,13 +74,13 @@ export default function ImportLeadsModal({
   }
 
   return (
-    <Modal title="Import leads from CSV" onClose={onClose}>
+    <Modal title="ייבוא לידים מקובץ CSV" onClose={onClose}>
       <div className="form">
         {!parsed && (
           <>
             <p className="form-hint">
-              Upload a CSV exported from Meta's Forms Library (or any CSV of leads). You'll confirm the
-              column mapping before anything is imported.
+              העלה קובץ CSV שיוצא מ-Forms Library של Meta (או כל קובץ CSV של לידים). תוכל לאשר את
+              התאמת העמודות לפני הייבוא בפועל.
             </p>
             <input type="file" accept=".csv,text/csv" onChange={handleFile} />
           </>
@@ -89,15 +89,14 @@ export default function ImportLeadsModal({
         {parsed && mapping && !result && (
           <>
             <p className="form-hint">
-              {parsed.rows.length} rows found. Confirm which column maps to each field — auto-detected
-              where possible.
+              נמצאו {parsed.rows.length} שורות. אשר איזו עמודה מתאימה לכל שדה — זוהה אוטומטית היכן שניתן.
             </p>
             {FIELDS.map(({ key, label, required }) => (
               <label key={key}>
                 {label}
                 {required && ' *'}
                 <select value={mapping[key] ?? ''} onChange={(e) => setColumn(key, e.target.value)}>
-                  <option value="">— none —</option>
+                  <option value="">— ללא —</option>
                   {parsed.headers.map((h) => (
                     <option key={h} value={h}>
                       {h}
@@ -108,22 +107,22 @@ export default function ImportLeadsModal({
             ))}
 
             <p className="form-hint">
-              Anything not mapped is still preserved — the full raw row is saved in each lead's notes.
+              כל מה שלא ימופה עדיין נשמר — השורה הגולמית המלאה נשמרת בהערות של כל ליד.
             </p>
 
             {progress && (
               <p className="form-hint">
-                Importing… {progress.done} / {progress.total}
+                מייבא… {progress.done} / {progress.total}
               </p>
             )}
             {error && <p className="form-error">{error}</p>}
 
             <div className="form-actions">
               <button type="button" className="btn-secondary" onClick={onClose}>
-                Cancel
+                ביטול
               </button>
               <button type="button" disabled={importing || !mapping.name} onClick={handleImport}>
-                {importing ? 'Importing…' : `Import ${parsed.rows.length} leads`}
+                {importing ? 'מייבא…' : `ייבוא ${parsed.rows.length} לידים`}
               </button>
             </div>
           </>
@@ -132,12 +131,12 @@ export default function ImportLeadsModal({
         {result && (
           <>
             <p>
-              Done — <strong>{result.inserted}</strong> imported, <strong>{result.skipped}</strong> already
-              existed (skipped), <strong>{result.errors}</strong> failed.
+              הושלם — <strong>{result.inserted}</strong> יובאו, <strong>{result.skipped}</strong> כבר
+              קיימים (דולגו), <strong>{result.errors}</strong> נכשלו.
             </p>
             <div className="form-actions">
               <button type="button" onClick={onDone}>
-                Close
+                סגירה
               </button>
             </div>
           </>

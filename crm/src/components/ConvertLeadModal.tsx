@@ -42,12 +42,12 @@ export default function ConvertLeadModal({
   }
 
   return (
-    <Modal title={`Convert lead: ${lead.name ?? 'Unnamed'}`} onClose={onClose}>
+    <Modal title={`המרת ליד: ${lead.name ?? 'ללא שם'}`} onClose={onClose}>
       <form className="form" onSubmit={handleSubmit}>
-        <p className="form-hint">Creates a customer + car from this lead and links it.</p>
+        <p className="form-hint">יוצר לקוח ורכב מהליד ומקשר ביניהם.</p>
         <div className="form-row">
           <label>
-            Customer name
+            שם הלקוח
             <input
               value={input.customerName}
               onChange={(e) => set('customerName', e.target.value)}
@@ -55,17 +55,17 @@ export default function ConvertLeadModal({
             />
           </label>
           <label>
-            Phone
-            <input value={input.customerPhone} onChange={(e) => set('customerPhone', e.target.value)} />
+            טלפון
+            <input dir="ltr" value={input.customerPhone} onChange={(e) => set('customerPhone', e.target.value)} />
           </label>
         </div>
         <div className="form-row">
           <label>
-            City
+            עיר
             <input value={input.customerCity} onChange={(e) => set('customerCity', e.target.value)} />
           </label>
           <label>
-            Car
+            רכב
             <input value={input.carMakeModel} onChange={(e) => set('carMakeModel', e.target.value)} />
           </label>
         </div>
@@ -76,17 +76,17 @@ export default function ConvertLeadModal({
             checked={input.createJob}
             onChange={(e) => set('createJob', e.target.checked)}
           />
-          Also create a first job
+          ליצור גם עבודה ראשונה
         </label>
 
         {input.createJob && (
           <div className="form-row">
             <label>
-              Service
+              שירות
               <input value={input.jobService} onChange={(e) => set('jobService', e.target.value)} />
             </label>
             <label>
-              Price
+              מחיר
               <input
                 type="number"
                 value={input.jobPrice}
@@ -94,7 +94,7 @@ export default function ConvertLeadModal({
               />
             </label>
             <label>
-              Date
+              תאריך
               <input type="date" value={input.jobDate} onChange={(e) => set('jobDate', e.target.value)} />
             </label>
           </div>
@@ -103,10 +103,10 @@ export default function ConvertLeadModal({
         {error && <p className="form-error">{error}</p>}
         <div className="form-actions">
           <button type="button" className="btn-secondary" onClick={onClose}>
-            Cancel
+            ביטול
           </button>
           <button type="submit" disabled={saving}>
-            {saving ? 'Converting…' : 'Convert'}
+            {saving ? 'ממיר…' : 'המרה'}
           </button>
         </div>
       </form>

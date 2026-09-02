@@ -70,17 +70,17 @@ export default function Today() {
     }
   }, [])
 
-  if (state.loading) return <p className="today-status">Loading today's reminders…</p>
-  if (state.error) return <p className="today-status today-error">Error: {state.error}</p>
+  if (state.loading) return <p className="today-status">טוען תזכורות…</p>
+  if (state.error) return <p className="today-status today-error">שגיאה: {state.error}</p>
 
   return (
     <div className="today">
       <div className="today-kpi">
         <span className="today-kpi-value">{state.newLeadsCount}</span>
-        <span className="today-kpi-label">new leads</span>
+        <span className="today-kpi-label">לידים חדשים</span>
       </div>
 
-      <ReminderSection title="Follow-ups due" count={state.followups.length}>
+      <ReminderSection title="מעקבים לביצוע" count={state.followups.length}>
         {state.followups.map((item) =>
           item.kind === 'lead' ? (
             <FollowupLeadRow key={`lead-${item.lead.id}`} item={item} />
@@ -90,43 +90,43 @@ export default function Today() {
         )}
       </ReminderSection>
 
-      <ReminderSection title="Ceramic booster due" count={state.boosterDue.length}>
+      <ReminderSection title="בוסטר קרמי לביצוע" count={state.boosterDue.length}>
         {state.boosterDue.map(({ coating, nextBoosterDate }) => {
           const customer = coating.car?.customer
           return (
             <Row
               key={coating.id}
-              primary={customer?.name ?? 'Unknown customer'}
+              primary={customer?.name ?? 'לקוח לא ידוע'}
               secondary={[coating.car?.make_model, coating.product].filter(Boolean).join(' · ')}
-              due={`due ${nextBoosterDate}`}
+              due={`עד ${nextBoosterDate}`}
               phone={customer?.phone}
             />
           )
         })}
       </ReminderSection>
 
-      <ReminderSection title="Warranty expiring (30d)" count={state.warrantyExpiring.length}>
+      <ReminderSection title="אחריות פגה בקרוב (30 יום)" count={state.warrantyExpiring.length}>
         {state.warrantyExpiring.map(({ coating, warrantyEndDate }) => {
           const customer = coating.car?.customer
           return (
             <Row
               key={coating.id}
-              primary={customer?.name ?? 'Unknown customer'}
+              primary={customer?.name ?? 'לקוח לא ידוע'}
               secondary={[coating.car?.make_model, coating.product].filter(Boolean).join(' · ')}
-              due={`expires ${warrantyEndDate}`}
+              due={`פג ב-${warrantyEndDate}`}
               phone={customer?.phone}
             />
           )
         })}
       </ReminderSection>
 
-      <ReminderSection title="B2B renewal soon" count={state.b2bRenewals.length}>
+      <ReminderSection title="חידוש B2B בקרוב" count={state.b2bRenewals.length}>
         {state.b2bRenewals.map((account) => (
           <Row
             key={account.id}
-            primary={account.name ?? 'Unnamed account'}
+            primary={account.name ?? 'חשבון ללא שם'}
             secondary={account.contact_name ?? ''}
-            due={`renews ${account.renewal_date}`}
+            due={`מתחדש ב-${account.renewal_date}`}
             phone={account.phone}
           />
         ))}
@@ -149,7 +149,7 @@ function ReminderSection({
       <h2>
         {title} <span className="reminder-count">{count}</span>
       </h2>
-      {count === 0 ? <p className="reminder-empty">Nothing here — you're caught up.</p> : <ul>{children}</ul>}
+      {count === 0 ? <p className="reminder-empty">אין כאן כלום — הכל מעודכן.</p> : <ul>{children}</ul>}
     </section>
   )
 }
@@ -175,8 +175,8 @@ function Row({
       </div>
       <span className="reminder-row-due">{due}</span>
       {call && (
-        <a className="reminder-row-call" href={call} title="Call">
-          Call
+        <a className="reminder-row-call" href={call} title="התקשר">
+          התקשר
         </a>
       )}
       {wa && (
@@ -193,9 +193,9 @@ function FollowupLeadRow({ item }: { item: Extract<FollowupItem, { kind: 'lead' 
   const secondary = [lead.city, lead.service_interest].filter(Boolean).join(' · ')
   return (
     <Row
-      primary={lead.name ?? 'Unnamed lead'}
+      primary={lead.name ?? 'ליד ללא שם'}
       secondary={secondary}
-      due={`due ${lead.next_followup ?? ''}${lead.source ? ` · ${lead.source}` : ''}`}
+      due={`עד ${lead.next_followup ?? ''}${lead.source ? ` · ${lead.source}` : ''}`}
       phone={lead.phone}
     />
   )
@@ -205,9 +205,9 @@ function FollowupTaskRow({ item }: { item: Extract<FollowupItem, { kind: 'task' 
   const { task } = item
   return (
     <Row
-      primary={task.title ?? 'Untitled task'}
+      primary={task.title ?? 'משימה ללא כותרת'}
       secondary={task.notes ?? ''}
-      due={`due ${task.due_date ?? ''}`}
+      due={`עד ${task.due_date ?? ''}`}
     />
   )
 }

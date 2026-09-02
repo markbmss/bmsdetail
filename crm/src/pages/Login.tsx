@@ -21,9 +21,10 @@ export default function Login() {
       <form className="login-form" onSubmit={handleSubmit}>
         <h1>BMS Detail CRM</h1>
         <label>
-          Email
+          אימייל
           <input
             type="email"
+            dir="ltr"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             autoComplete="username"
@@ -31,7 +32,7 @@ export default function Login() {
           />
         </label>
         <label>
-          Password
+          סיסמה
           <input
             type="password"
             value={password}
@@ -42,7 +43,7 @@ export default function Login() {
         </label>
         {error && <p className="login-error">{error}</p>}
         <button type="submit" disabled={submitting}>
-          {submitting ? 'Signing in…' : 'Sign in'}
+          {submitting ? 'מתחבר…' : 'התחברות'}
         </button>
       </form>
     </div>

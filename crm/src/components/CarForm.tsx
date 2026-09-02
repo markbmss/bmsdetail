@@ -43,37 +43,37 @@ export default function CarForm({
   }
 
   return (
-    <Modal title={car ? 'Edit car' : 'Add car'} onClose={onClose}>
+    <Modal title={car ? 'עריכת רכב' : 'הוספת רכב'} onClose={onClose}>
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Make / model
+          יצרן / דגם
           <input value={input.make_model} onChange={(e) => set('make_model', e.target.value)} />
         </label>
         <div className="form-row">
           <label>
-            Plate
+            מספר רישוי
             <input value={input.plate} onChange={(e) => set('plate', e.target.value)} />
           </label>
           <label>
-            Color
+            צבע
             <input value={input.color} onChange={(e) => set('color', e.target.value)} />
           </label>
           <label>
-            Year
+            שנה
             <input type="number" value={input.year} onChange={(e) => set('year', e.target.value)} />
           </label>
         </div>
         <label>
-          Notes
+          הערות
           <textarea value={input.notes} onChange={(e) => set('notes', e.target.value)} rows={2} />
         </label>
         {error && <p className="form-error">{error}</p>}
         <div className="form-actions">
           <button type="button" className="btn-secondary" onClick={onClose}>
-            Cancel
+            ביטול
           </button>
           <button type="submit" disabled={saving}>
-            {saving ? 'Saving…' : 'Save'}
+            {saving ? 'שומר…' : 'שמירה'}
           </button>
         </div>
       </form>
