@@ -1,4 +1,4 @@
-export type LeadStatus = 'new' | 'contacted' | 'quoted' | 'booked' | 'done' | 'lost'
+export type LeadStatus = 'new' | 'cold' | 'contacted' | 'quoted' | 'booked' | 'done' | 'lost'
 export type JobStatus = 'scheduled' | 'done' | 'paid' | 'cancelled'
 
 export type Lead = {
@@ -14,6 +14,7 @@ export type Lead = {
   next_followup: string | null
   notes: string | null
   customer_id: string | null
+  last_wa_click_at: string | null
 }
 
 export type Customer = {

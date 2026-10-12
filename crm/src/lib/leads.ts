@@ -16,10 +16,20 @@ export async function updateLeadStatus(id: string, status: LeadStatus): Promise<
   if (error) throw error
 }
 
+/** Stamps "now" as the last time the WhatsApp button was pressed for this lead, for the board's recency dot. */
+export async function markWhatsAppClicked(id: string): Promise<void> {
+  const { error } = await supabase
+    .from('leads')
+    .update({ last_wa_click_at: new Date().toISOString() })
+    .eq('id', id)
+  if (error) throw error
+}
+
 // Display-only Hebrew labels — the underlying DB enum values stay English
 // (lead_status), so status filtering/CSS classes/API calls are unaffected.
 export const LEAD_STATUS_LABELS: Record<LeadStatus, string> = {
   new: 'חדש',
+  cold: 'קר',
   contacted: 'בטיפול',
   quoted: 'הצעת מחיר',
   booked: 'נקבע',

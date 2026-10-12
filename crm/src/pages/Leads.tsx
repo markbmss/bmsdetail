@@ -5,6 +5,7 @@ import {
   createLead,
   updateLead,
   updateLeadStatus,
+  markWhatsAppClicked,
   convertLead,
   isFollowupDue,
   leadStatusLabel,
@@ -17,10 +18,20 @@ import ConvertLeadModal from '../components/ConvertLeadModal'
 import ImportLeadsModal from '../components/ImportLeadsModal'
 import LeadsBoard from '../components/LeadsBoard'
 
-const FILTERS: Array<LeadStatus | 'all'> = ['all', 'new', 'contacted', 'quoted', 'booked', 'done', 'lost']
+const FILTERS: Array<LeadStatus | 'all'> = [
+  'all',
+  'new',
+  'cold',
+  'contacted',
+  'quoted',
+  'lost',
+  'booked',
+  'done',
+]
 const FILTER_LABELS: Record<LeadStatus | 'all', string> = {
   all: 'הכל',
   new: 'חדש',
+  cold: 'קר',
   contacted: 'בטיפול',
   quoted: 'הצעת מחיר',
   booked: 'נקבע',
@@ -90,6 +101,16 @@ export default function Leads() {
     }
   }
 
+  async function handleWhatsAppClick(id: string) {
+    const now = new Date().toISOString()
+    setLeads((ls) => ls.map((l) => (l.id === id ? { ...l, last_wa_click_at: now } : l)))
+    try {
+      await markWhatsAppClicked(id)
+    } catch {
+      // Non-critical (only drives the recency dot) — not worth surfacing an error for.
+    }
+  }
+
   const searched = search.trim()
     ? leads.filter(
         (l) =>
@@ -152,6 +173,7 @@ export default function Leads() {
           onStatusChange={handleStatusChange}
           onOpenLead={setEditing}
           onConvert={setConverting}
+          onWhatsAppClick={handleWhatsAppClick}
         />
       )}
 
@@ -182,7 +204,13 @@ export default function Leads() {
                   </a>
                 )}
                 {wa && (
-                  <a className="reminder-row-wa" href={wa} target="_blank" rel="noreferrer">
+                  <a
+                    className="reminder-row-wa"
+                    href={wa}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => handleWhatsAppClick(lead.id)}
+                  >
                     WhatsApp
                   </a>
                 )}

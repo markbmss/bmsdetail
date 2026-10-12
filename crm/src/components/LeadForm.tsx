@@ -3,7 +3,7 @@ import type { Lead, LeadStatus } from '../lib/types'
 import { LEAD_STATUS_LABELS, type LeadInput } from '../lib/leads'
 import Modal from './Modal'
 
-const STATUSES: LeadStatus[] = ['new', 'contacted', 'quoted', 'booked', 'done', 'lost']
+const STATUSES: LeadStatus[] = ['new', 'cold', 'contacted', 'quoted', 'lost', 'booked', 'done']
 
 function toInput(lead: Lead | null): LeadInput {
   return {

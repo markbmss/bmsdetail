@@ -324,6 +324,31 @@
   vertical-align: middle;
 }
 
+/* Traffic-light dot on a board card: how long since the WhatsApp button
+   was last pressed for that lead (green = recent, red = 3+ weeks,
+   gray = never pressed). */
+.wa-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  margin-inline-start: auto;
+  flex-shrink: 0;
+}
+.wa-dot-green {
+  background: #34d399;
+}
+.wa-dot-orange {
+  background: #f0b429;
+}
+.wa-dot-red {
+  background: var(--danger);
+}
+.wa-dot-gray {
+  background: var(--text-muted);
+  opacity: 0.5;
+}
+
 /* Leads */
 
 .leads-header {
@@ -445,6 +470,10 @@
 .status-new {
   background: rgba(96, 165, 250, 0.16);
   color: #93c5fd;
+}
+.status-cold {
+  background: rgba(125, 211, 252, 0.16);
+  color: #7dd3fc;
 }
 .status-contacted {
   background: rgba(240, 180, 41, 0.16);

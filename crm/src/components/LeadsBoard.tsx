@@ -8,21 +8,32 @@ import {
   type DragEndEvent,
 } from '@dnd-kit/core'
 import type { Lead, LeadStatus } from '../lib/types'
-import { waLink, callLink, relativeTime } from '../lib/dates'
+import { waLink, callLink, relativeTime, waRecency } from '../lib/dates'
 import { isFollowupDue, leadStatusLabel } from '../lib/leads'
 
-const COLUMNS: LeadStatus[] = ['new', 'contacted', 'quoted', 'booked', 'done', 'lost']
+// "lost" sits between "quoted" and "booked" per how the team actually works
+// the board; "cold" sits right after "new".
+const COLUMNS: LeadStatus[] = ['new', 'cold', 'contacted', 'quoted', 'lost', 'booked', 'done']
+
+const WA_RECENCY_TITLE: Record<ReturnType<typeof waRecency>, string> = {
+  green: 'וואטסאפ נשלח בימיים האחרונים',
+  orange: 'לא נשלח וואטסאפ בשבוע האחרון',
+  red: 'לא נשלח וואטסאפ 3 שבועות ומעלה',
+  gray: 'עוד לא נשלח וואטסאפ',
+}
 
 export default function LeadsBoard({
   leads,
   onStatusChange,
   onOpenLead,
   onConvert,
+  onWhatsAppClick,
 }: {
   leads: Lead[]
   onStatusChange: (id: string, status: LeadStatus) => void
   onOpenLead: (lead: Lead) => void
   onConvert: (lead: Lead) => void
+  onWhatsAppClick: (id: string) => void
 }) {
   // Without a distance constraint, dnd-kit treats any pointer movement (even
   // a click's natural 1-2px jitter) as a drag, which swallows onClick on the
@@ -50,6 +61,7 @@ export default function LeadsBoard({
             leads={leads.filter((l) => l.status === status)}
             onOpenLead={onOpenLead}
             onConvert={onConvert}
+            onWhatsAppClick={onWhatsAppClick}
           />
         ))}
       </div>
@@ -62,11 +74,13 @@ function BoardColumn({
   leads,
   onOpenLead,
   onConvert,
+  onWhatsAppClick,
 }: {
   status: LeadStatus
   leads: Lead[]
   onOpenLead: (lead: Lead) => void
   onConvert: (lead: Lead) => void
+  onWhatsAppClick: (id: string) => void
 }) {
   const { setNodeRef, isOver } = useDroppable({ id: status })
 
@@ -78,7 +92,13 @@ function BoardColumn({
       </div>
       <div className="board-column-cards">
         {leads.map((lead) => (
-          <BoardCard key={lead.id} lead={lead} onOpen={onOpenLead} onConvert={onConvert} />
+          <BoardCard
+            key={lead.id}
+            lead={lead}
+            onOpen={onOpenLead}
+            onConvert={onConvert}
+            onWhatsAppClick={onWhatsAppClick}
+          />
         ))}
       </div>
     </div>
@@ -89,16 +109,19 @@ function BoardCard({
   lead,
   onOpen,
   onConvert,
+  onWhatsAppClick,
 }: {
   lead: Lead
   onOpen: (lead: Lead) => void
   onConvert: (lead: Lead) => void
+  onWhatsAppClick: (id: string) => void
 }) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({ id: lead.id })
   const wa = waLink(lead.phone)
   const call = callLink(lead.phone)
   const canConvert = !lead.customer_id && lead.status !== 'lost'
   const followupDue = isFollowupDue(lead)
+  const recency = waRecency(lead.last_wa_click_at)
 
   const style = transform
     ? {
@@ -144,11 +167,15 @@ function BoardCard({
             href={wa}
             target="_blank"
             rel="noreferrer"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation()
+              onWhatsAppClick(lead.id)
+            }}
           >
             WhatsApp
           </a>
         )}
+        <span className={`wa-dot wa-dot-${recency}`} title={WA_RECENCY_TITLE[recency]} />
         {lead.customer_id && <span className="converted-badge">הומר</span>}
         {canConvert && (
           <button

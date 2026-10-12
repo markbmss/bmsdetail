@@ -36,6 +36,22 @@ export function daysBetween(fromISO: string, toISO: string): number {
   return Math.round((to.getTime() - from.getTime()) / 86_400_000)
 }
 
+export type WaRecency = 'green' | 'orange' | 'red' | 'gray'
+
+/**
+ * How long ago the WhatsApp button was last pressed for a lead, bucketed
+ * into a traffic-light color for the board's recency dot:
+ * green = pressed in the last 2 days, orange = 3-20 days ago,
+ * red = 3+ weeks ago, gray = never pressed.
+ */
+export function waRecency(lastClickISO: string | null | undefined): WaRecency {
+  if (!lastClickISO) return 'gray'
+  const days = (Date.now() - new Date(lastClickISO).getTime()) / 86_400_000
+  if (days <= 2) return 'green'
+  if (days < 21) return 'orange'
+  return 'red'
+}
+
 /**
  * Parses Meta's Forms Library CSV export date format ("08/30/2026 6:44am")
  * into an ISO timestamp. Assumes Israel local time (the ad account's
