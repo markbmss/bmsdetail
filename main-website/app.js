@@ -45,6 +45,8 @@
       var val = opt.getAttribute("data-" + l);
       if (val) opt.textContent = val;
     });
+
+    document.querySelectorAll(".work-sound-btn").forEach(updateSoundBtn);
   }
 
   document.getElementById("lang-toggle").addEventListener("click", function () {
@@ -585,13 +587,13 @@
 
       var submitBtn = document.getElementById("bs-submit");
       submitBtn.disabled = false;
-      submitBtn.textContent = "הזמן עכשיו · החל מ-₪" + pkgPrice;
+      submitBtn.textContent = "הזמן עכשיו · החל מ-₪" + pkgPrice.toLocaleString("en-US") + " + מע״מ";
       submitBtn.style.display = "";
       document.getElementById("bs-form-body").style.display = "";
       document.getElementById("bs-success").style.display = "none";
 
       document.getElementById("bs-pkg-name").textContent = pkgName;
-      document.getElementById("bs-pkg-price").textContent = "החל מ-₪" + pkgPrice;
+      document.getElementById("bs-pkg-price").textContent = "החל מ-₪" + pkgPrice.toLocaleString("en-US") + " + מע״מ";
       var arrEl = document.getElementById("bs-pkg-arrival");
       if (arrEl) arrEl.style.display = "none";
 
@@ -625,10 +627,36 @@
 
     // Generic "Book Now" buttons (hero CTA etc.)
     document.querySelectorAll(".btn-book").forEach(function (el) {
-      el.addEventListener("click", function (e) { e.preventDefault(); openSheet("דיטייל", 500, []); });
+      el.addEventListener("click", function (e) { e.preventDefault(); openSheet("פוליש וננו", 2500, []); });
     });
 
-    _openBookingModal = function () { openSheet("דיטייל", 500, []); };
+    _openBookingModal = function () { openSheet("פוליש וננו", 2500, []); };
+  }
+
+  /* ── Work videos: muted autoplay, sound only on tap ── */
+  var SOUND_LABELS = { he: ["הפעל סאונד", "השתק"], en: ["Sound on", "Mute"] };
+  function updateSoundBtn(btn) {
+    var on = btn.getAttribute("aria-pressed") === "true";
+    btn.querySelector(".work-sound-label").textContent = SOUND_LABELS[lang][on ? 1 : 0];
+  }
+  function initWorkVideos() {
+    document.querySelectorAll(".work-sound-btn").forEach(function (btn) {
+      var video = btn.parentElement.querySelector("video");
+      updateSoundBtn(btn);
+      btn.addEventListener("click", function () {
+        if (video.muted) {
+          document.querySelectorAll(".work-sound-btn[aria-pressed='true']").forEach(function (other) {
+            other.parentElement.querySelector("video").muted = true;
+            other.setAttribute("aria-pressed", "false");
+            updateSoundBtn(other);
+          });
+        }
+        video.muted = !video.muted;
+        if (!video.muted) { video.currentTime = 0; video.play(); }
+        btn.setAttribute("aria-pressed", String(!video.muted));
+        updateSoundBtn(btn);
+      });
+    });
   }
 
   /* ── Init ── */
@@ -641,6 +669,7 @@
     initCounters();
     initAddons();
     initBookingSheet();
+    initWorkVideos();
     applyLang("he");
 
     // Auto-open booking popup when coming from a Meta ad (?book=1)
